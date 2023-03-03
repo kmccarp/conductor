@@ -34,13 +34,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class AnnotatedWorker implements Worker {
 
-    private String name;
+    private final String name;
 
-    private Method workerMethod;
+    private final Method workerMethod;
 
-    private Object obj;
+    private final Object obj;
 
-    private ObjectMapper om = new ObjectMapperProvider().getObjectMapper();
+    private final ObjectMapper om = new ObjectMapperProvider().getObjectMapper();
 
     private int pollingInterval = 100;
 

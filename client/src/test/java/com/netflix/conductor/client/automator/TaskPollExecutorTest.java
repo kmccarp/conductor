@@ -20,7 +20,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.concurrent.*;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -43,7 +47,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.anyInt;
+import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class TaskPollExecutorTest {
 
@@ -643,15 +652,13 @@ public class TaskPollExecutorTest {
 
         CountDownLatch latch = new CountDownLatch(threadCount);
         doAnswer(
-                        new Answer() {
-                            public TaskResult answer(InvocationOnMock invocation) {
-                                Object[] args = invocation.getArguments();
-                                TaskResult result = (TaskResult) args[0];
-                                assertEquals(COMPLETED, result.getStatus());
-                                assertEquals("value", result.getOutputData().get("key"));
-                                latch.countDown();
-                                return null;
-                            }
+                        invocation -> {
+                            Object[] args = invocation.getArguments();
+                            TaskResult result = (TaskResult) args[0];
+                            assertEquals(COMPLETED, result.getStatus());
+                            assertEquals("value", result.getOutputData().get("key"));
+                            latch.countDown();
+                            return null;
                         })
                 .when(taskClient)
                 .updateTask(any());

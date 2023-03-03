@@ -73,11 +73,8 @@ public class SubWorkflowTaskMapperTest {
         workflowTask.setStartDelay(30);
         Map<String, Object> taskInput = new HashMap<>();
         Map<String, String> taskToDomain =
-                new HashMap<>() {
-                    {
-                        put("*", "unittest");
-                    }
-                };
+                new HashMap<>();
+        taskToDomain.put("*", "unittest");
 
         Map<String, Object> subWorkflowParamMap = new HashMap<>();
         subWorkflowParamMap.put("name", "FooWorkFlow");
@@ -118,11 +115,8 @@ public class SubWorkflowTaskMapperTest {
         workflowModel.setWorkflowDefinition(workflowDef);
         WorkflowTask workflowTask = new WorkflowTask();
         Map<String, String> taskToDomain =
-                new HashMap<>() {
-                    {
-                        put("*", "unittest");
-                    }
-                };
+                new HashMap<>();
+        taskToDomain.put("*", "unittest");
         SubWorkflowParams subWorkflowParams = new SubWorkflowParams();
         subWorkflowParams.setName("Foo");
         subWorkflowParams.setVersion(2);
