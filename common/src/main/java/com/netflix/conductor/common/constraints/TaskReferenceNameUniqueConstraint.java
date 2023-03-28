@@ -106,7 +106,7 @@ public @interface TaskReferenceNameUniqueConstraint {
                                                 context.buildConstraintViolationWithTemplate(
                                                                 message)
                                                         .addConstraintViolation());
-                                if (errors.size() > 0) {
+                                if (!errors.isEmpty()) {
                                     valid.setValue(false);
                                 }
                             });

@@ -63,7 +63,7 @@ class TaskPollExecutor {
 
     private static final int LEASE_EXTEND_RETRY_COUNT = 3;
     private static final double LEASE_EXTEND_DURATION_FACTOR = 0.8;
-    private ScheduledExecutorService leaseExtendExecutorService;
+    private final ScheduledExecutorService leaseExtendExecutorService;
     Map<String /* ID of the task*/, ScheduledFuture<?>> leaseExtendMap = new HashMap<>();
 
     TaskPollExecutor(

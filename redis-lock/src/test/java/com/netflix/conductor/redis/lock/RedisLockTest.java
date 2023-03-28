@@ -38,7 +38,7 @@ public class RedisLockTest {
     private static RedisLock redisLock;
     private static Config config;
     private static RedissonClient redisson;
-    private static RedisServer redisServer = null;
+    private static RedisServer redisServer;
 
     @BeforeClass
     public static void setUp() throws Exception {

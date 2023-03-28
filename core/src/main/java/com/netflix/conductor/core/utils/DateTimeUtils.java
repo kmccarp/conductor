@@ -35,12 +35,14 @@ public class DateTimeUtils {
                                         + "\\s*",
                                 Pattern.CASE_INSENSITIVE)
                         .matcher(text);
-        if (!m.matches()) throw new IllegalArgumentException("Not valid duration: " + text);
+        if (!m.matches()) {
+            throw new IllegalArgumentException("Not valid duration: " + text);
+        }
 
-        int days = (m.start(1) == -1 ? 0 : Integer.parseInt(m.group(1)));
-        int hours = (m.start(2) == -1 ? 0 : Integer.parseInt(m.group(2)));
-        int mins = (m.start(3) == -1 ? 0 : Integer.parseInt(m.group(3)));
-        int secs = (m.start(4) == -1 ? 0 : Integer.parseInt(m.group(4)));
+        int days = m.start(1) == -1 ? 0 : Integer.parseInt(m.group(1));
+        int hours = m.start(2) == -1 ? 0 : Integer.parseInt(m.group(2));
+        int mins = m.start(3) == -1 ? 0 : Integer.parseInt(m.group(3));
+        int secs = m.start(4) == -1 ? 0 : Integer.parseInt(m.group(4));
         return Duration.ofSeconds((days * 86400) + (hours * 60L + mins) * 60L + secs);
     }
 

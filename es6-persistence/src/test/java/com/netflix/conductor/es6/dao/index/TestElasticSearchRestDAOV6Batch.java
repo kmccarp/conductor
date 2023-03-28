@@ -70,7 +70,7 @@ public class TestElasticSearchRestDAOV6Batch extends ElasticSearchRestDaoBaseTes
 
                             assertTrue(
                                     "should return 1 or more search results",
-                                    result.getResults().size() > 0);
+                                    !result.getResults().isEmpty());
                             assertEquals(
                                     "taskId should match the indexed task",
                                     "some-task-id",

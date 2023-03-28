@@ -175,11 +175,11 @@ public class TaskConversionsTests {
         assertEquals(doWhileTask.getLoopCondition(), taskFromWorkflowTask.getLoopCondition());
         assertEquals(
                 doWhileTask.getLoopTasks().stream()
-                        .map(task -> task.getTaskReferenceName())
+                        .map(Task::getTaskReferenceName)
                         .sorted()
                         .collect(Collectors.toSet()),
                 taskFromWorkflowTask.getLoopTasks().stream()
-                        .map(task -> task.getTaskReferenceName())
+                        .map(Task::getTaskReferenceName)
                         .sorted()
                         .collect(Collectors.toSet()));
     }

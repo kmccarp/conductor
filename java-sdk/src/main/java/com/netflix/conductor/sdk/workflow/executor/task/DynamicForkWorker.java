@@ -35,7 +35,7 @@ public class DynamicForkWorker implements Worker {
 
     private final String name;
 
-    private ObjectMapper objectMapper = new ObjectMapperProvider().getObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapperProvider().getObjectMapper();
 
     public DynamicForkWorker(
             String name, Function<Object, DynamicForkInput> workerMethod, int pollingInterval) {
@@ -96,12 +96,7 @@ public class DynamicForkWorker implements Worker {
 
     public static void main(String[] args) {
         Function<?, DynamicForkInput> fn =
-                new Function<TaskDef, DynamicForkInput>() {
-                    @Override
-                    public DynamicForkInput apply(@InputParam("a") TaskDef s) {
-                        return null;
-                    }
-                };
+                @InputParam("a")s -> null;
 
         for (Method method : fn.getClass().getDeclaredMethods()) {
             if (method.getReturnType().equals(DynamicForkInput.class)) {
