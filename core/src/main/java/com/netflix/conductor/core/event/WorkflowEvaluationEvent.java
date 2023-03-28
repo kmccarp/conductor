@@ -18,6 +18,8 @@ import com.netflix.conductor.model.WorkflowModel;
 
 public final class WorkflowEvaluationEvent implements Serializable {
 
+    private static final long serialVersionUID = 1;
+
     private final WorkflowModel workflowModel;
 
     public WorkflowEvaluationEvent(WorkflowModel workflowModel) {

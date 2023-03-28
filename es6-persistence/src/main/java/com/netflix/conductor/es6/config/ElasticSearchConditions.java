@@ -15,7 +15,7 @@ package com.netflix.conductor.es6.config;
 import org.springframework.boot.autoconfigure.condition.AllNestedConditions;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 
-public class ElasticSearchConditions {
+public final class ElasticSearchConditions {
 
     private ElasticSearchConditions() {}
 

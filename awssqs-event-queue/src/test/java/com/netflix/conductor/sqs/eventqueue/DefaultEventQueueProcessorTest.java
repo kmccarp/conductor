@@ -140,7 +140,7 @@ public class DefaultEventQueueProcessorTest {
                 "v_0", "t0", new HashMap<>(), Status.COMPLETED);
         Uninterruptibles.sleepUninterruptibly(1_000, TimeUnit.MILLISECONDS);
 
-        assertTrue(updatedTasks.stream().anyMatch(task -> task.getTaskId().equals("t0")));
+        assertTrue(updatedTasks.stream().anyMatch(task -> "t0".equals(task.getTaskId())));
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -154,6 +154,6 @@ public class DefaultEventQueueProcessorTest {
     public void testWithTaskId() throws Exception {
         defaultEventQueueProcessor.updateByTaskId("v_2", "t2", new HashMap<>(), Status.COMPLETED);
         Uninterruptibles.sleepUninterruptibly(1_000, TimeUnit.MILLISECONDS);
-        assertTrue(updatedTasks.stream().anyMatch(task -> task.getTaskId().equals("t2")));
+        assertTrue(updatedTasks.stream().anyMatch(task -> "t2".equals(task.getTaskId())));
     }
 }

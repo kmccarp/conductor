@@ -214,7 +214,7 @@ public class CassandraMetadataDAO extends CassandraBaseDAO implements MetadataDA
     @Override
     public Optional<WorkflowDef> getLatestWorkflowDef(String name) {
         List<WorkflowDef> workflowDefList = getAllWorkflowDefVersions(name);
-        if (workflowDefList != null && workflowDefList.size() > 0) {
+        if (workflowDefList != null && !workflowDefList.isEmpty()) {
             workflowDefList.sort(Comparator.comparingInt(WorkflowDef::getVersion));
             return Optional.of(workflowDefList.get(workflowDefList.size() - 1));
         }
@@ -266,9 +266,9 @@ public class CassandraMetadataDAO extends CassandraBaseDAO implements MetadataDA
             ResultSet resultSet =
                     session.execute(selectAllWorkflowDefsStatement.bind(WORKFLOW_DEF_INDEX_KEY));
             List<Row> rows = resultSet.all();
-            if (rows.size() == 0) {
+            if (rows.isEmpty()) {
                 LOGGER.info("No workflow definitions were found.");
-                return Collections.EMPTY_LIST;
+                return Collections.emptyList();
             }
             return rows.stream()
                     .map(
@@ -307,9 +307,9 @@ public class CassandraMetadataDAO extends CassandraBaseDAO implements MetadataDA
         try {
             ResultSet resultSet = session.execute(selectAllTaskDefsStatement.bind(TASK_DEFS_KEY));
             List<Row> rows = resultSet.all();
-            if (rows.size() == 0) {
+            if (rows.isEmpty()) {
                 LOGGER.info("No task definitions were found.");
-                return Collections.EMPTY_LIST;
+                return Collections.emptyList();
             }
             return rows.stream().map(this::setDefaults).collect(Collectors.toList());
         } catch (DriverException e) {
@@ -326,7 +326,7 @@ public class CassandraMetadataDAO extends CassandraBaseDAO implements MetadataDA
                     session.execute(selectAllWorkflowDefVersionsByNameStatement.bind(name));
             recordCassandraDaoRequests("getAllWorkflowDefVersions", "n/a", name);
             List<Row> rows = resultSet.all();
-            if (rows.size() == 0) {
+            if (rows.isEmpty()) {
                 LOGGER.info("Not workflow definitions were found for : {}", name);
                 return null;
             }

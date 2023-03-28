@@ -33,7 +33,7 @@ import com.netflix.conductor.client.worker.Worker;
 import com.netflix.discovery.EurekaClient;
 
 /** Configures automated polling of tasks and execution via the registered {@link Worker}s. */
-public class TaskRunnerConfigurer {
+public final class TaskRunnerConfigurer {
     private static final Logger LOGGER = LoggerFactory.getLogger(TaskRunnerConfigurer.class);
     private static final String INVALID_THREAD_COUNT =
             "Invalid worker thread count specified, use either shared thread pool or config thread count per task";

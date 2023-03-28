@@ -14,7 +14,7 @@ package com.netflix.conductor.sdk.workflow.executor.task;
 
 public class WorkerConfiguration {
 
-    private int defaultPollingInterval = 0;
+    private int defaultPollingInterval;
 
     public WorkerConfiguration(int defaultPollingInterval) {
         this.defaultPollingInterval = defaultPollingInterval;

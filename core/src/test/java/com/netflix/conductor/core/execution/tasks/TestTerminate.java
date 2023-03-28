@@ -82,11 +82,8 @@ public class TestTerminate {
         workflow.setOutput(Collections.singletonMap("output", "${task1.output.value}"));
 
         HashMap<String, Object> expectedOutput =
-                new HashMap<>() {
-                    {
-                        put("output", "${task0.output.value}");
-                    }
-                };
+                new HashMap<>();
+        expectedOutput.put("output", "${task0.output.value}");
 
         Map<String, Object> input = new HashMap<>();
         input.put(getTerminationStatusParameter(), "COMPLETED");
@@ -106,11 +103,8 @@ public class TestTerminate {
         workflow.setOutput(Collections.singletonMap("output", "${task1.output.value}"));
 
         HashMap<String, Object> expectedOutput =
-                new HashMap<>() {
-                    {
-                        put("output", "${task0.output.value}");
-                    }
-                };
+                new HashMap<>();
+        expectedOutput.put("output", "${task0.output.value}");
 
         Map<String, Object> input = new HashMap<>();
         input.put(getTerminationStatusParameter(), "FAILED");
@@ -144,11 +138,8 @@ public class TestTerminate {
         Terminate terminateTask = new Terminate();
 
         HashMap<String, Object> expectedOutput =
-                new HashMap<>() {
-                    {
-                        put("result", 1);
-                    }
-                };
+                new HashMap<>();
+        expectedOutput.put("result", 1);
 
         Map<String, Object> input = new HashMap<>();
         input.put(getTerminationStatusParameter(), "FAILED");
