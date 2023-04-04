@@ -89,7 +89,9 @@ public class ExternalPayloadStorageUtils {
      *     per {@link ConductorProperties}
      */
     public <T> void verifyAndUpload(T entity, PayloadType payloadType) {
-        if (!shouldUpload(entity, payloadType)) return;
+        if (!shouldUpload(entity, payloadType)) {
+            return;
+        }
 
         long threshold = 0L;
         long maxThreshold = 0L;
@@ -148,7 +150,8 @@ public class ExternalPayloadStorageUtils {
                     failWorkflow(((WorkflowModel) entity), payloadType, errorMsg);
                 }
             } else if (payloadSize > threshold * 1024) {
-                String externalInputPayloadStoragePath, externalOutputPayloadStoragePath;
+                String externalInputPayloadStoragePath;
+                String externalOutputPayloadStoragePath;
                 switch (payloadType) {
                     case TASK_INPUT:
                         externalInputPayloadStoragePath =

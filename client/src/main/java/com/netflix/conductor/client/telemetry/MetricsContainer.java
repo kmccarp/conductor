@@ -28,7 +28,7 @@ import com.netflix.spectator.api.Tag;
 import com.netflix.spectator.api.Timer;
 import com.netflix.spectator.api.patterns.PolledMeter;
 
-public class MetricsContainer {
+public final class MetricsContainer {
 
     private static final String TASK_TYPE = "taskType";
     private static final String WORKFLOW_TYPE = "workflowType";
@@ -87,9 +87,8 @@ public class MetricsContainer {
     private static List<Tag> getTags(String[] additionalTags) {
         List<Tag> tagList = new ArrayList();
         tagList.add(new BasicTag("class", CLASS_NAME));
-        for (int j = 0; j < additionalTags.length - 1; j++) {
+        for (int j = 0; j < additionalTags.length - 1; j++, j++) {
             tagList.add(new BasicTag(additionalTags[j], additionalTags[j + 1]));
-            j++;
         }
         return tagList;
     }

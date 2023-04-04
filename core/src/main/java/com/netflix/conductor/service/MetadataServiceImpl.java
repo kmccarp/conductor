@@ -226,7 +226,7 @@ public class MetadataServiceImpl implements MetadataService {
             String workflowName = def.getName();
             WorkflowDefSummary summary = fromWorkflowDef(def);
 
-            retval.putIfAbsent(workflowName, new TreeSet<WorkflowDefSummary>());
+            retval.putIfAbsent(workflowName, new TreeSet<>());
 
             TreeSet<WorkflowDefSummary> versions = retval.get(workflowName);
             versions.add(summary);

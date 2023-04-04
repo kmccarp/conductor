@@ -75,8 +75,7 @@ public class Join extends WorkflowSystemTask {
             if (forkedTask.getWorkflowTask().isOptional()
                     && taskStatus == TaskModel.Status.COMPLETED_WITH_ERRORS) {
                 optionalTaskFailures
-                        .append(
-                                String.format(
+                        .append(String.format(
                                         "%s/%s",
                                         forkedTask.getTaskDefName(), forkedTask.getTaskId()))
                         .append(" ");

@@ -18,7 +18,7 @@ import org.springframework.context.SmartLifecycle;
 
 public abstract class LifecycleAwareComponent implements SmartLifecycle {
 
-    private volatile boolean running = false;
+    private volatile boolean running;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LifecycleAwareComponent.class);
 
