@@ -41,7 +41,9 @@ public class Enum extends AbstractMessage {
 
         int protoIndex = 0;
         for (java.lang.reflect.Field field : cls.getDeclaredFields()) {
-            if (field.isEnumConstant()) fields.add(new EnumField(protoIndex++, field));
+            if (field.isEnumConstant()) {
+                fields.add(new EnumField(protoIndex++, field));
+            }
         }
     }
 

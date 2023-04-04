@@ -51,11 +51,21 @@ abstract class ClientBase {
             @Nullable String freeText,
             @Nullable String query) {
         SearchPb.Request.Builder request = SearchPb.Request.newBuilder();
-        if (start != null) request.setStart(start);
-        if (size != null) request.setSize(size);
-        if (sort != null) request.setSort(sort);
-        if (freeText != null) request.setFreeText(freeText);
-        if (query != null) request.setQuery(query);
+        if (start != null) {
+            request.setStart(start);
+        }
+        if (size != null) {
+            request.setSize(size);
+        }
+        if (sort != null) {
+            request.setSort(sort);
+        }
+        if (freeText != null) {
+            request.setFreeText(freeText);
+        }
+        if (query != null) {
+            request.setQuery(query);
+        }
         return request.build();
     }
 }

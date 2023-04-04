@@ -53,16 +53,16 @@ public class WorkflowMonitorTest {
 
     @Test
     public void testPendingWorkflowDataMap() {
-        WorkflowDef test1_1 = makeDef("test1", 1, null);
-        WorkflowDef test1_2 = makeDef("test1", 2, "name1");
+        WorkflowDef test11 = makeDef("test1", 1, null);
+        WorkflowDef test12 = makeDef("test1", 2, "name1");
 
-        WorkflowDef test2_1 = makeDef("test2", 1, "first");
-        WorkflowDef test2_2 = makeDef("test2", 2, "mid");
-        WorkflowDef test2_3 = makeDef("test2", 3, "last");
+        WorkflowDef test21 = makeDef("test2", 1, "first");
+        WorkflowDef test22 = makeDef("test2", 2, "mid");
+        WorkflowDef test23 = makeDef("test2", 3, "last");
 
         final Map<String, String> mapping =
                 workflowMonitor.getPendingWorkflowToOwnerAppMap(
-                        List.of(test1_1, test1_2, test2_1, test2_2, test2_3));
+                        List.of(test11, test12, test21, test22, test23));
 
         Assert.assertEquals(2, mapping.keySet().size());
         Assert.assertTrue(mapping.containsKey("test1"));

@@ -101,7 +101,7 @@ public abstract class CassandraBaseDAO {
     protected final Session session;
     protected final CassandraProperties properties;
 
-    private boolean initialized = false;
+    private boolean initialized;
 
     public CassandraBaseDAO(
             Session session, ObjectMapper objectMapper, CassandraProperties properties) {

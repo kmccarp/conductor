@@ -350,11 +350,11 @@ public class TestDeciderOutcomes {
         outcome = deciderService.decide(workflow);
         assertTrue(
                 outcome.tasksToBeScheduled.stream()
-                        .anyMatch(task1 -> task1.getReferenceTaskName().equals("f0")));
+                        .anyMatch(task1 -> "f0".equals(task1.getReferenceTaskName())));
 
         Optional<TaskModel> optionalTask =
                 outcome.tasksToBeScheduled.stream()
-                        .filter(t -> t.getReferenceTaskName().equals("f0"))
+                        .filter(t -> "f0".equals(t.getReferenceTaskName()))
                         .findFirst();
         assertTrue(optionalTask.isPresent());
         TaskModel task = optionalTask.get();
@@ -493,7 +493,7 @@ public class TestDeciderOutcomes {
         for (int retryCount = 0; retryCount < 4; retryCount++) {
 
             for (TaskModel taskToBeScheduled : outcome.tasksToBeScheduled) {
-                if (taskToBeScheduled.getTaskDefName().equals("join0")) {
+                if ("join0".equals(taskToBeScheduled.getTaskDefName())) {
                     assertEquals(TaskModel.Status.IN_PROGRESS, taskToBeScheduled.getStatus());
                 } else if (taskToBeScheduled.getTaskType().matches("(f0|f1|f2)")) {
                     assertEquals(TaskModel.Status.SCHEDULED, taskToBeScheduled.getStatus());
@@ -512,7 +512,7 @@ public class TestDeciderOutcomes {
             assertEquals(
                     TaskModel.Status.COMPLETED_WITH_ERRORS,
                     outcome.tasksToBeUpdated.get(i).getStatus());
-            assertEquals("f" + (i), outcome.tasksToBeUpdated.get(i).getTaskDefName());
+            assertEquals("f" + i, outcome.tasksToBeUpdated.get(i).getTaskDefName());
         }
 
         assertEquals(TaskModel.Status.IN_PROGRESS, outcome.tasksToBeScheduled.get(0).getStatus());

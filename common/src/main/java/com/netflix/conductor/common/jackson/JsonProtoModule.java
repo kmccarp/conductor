@@ -45,6 +45,8 @@ import com.google.protobuf.Message;
 @Component(JsonProtoModule.NAME)
 public class JsonProtoModule extends SimpleModule {
 
+    private static final long serialVersionUID = 1;
+
     public static final String NAME = "ConductorJsonProtoModule";
 
     private static final String JSON_TYPE = "@type";
