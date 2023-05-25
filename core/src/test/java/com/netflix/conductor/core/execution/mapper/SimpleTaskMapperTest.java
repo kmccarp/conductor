@@ -37,7 +37,7 @@ public class SimpleTaskMapperTest {
 
     private SimpleTaskMapper simpleTaskMapper;
 
-    private IDGenerator idGenerator = new IDGenerator();
+    private final IDGenerator idGenerator = new IDGenerator();
 
     @Rule public ExpectedException expectedException = ExpectedException.none();
 

@@ -53,7 +53,7 @@ public class LocalServerRunner {
 
     private final String serverURL;
 
-    private static Map<Integer, LocalServerRunner> serverInstances = new HashMap<>();
+    private static final Map<Integer, LocalServerRunner> serverInstances = new HashMap<>();
 
     public LocalServerRunner(int port, String conductorVersion) {
         this.port = port;
@@ -176,7 +176,9 @@ public class LocalServerRunner {
                             String line = null;
                             while (true) {
                                 try {
-                                    if ((line = error.readLine()) == null) break;
+                                    if ((line = error.readLine()) == null) {
+                                        break;
+                                    }
                                 } catch (IOException e) {
                                     LOGGER.error("Exception reading input stream:", e);
                                 }
@@ -193,7 +195,9 @@ public class LocalServerRunner {
                             String line = null;
                             while (true) {
                                 try {
-                                    if ((line = op.readLine()) == null) break;
+                                    if ((line = op.readLine()) == null) {
+                                        break;
+                                    }
                                 } catch (IOException e) {
                                     LOGGER.error("Exception reading input stream:", e);
                                 }

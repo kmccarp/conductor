@@ -74,7 +74,9 @@ public class AdminServiceImpl implements AdminService {
      * @return all the build properties.
      */
     private Map<String, Object> getBuildProperties() {
-        if (buildProperties == null) return Collections.emptyMap();
+        if (buildProperties == null) {
+            return Collections.emptyMap();
+        }
         Map<String, Object> buildProps = new HashMap<>();
         buildProps.put("version", buildProperties.getVersion());
         buildProps.put("buildDate", buildProperties.getTime());
@@ -133,6 +135,6 @@ public class AdminServiceImpl implements AdminService {
         if (eventQueueManager == null) {
             throw new IllegalStateException("Event processing is DISABLED");
         }
-        return (verbose ? eventQueueManager.getQueueSizes() : eventQueueManager.getQueues());
+        return verbose ? eventQueueManager.getQueueSizes() : eventQueueManager.getQueues();
     }
 }

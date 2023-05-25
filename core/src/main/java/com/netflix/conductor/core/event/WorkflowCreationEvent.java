@@ -18,6 +18,8 @@ import com.netflix.conductor.core.execution.StartWorkflowInput;
 
 public class WorkflowCreationEvent implements Serializable {
 
+    private static final long serialVersionUID = 1;
+
     private final StartWorkflowInput startWorkflowInput;
 
     public WorkflowCreationEvent(StartWorkflowInput startWorkflowInput) {
