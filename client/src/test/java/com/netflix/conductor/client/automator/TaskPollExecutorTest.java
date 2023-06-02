@@ -70,14 +70,14 @@ public class TaskPollExecutorTest {
         when(taskClient.ack(any(), any())).thenReturn(true);
         CountDownLatch latch = new CountDownLatch(1);
         doAnswer(
-                        invocation -> {
-                            assertEquals("test-worker-1", Thread.currentThread().getName());
-                            Object[] args = invocation.getArguments();
-                            TaskResult result = (TaskResult) args[0];
-                            assertEquals(TaskResult.Status.FAILED, result.getStatus());
-                            latch.countDown();
-                            return null;
-                        })
+                invocation -> {
+                    assertEquals("test-worker-1", Thread.currentThread().getName());
+                    Object[] args = invocation.getArguments();
+                    TaskResult result = (TaskResult) args[0];
+                    assertEquals(TaskResult.Status.FAILED, result.getStatus());
+                    latch.countDown();
+                    return null;
+                })
                 .when(taskClient)
                 .updateTask(any());
 
@@ -123,19 +123,19 @@ public class TaskPollExecutorTest {
         when(taskClient.ack(any(), any())).thenReturn(true);
         CountDownLatch latch = new CountDownLatch(3);
         doAnswer(
-                        new Answer() {
-                            private int count = 0;
+                new Answer() {
+                    private int count = 0;
 
-                            public TaskResult answer(InvocationOnMock invocation) {
-                                Object[] args = invocation.getArguments();
-                                TaskResult result = (TaskResult) args[0];
-                                assertEquals(IN_PROGRESS, result.getStatus());
-                                assertEquals(count, result.getOutputData().get(outputKey));
-                                count++;
-                                latch.countDown();
-                                return null;
-                            }
-                        })
+                    public TaskResult answer(InvocationOnMock invocation) {
+                        Object[] args = invocation.getArguments();
+                        TaskResult result = (TaskResult) args[0];
+                        assertEquals(IN_PROGRESS, result.getStatus());
+                        assertEquals(count, result.getOutputData().get(outputKey));
+                        count++;
+                        latch.countDown();
+                        return null;
+                    }
+                })
                 .when(taskClient)
                 .updateTask(any());
 
@@ -165,13 +165,13 @@ public class TaskPollExecutorTest {
         when(taskClient.ack(any(), any())).thenReturn(true);
 
         doAnswer(
-                        invocation -> {
-                            Object[] args = invocation.getArguments();
-                            TaskResult result = (TaskResult) args[0];
-                            assertNull(result.getReasonForIncompletion());
-                            result.setReasonForIncompletion("some_reason_1");
-                            throw new ConductorClientException();
-                        })
+                invocation -> {
+                    Object[] args = invocation.getArguments();
+                    TaskResult result = (TaskResult) args[0];
+                    assertNull(result.getReasonForIncompletion());
+                    result.setReasonForIncompletion("some_reason_1");
+                    throw new ConductorClientException();
+                })
                 .when(taskClient)
                 .evaluateAndUploadLargePayload(any(Map.class), any());
 
@@ -180,10 +180,10 @@ public class TaskPollExecutorTest {
                         null, taskClient, 1, new HashMap<>(), "test-worker-", TASK_THREAD_MAP);
         CountDownLatch latch = new CountDownLatch(1);
         doAnswer(
-                        invocation -> {
-                            latch.countDown();
-                            return null;
-                        })
+                invocation -> {
+                    latch.countDown();
+                    return null;
+                })
                 .when(worker)
                 .onErrorUpdate(any());
 
@@ -220,16 +220,16 @@ public class TaskPollExecutorTest {
         CountDownLatch latch = new CountDownLatch(1);
 
         doAnswer(
-                        invocation -> {
-                            Object[] args = invocation.getArguments();
-                            TaskResult result = (TaskResult) args[0];
-                            assertNull(result.getOutputData());
-                            assertEquals(
-                                    largePayloadLocation,
-                                    result.getExternalOutputPayloadStoragePath());
-                            latch.countDown();
-                            return null;
-                        })
+                invocation -> {
+                    Object[] args = invocation.getArguments();
+                    TaskResult result = (TaskResult) args[0];
+                    assertNull(result.getOutputData());
+                    assertEquals(
+                            largePayloadLocation,
+                            result.getExternalOutputPayloadStoragePath());
+                    latch.countDown();
+                    return null;
+                })
                 .when(taskClient)
                 .updateTask(any());
 
@@ -260,14 +260,14 @@ public class TaskPollExecutorTest {
                         null, taskClient, 1, new HashMap<>(), "test-worker-", TASK_THREAD_MAP);
         CountDownLatch latch = new CountDownLatch(1);
         doAnswer(
-                        invocation -> {
-                            Object[] args = invocation.getArguments();
-                            TaskResult result = (TaskResult) args[0];
-                            assertEquals(IN_PROGRESS, result.getStatus());
-                            assertEquals(task.getTaskId(), result.getTaskId());
-                            latch.countDown();
-                            return null;
-                        })
+                invocation -> {
+                    Object[] args = invocation.getArguments();
+                    TaskResult result = (TaskResult) args[0];
+                    assertEquals(IN_PROGRESS, result.getStatus());
+                    assertEquals(task.getTaskId(), result.getTaskId());
+                    latch.countDown();
+                    return null;
+                })
                 .when(taskClient)
                 .updateTask(any());
 
@@ -297,14 +297,14 @@ public class TaskPollExecutorTest {
                         null, taskClient, 1, new HashMap<>(), "test-worker-", TASK_THREAD_MAP);
         CountDownLatch latch = new CountDownLatch(1);
         doAnswer(
-                        invocation -> {
-                            Object[] args = invocation.getArguments();
-                            TaskResult result = (TaskResult) args[0];
-                            assertEquals(IN_PROGRESS, result.getStatus());
-                            assertEquals(task.getTaskId(), result.getTaskId());
-                            latch.countDown();
-                            return null;
-                        })
+                invocation -> {
+                    Object[] args = invocation.getArguments();
+                    TaskResult result = (TaskResult) args[0];
+                    assertEquals(IN_PROGRESS, result.getStatus());
+                    assertEquals(task.getTaskId(), result.getTaskId());
+                    latch.countDown();
+                    return null;
+                })
                 .when(taskClient)
                 .updateTask(any());
 
@@ -333,10 +333,10 @@ public class TaskPollExecutorTest {
 
         CountDownLatch latch = new CountDownLatch(1);
         doAnswer(
-                        invocation -> {
-                            latch.countDown();
-                            return null;
-                        })
+                invocation -> {
+                    latch.countDown();
+                    return null;
+                })
                 .when(taskClient)
                 .batchPollTasksInDomain(any(), any(), any(), anyInt(), anyInt());
 
@@ -375,14 +375,14 @@ public class TaskPollExecutorTest {
                         Collections.singletonMap("task_run_always", 1));
         CountDownLatch latch = new CountDownLatch(1);
         doAnswer(
-                        invocation -> {
-                            Object[] args = invocation.getArguments();
-                            TaskResult result = (TaskResult) args[0];
-                            assertEquals(IN_PROGRESS, result.getStatus());
-                            assertEquals(task.getTaskId(), result.getTaskId());
-                            latch.countDown();
-                            return null;
-                        })
+                invocation -> {
+                    Object[] args = invocation.getArguments();
+                    TaskResult result = (TaskResult) args[0];
+                    assertEquals(IN_PROGRESS, result.getStatus());
+                    assertEquals(task.getTaskId(), result.getTaskId());
+                    latch.countDown();
+                    return null;
+                })
                 .when(taskClient)
                 .updateTask(any());
 
@@ -416,14 +416,14 @@ public class TaskPollExecutorTest {
                         client, taskClient, 1, new HashMap<>(), "test-worker-", TASK_THREAD_MAP);
         CountDownLatch latch = new CountDownLatch(1);
         doAnswer(
-                        invocation -> {
-                            Object[] args = invocation.getArguments();
-                            TaskResult result = (TaskResult) args[0];
-                            assertEquals(IN_PROGRESS, result.getStatus());
-                            assertEquals(task.getTaskId(), result.getTaskId());
-                            latch.countDown();
-                            return null;
-                        })
+                invocation -> {
+                    Object[] args = invocation.getArguments();
+                    TaskResult result = (TaskResult) args[0];
+                    assertEquals(IN_PROGRESS, result.getStatus());
+                    assertEquals(task.getTaskId(), result.getTaskId());
+                    latch.countDown();
+                    return null;
+                })
                 .when(taskClient)
                 .updateTask(any());
 
@@ -458,14 +458,14 @@ public class TaskPollExecutorTest {
                         client, taskClient, 1, new HashMap<>(), "test-worker-", TASK_THREAD_MAP);
         CountDownLatch latch = new CountDownLatch(1);
         doAnswer(
-                        invocation -> {
-                            Object[] args = invocation.getArguments();
-                            TaskResult result = (TaskResult) args[0];
-                            assertEquals(IN_PROGRESS, result.getStatus());
-                            assertEquals(task.getTaskId(), result.getTaskId());
-                            latch.countDown();
-                            return null;
-                        })
+                invocation -> {
+                    Object[] args = invocation.getArguments();
+                    TaskResult result = (TaskResult) args[0];
+                    assertEquals(IN_PROGRESS, result.getStatus());
+                    assertEquals(task.getTaskId(), result.getTaskId());
+                    latch.countDown();
+                    return null;
+                })
                 .when(taskClient)
                 .updateTask(any());
 
@@ -504,14 +504,14 @@ public class TaskPollExecutorTest {
                         Collections.singletonMap("task_ignore_override", 1));
         CountDownLatch latch = new CountDownLatch(1);
         doAnswer(
-                        invocation -> {
-                            Object[] args = invocation.getArguments();
-                            TaskResult result = (TaskResult) args[0];
-                            assertEquals(IN_PROGRESS, result.getStatus());
-                            assertEquals(task.getTaskId(), result.getTaskId());
-                            latch.countDown();
-                            return null;
-                        })
+                invocation -> {
+                    Object[] args = invocation.getArguments();
+                    TaskResult result = (TaskResult) args[0];
+                    assertEquals(IN_PROGRESS, result.getStatus());
+                    assertEquals(task.getTaskId(), result.getTaskId());
+                    latch.countDown();
+                    return null;
+                })
                 .when(taskClient)
                 .updateTask(any());
 
@@ -541,10 +541,10 @@ public class TaskPollExecutorTest {
 
         CountDownLatch latch = new CountDownLatch(1);
         doAnswer(
-                        invocation -> {
-                            latch.countDown();
-                            return null;
-                        })
+                invocation -> {
+                    latch.countDown();
+                    return null;
+                })
                 .when(taskClient)
                 .batchPollTasksInDomain(any(), any(), any(), anyInt(), anyInt());
 
@@ -580,12 +580,12 @@ public class TaskPollExecutorTest {
                         null, taskClient, 1, new HashMap<>(), "test-worker-", TASK_THREAD_MAP);
         CountDownLatch latch = new CountDownLatch(1);
         doAnswer(
-                        invocation -> {
-                            assertTrue(
-                                    taskPollExecutor.leaseExtendMap.containsKey(task.getTaskId()));
-                            latch.countDown();
-                            return null;
-                        })
+                invocation -> {
+                    assertTrue(
+                            taskPollExecutor.leaseExtendMap.containsKey(task.getTaskId()));
+                    latch.countDown();
+                    return null;
+                })
                 .when(taskClient)
                 .updateTask(any());
 
@@ -633,7 +633,7 @@ public class TaskPollExecutorTest {
                             });
         }
         when(taskClient.batchPollTasksInDomain(
-                        TEST_TASK_DEF_NAME, null, workerName, threadCount, 1000))
+                TEST_TASK_DEF_NAME, null, workerName, threadCount, 1000))
                 .thenReturn(tasks);
         when(taskClient.ack(any(), any())).thenReturn(true);
 
@@ -643,16 +643,16 @@ public class TaskPollExecutorTest {
 
         CountDownLatch latch = new CountDownLatch(threadCount);
         doAnswer(
-                        new Answer() {
-                            public TaskResult answer(InvocationOnMock invocation) {
-                                Object[] args = invocation.getArguments();
-                                TaskResult result = (TaskResult) args[0];
-                                assertEquals(COMPLETED, result.getStatus());
-                                assertEquals("value", result.getOutputData().get("key"));
-                                latch.countDown();
-                                return null;
-                            }
-                        })
+                new Answer() {
+                    public TaskResult answer(InvocationOnMock invocation) {
+                        Object[] args = invocation.getArguments();
+                        TaskResult result = (TaskResult) args[0];
+                        assertEquals(COMPLETED, result.getStatus());
+                        assertEquals("value", result.getOutputData().get("key"));
+                        latch.countDown();
+                        return null;
+                    }
+                })
                 .when(taskClient)
                 .updateTask(any());
 

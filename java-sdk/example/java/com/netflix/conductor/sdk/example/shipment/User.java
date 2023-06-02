@@ -49,7 +49,8 @@ public class User {
         this.billingId = billingId;
     }
 
-    public User() {}
+    public User() {
+    }
 
     public String getName() {
         return name;

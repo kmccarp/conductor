@@ -41,7 +41,8 @@ public class WorkflowServiceImplTest {
     private static final String WORKFLOW_ID = "anyWorkflowId";
     private static final Boolean RESUME_SUBWORKFLOW_TASKS = true;
 
-    @Mock private WorkflowService workflowService;
+    @Mock
+    private WorkflowService workflowService;
 
     private WorkflowServiceImpl workflowServiceImpl;
 
@@ -83,7 +84,8 @@ public class WorkflowServiceImplTest {
         StreamObserver<WorkflowServicePb.WorkflowSummarySearchResult> streamObserver =
                 new StreamObserver<>() {
                     @Override
-                    public void onNext(WorkflowServicePb.WorkflowSummarySearchResult value) {}
+                    public void onNext(WorkflowServicePb.WorkflowSummarySearchResult value) {
+                    }
 
                     @Override
                     public void onError(Throwable t) {
@@ -123,7 +125,8 @@ public class WorkflowServiceImplTest {
         StreamObserver<WorkflowServicePb.WorkflowSearchResult> streamObserver =
                 new StreamObserver<>() {
                     @Override
-                    public void onNext(WorkflowServicePb.WorkflowSearchResult value) {}
+                    public void onNext(WorkflowServicePb.WorkflowSearchResult value) {
+                    }
 
                     @Override
                     public void onError(Throwable t) {
@@ -186,7 +189,7 @@ public class WorkflowServiceImplTest {
         searchResult.setResults(Collections.singletonList(workflow));
 
         when(workflowService.searchWorkflows(
-                        anyInt(), anyInt(), anyList(), anyString(), anyString()))
+                anyInt(), anyInt(), anyList(), anyString(), anyString()))
                 .thenReturn(searchResult);
 
         workflowServiceImpl.search(req, streamObserver);
@@ -241,7 +244,7 @@ public class WorkflowServiceImplTest {
         searchResult.setResults(Collections.singletonList(workflow));
 
         when(workflowService.searchWorkflowsByTasks(
-                        anyInt(), anyInt(), anyList(), anyString(), anyString()))
+                anyInt(), anyInt(), anyList(), anyString(), anyString()))
                 .thenReturn(searchResult);
 
         workflowServiceImpl.searchByTasks(req, streamObserver);
@@ -348,7 +351,7 @@ public class WorkflowServiceImplTest {
         searchResult.setResults(Collections.singletonList(workflow));
 
         when(workflowService.searchWorkflowsByTasksV2(
-                        1, 1, Collections.singletonList("strings"), "*", ""))
+                1, 1, Collections.singletonList("strings"), "*", ""))
                 .thenReturn(searchResult);
 
         workflowServiceImpl.searchByTasksV2(req, streamObserver);

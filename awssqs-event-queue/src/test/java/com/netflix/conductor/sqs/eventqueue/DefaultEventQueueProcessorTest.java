@@ -57,7 +57,8 @@ public class DefaultEventQueueProcessorTest {
     private static WorkflowExecutor workflowExecutor;
     private DefaultEventQueueProcessor defaultEventQueueProcessor;
 
-    @Autowired private ObjectMapper objectMapper;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     private static final List<Message> messages = new LinkedList<>();
     private static final List<TaskResult> updatedTasks = new LinkedList<>();
@@ -108,12 +109,12 @@ public class DefaultEventQueueProcessorTest {
         workflow2.getTasks().add(task2);
 
         doAnswer(
-                        (Answer<Void>)
-                                invocation -> {
-                                    List<Message> msgs = invocation.getArgument(0, List.class);
-                                    messages.addAll(msgs);
-                                    return null;
-                                })
+                (Answer<Void>)
+                        invocation -> {
+                            List<Message> msgs = invocation.getArgument(0, List.class);
+                            messages.addAll(msgs);
+                            return null;
+                        })
                 .when(queue)
                 .publish(any());
 
@@ -125,11 +126,11 @@ public class DefaultEventQueueProcessorTest {
         doReturn(workflow2).when(workflowExecutor).getWorkflow(eq("v_2"), anyBoolean());
 
         doAnswer(
-                        (Answer<Void>)
-                                invocation -> {
-                                    updatedTasks.add(invocation.getArgument(0, TaskResult.class));
-                                    return null;
-                                })
+                (Answer<Void>)
+                        invocation -> {
+                            updatedTasks.add(invocation.getArgument(0, TaskResult.class));
+                            return null;
+                        })
                 .when(workflowExecutor)
                 .updateTask(any(TaskResult.class));
     }

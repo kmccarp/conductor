@@ -37,7 +37,8 @@ public class DynamicForkJoinTask {
     @ProtoField(id = 5)
     private String type = TaskType.SIMPLE.name();
 
-    public DynamicForkJoinTask() {}
+    public DynamicForkJoinTask() {
+    }
 
     public DynamicForkJoinTask(
             String taskName, String workflowName, String referenceName, Map<String, Object> input) {

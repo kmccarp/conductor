@@ -29,7 +29,8 @@ import com.netflix.conductor.sdk.workflow.executor.task.WorkerConfiguration;
 public class ConductorWorkerAutoConfiguration
         implements ApplicationListener<ContextRefreshedEvent> {
 
-    @Autowired private TaskClient taskClient;
+    @Autowired
+    private TaskClient taskClient;
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent refreshedEvent) {

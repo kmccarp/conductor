@@ -85,7 +85,7 @@ public interface TaskService {
     Task getPendingTaskForWorkflow(
             @NotEmpty(message = "WorkflowId cannot be null or empty.") String workflowId,
             @NotEmpty(message = "TaskReferenceName cannot be null or empty.")
-                    String taskReferenceName);
+            String taskReferenceName);
 
     /**
      * Updates a task.

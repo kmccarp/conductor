@@ -66,8 +66,8 @@ public class DoWhile extends WorkflowSystemTask {
         TaskModel relevantTask;
         for (TaskModel t : workflow.getTasks()) {
             if (doWhileTaskModel
-                            .getWorkflowTask()
-                            .has(TaskUtils.removeIterationFromTaskRefName(t.getReferenceTaskName()))
+                    .getWorkflowTask()
+                    .has(TaskUtils.removeIterationFromTaskRefName(t.getReferenceTaskName()))
                     && !doWhileTaskModel.getReferenceTaskName().equals(t.getReferenceTaskName())
                     && doWhileTaskModel.getIteration() == t.getIteration()) {
                 relevantTask = relevantTasks.get(t.getReferenceTaskName());
@@ -242,13 +242,13 @@ public class DoWhile extends WorkflowSystemTask {
                         .filter(
                                 t ->
                                         (task.getWorkflowTask()
-                                                        .has(
-                                                                TaskUtils
-                                                                        .removeIterationFromTaskRefName(
-                                                                                t
-                                                                                        .getReferenceTaskName()))
+                                                .has(
+                                                        TaskUtils
+                                                                .removeIterationFromTaskRefName(
+                                                                        t
+                                                                                .getReferenceTaskName()))
                                                 && !task.getReferenceTaskName()
-                                                        .equals(t.getReferenceTaskName())))
+                                                .equals(t.getReferenceTaskName())))
                         .collect(Collectors.toList());
 
         for (TaskModel loopOverTask : loopOver) {

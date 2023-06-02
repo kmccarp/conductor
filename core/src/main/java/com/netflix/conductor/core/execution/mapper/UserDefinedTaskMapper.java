@@ -78,8 +78,8 @@ public class UserDefinedTaskMapper implements TaskMapper {
                         .orElseGet(
                                 () ->
                                         Optional.ofNullable(
-                                                        metadataDAO.getTaskDef(
-                                                                workflowTask.getName()))
+                                                metadataDAO.getTaskDef(
+                                                        workflowTask.getName()))
                                                 .orElseThrow(
                                                         () -> {
                                                             String reason =

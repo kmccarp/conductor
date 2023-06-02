@@ -40,7 +40,8 @@ import static org.mockito.Mockito.when;
 
 public class DynamicTaskMapperTest {
 
-    @Rule public ExpectedException expectedException = ExpectedException.none();
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
     private ParametersUtils parametersUtils;
     private MetadataDAO metadataDAO;
     private DynamicTaskMapper dynamicTaskMapper;
@@ -67,7 +68,7 @@ public class DynamicTaskMapperTest {
         taskInput.put("dynamicTaskName", "DynoTask");
 
         when(parametersUtils.getTaskInput(
-                        anyMap(), any(WorkflowModel.class), any(TaskDef.class), anyString()))
+                anyMap(), any(WorkflowModel.class), any(TaskDef.class), anyString()))
                 .thenReturn(taskInput);
 
         String taskId = new IDGenerator().generate();

@@ -21,4 +21,5 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.CLASS)
 @Target({ElementType.FIELD, ElementType.TYPE, ElementType.METHOD})
 @Documented
-public @interface VisibleForTesting {}
+public @interface VisibleForTesting {
+}

@@ -30,7 +30,8 @@ import static org.junit.Assert.*;
 public class ProtoGenTest {
     private static final Charset charset = StandardCharsets.UTF_8;
 
-    @Rule public TemporaryFolder folder = new TemporaryFolder();
+    @Rule
+    public TemporaryFolder folder = new TemporaryFolder();
 
     @Test
     public void happyPath() throws Exception {

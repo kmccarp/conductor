@@ -56,7 +56,8 @@ public class EventExecution {
     @ProtoField(id = 8)
     private Map<String, Object> output = new HashMap<>();
 
-    public EventExecution() {}
+    public EventExecution() {
+    }
 
     public EventExecution(String id, String messageId) {
         this.id = id;

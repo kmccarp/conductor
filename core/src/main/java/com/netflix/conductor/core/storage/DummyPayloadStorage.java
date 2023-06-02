@@ -30,7 +30,8 @@ public class DummyPayloadStorage implements ExternalPayloadStorage {
     }
 
     @Override
-    public void upload(String path, InputStream payload, long payloadSize) {}
+    public void upload(String path, InputStream payload, long payloadSize) {
+    }
 
     @Override
     public InputStream download(String path) {

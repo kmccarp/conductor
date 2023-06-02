@@ -89,7 +89,7 @@ public class TaskConversionsTests {
         SimpleTask task3 = new SimpleTask("task3", "task3");
 
         ForkJoin forkTask =
-                new ForkJoin("task_ref_name", new Task[] {task1}, new Task[] {task2, task3});
+                new ForkJoin("task_ref_name", new Task[]{task1}, new Task[]{task2, task3});
 
         WorkflowTask workflowTask = forkTask.getWorkflowDefTasks().get(0);
         assertNotNull(workflowTask.getForkTasks());

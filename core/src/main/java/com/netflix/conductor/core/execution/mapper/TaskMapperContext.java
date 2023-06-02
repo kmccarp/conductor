@@ -195,7 +195,8 @@ public class TaskMapperContext {
         private String taskId;
         private DeciderService deciderService;
 
-        private Builder() {}
+        private Builder() {
+        }
 
         /**
          * Sets the {@code workflowModel} and returns a reference to this Builder so that the

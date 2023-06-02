@@ -67,9 +67,9 @@ public class WorkflowReconciler extends LifecycleAwareComponent {
                 if (workflowIds != null) {
                     // wait for all workflow ids to be "swept"
                     CompletableFuture.allOf(
-                                    workflowIds.stream()
-                                            .map(workflowSweeper::sweepAsync)
-                                            .toArray(CompletableFuture[]::new))
+                            workflowIds.stream()
+                                    .map(workflowSweeper::sweepAsync)
+                                    .toArray(CompletableFuture[]::new))
                             .get();
                     LOGGER.debug(
                             "Sweeper processed {} from the decider queue",

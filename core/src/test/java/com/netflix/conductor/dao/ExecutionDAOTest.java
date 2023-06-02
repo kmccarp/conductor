@@ -43,7 +43,8 @@ public abstract class ExecutionDAOTest {
         return (ConcurrentExecutionLimitDAO) getExecutionDAO();
     }
 
-    @Rule public ExpectedException expectedException = ExpectedException.none();
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
 
     @Test
     public void testTaskExceedsLimit() {

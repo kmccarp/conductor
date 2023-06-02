@@ -45,68 +45,68 @@ public class ShipmentWorkflow {
                         new SimpleTask("charge_payment", "charge_payment")
                                 .input(
                                         "billingId",
-                                                ConductorWorkflow.input
-                                                        .map("userDetails")
-                                                        .get("billingId"),
+                                        ConductorWorkflow.input
+                                                .map("userDetails")
+                                                .get("billingId"),
                                         "billingType",
-                                                ConductorWorkflow.input
-                                                        .map("userDetails")
-                                                        .get("billingType"),
+                                        ConductorWorkflow.input
+                                                .map("userDetails")
+                                                .get("billingType"),
                                         "amount", "${calculate_tax_and_total.output.total_amount}"))
                 .add(
                         new Switch("shipping_label", "${workflow.input.orderDetail.shippingMethod}")
                                 .switchCase(
                                         Order.ShippingMethod.GROUND.toString(),
                                         new SimpleTask(
-                                                        "ground_shipping_label",
-                                                        "ground_shipping_label")
+                                                "ground_shipping_label",
+                                                "ground_shipping_label")
                                                 .input(
                                                         "name",
-                                                                ConductorWorkflow.input
-                                                                        .map("userDetails")
-                                                                        .get("name"),
+                                                        ConductorWorkflow.input
+                                                                .map("userDetails")
+                                                                .get("name"),
                                                         "address",
-                                                                ConductorWorkflow.input
-                                                                        .map("userDetails")
-                                                                        .get("addressLine"),
+                                                        ConductorWorkflow.input
+                                                                .map("userDetails")
+                                                                .get("addressLine"),
                                                         "orderNo",
-                                                                ConductorWorkflow.input
-                                                                        .map("orderDetail")
-                                                                        .get("orderNumber")))
+                                                        ConductorWorkflow.input
+                                                                .map("orderDetail")
+                                                                .get("orderNumber")))
                                 .switchCase(
                                         Order.ShippingMethod.NEXT_DAY_AIR.toString(),
                                         new SimpleTask("air_shipping_label", "air_shipping_label")
                                                 .input(
                                                         "name",
-                                                                ConductorWorkflow.input
-                                                                        .map("userDetails")
-                                                                        .get("name"),
+                                                        ConductorWorkflow.input
+                                                                .map("userDetails")
+                                                                .get("name"),
                                                         "address",
-                                                                ConductorWorkflow.input
-                                                                        .map("userDetails")
-                                                                        .get("addressLine"),
+                                                        ConductorWorkflow.input
+                                                                .map("userDetails")
+                                                                .get("addressLine"),
                                                         "orderNo",
-                                                                ConductorWorkflow.input
-                                                                        .map("orderDetail")
-                                                                        .get("orderNumber")))
+                                                        ConductorWorkflow.input
+                                                                .map("orderDetail")
+                                                                .get("orderNumber")))
                                 .switchCase(
                                         Order.ShippingMethod.SAME_DAY.toString(),
                                         new SimpleTask(
-                                                        "same_day_shipping_label",
-                                                        "same_day_shipping_label")
+                                                "same_day_shipping_label",
+                                                "same_day_shipping_label")
                                                 .input(
                                                         "name",
-                                                                ConductorWorkflow.input
-                                                                        .map("userDetails")
-                                                                        .get("name"),
+                                                        ConductorWorkflow.input
+                                                                .map("userDetails")
+                                                                .get("name"),
                                                         "address",
-                                                                ConductorWorkflow.input
-                                                                        .map("userDetails")
-                                                                        .get("addressLine"),
+                                                        ConductorWorkflow.input
+                                                                .map("userDetails")
+                                                                .get("addressLine"),
                                                         "orderNo",
-                                                                ConductorWorkflow.input
-                                                                        .map("orderDetail")
-                                                                        .get("orderNumber")))
+                                                        ConductorWorkflow.input
+                                                                .map("orderDetail")
+                                                                .get("orderNumber")))
                                 .defaultCase(
                                         new Terminate(
                                                 "unsupported_shipping_type",
@@ -116,17 +116,17 @@ public class ShipmentWorkflow {
                         new SimpleTask("send_email", "send_email")
                                 .input(
                                         "name",
-                                                ConductorWorkflow.input
-                                                        .map("userDetails")
-                                                        .get("name"),
+                                        ConductorWorkflow.input
+                                                .map("userDetails")
+                                                .get("name"),
                                         "email",
-                                                ConductorWorkflow.input
-                                                        .map("userDetails")
-                                                        .get("email"),
+                                        ConductorWorkflow.input
+                                                .map("userDetails")
+                                                .get("email"),
                                         "orderNo",
-                                                ConductorWorkflow.input
-                                                        .map("orderDetail")
-                                                        .get("orderNumber")));
+                                        ConductorWorkflow.input
+                                                .map("orderDetail")
+                                                .get("orderNumber")));
         ConductorWorkflow<Order> conductorWorkflow = builder.build();
         conductorWorkflow.registerWorkflow(true, true);
         return conductorWorkflow;
@@ -154,8 +154,8 @@ public class ShipmentWorkflow {
                         .add(
                                 new ForkJoin(
                                         "get_in_parallel",
-                                        new Task[] {getOrderDetails},
-                                        new Task[] {getUserDetails}))
+                                        new Task[]{getOrderDetails},
+                                        new Task[]{getUserDetails}))
 
                         // For all the line items in the order, run in parallel:
                         // (calculate tax, charge payment, set state, prepare shipment, send

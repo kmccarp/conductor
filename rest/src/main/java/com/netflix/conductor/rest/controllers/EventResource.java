@@ -70,7 +70,7 @@ public class EventResource {
     public List<EventHandler> getEventHandlersForEvent(
             @PathVariable("event") String event,
             @RequestParam(value = "activeOnly", defaultValue = "true", required = false)
-                    boolean activeOnly) {
+            boolean activeOnly) {
         return eventService.getEventHandlersForEvent(event, activeOnly);
     }
 }

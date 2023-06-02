@@ -141,7 +141,7 @@ public class WorkflowSweeper {
                         postponeDurationSeconds =
                                 (workflowModel.getWorkflowDefinition().getTimeoutSeconds() != 0)
                                         ? workflowModel.getWorkflowDefinition().getTimeoutSeconds()
-                                                + 1
+                                        + 1
                                         : workflowOffsetTimeout;
                     }
                 } else {

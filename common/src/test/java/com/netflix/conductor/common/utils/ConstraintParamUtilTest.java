@@ -207,7 +207,7 @@ public class ConstraintParamUtilTest {
         workflowTask_1.setType(TaskType.TASK_TYPE_SIMPLE);
 
         Map<String, Object> inputParam = new HashMap<>();
-        inputParam.put("taskId", new String[] {""});
+        inputParam.put("taskId", new String[]{""});
         workflowTask_1.setInputParameters(inputParam);
 
         List<WorkflowTask> tasks = new ArrayList<>();

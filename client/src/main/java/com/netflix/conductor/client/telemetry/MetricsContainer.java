@@ -62,7 +62,8 @@ public class MetricsContainer {
     private static final Map<String, AtomicLong> GAUGES = new ConcurrentHashMap<>();
     private static final String CLASS_NAME = MetricsContainer.class.getSimpleName();
 
-    private MetricsContainer() {}
+    private MetricsContainer() {
+    }
 
     public static Timer getPollTimer(String taskType) {
         return getTimer(TASK_POLL_TIME, TASK_TYPE, taskType);

@@ -54,8 +54,10 @@ public class HttpTask extends WorkflowSystemTask {
                     + "' key with HttpTask.Input as value. See documentation for HttpTask for required input parameters";
 
     private final TypeReference<Map<String, Object>> mapOfObj =
-            new TypeReference<Map<String, Object>>() {};
-    private final TypeReference<List<Object>> listOfObj = new TypeReference<List<Object>>() {};
+            new TypeReference<Map<String, Object>>() {
+            };
+    private final TypeReference<List<Object>> listOfObj = new TypeReference<List<Object>>() {
+    };
     protected ObjectMapper objectMapper;
     protected RestTemplateProvider restTemplateProvider;
     private final String requestParameter;

@@ -42,7 +42,8 @@ public class RedisRateLimitDAOTest {
 
     private RedisRateLimitingDAO rateLimitingDao;
 
-    @Autowired private ObjectMapper objectMapper;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Before
     public void init() {

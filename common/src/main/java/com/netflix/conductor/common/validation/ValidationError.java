@@ -21,7 +21,8 @@ public class ValidationError {
     private String message;
     private String invalidValue;
 
-    public ValidationError() {}
+    public ValidationError() {
+    }
 
     public ValidationError(String path, String message, String invalidValue) {
         this.path = path;

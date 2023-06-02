@@ -56,7 +56,8 @@ public class ForkJoinDynamicTaskMapperTest {
     private DeciderService deciderService;
     private ForkJoinDynamicTaskMapper forkJoinDynamicTaskMapper;
 
-    @Rule public ExpectedException expectedException = ExpectedException.none();
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
 
     @Before
     public void setUp() {
@@ -271,7 +272,7 @@ public class ForkJoinDynamicTaskMapperTest {
 
         // when
         when(parametersUtils.getTaskInput(
-                        anyMap(), any(WorkflowModel.class), any(TaskDef.class), anyString()))
+                anyMap(), any(WorkflowModel.class), any(TaskDef.class), anyString()))
                 .thenReturn(dynamicTasksInput);
 
         when(objectMapper.convertValue(any(), any(Class.class))).thenReturn(dtasks);
@@ -314,7 +315,7 @@ public class ForkJoinDynamicTaskMapperTest {
 
         // when
         when(parametersUtils.getTaskInput(
-                        anyMap(), any(WorkflowModel.class), any(TaskDef.class), anyString()))
+                anyMap(), any(WorkflowModel.class), any(TaskDef.class), anyString()))
                 .thenReturn(dynamicTasksInput);
 
         when(objectMapper.convertValue(any(), any(Class.class))).thenReturn(null);

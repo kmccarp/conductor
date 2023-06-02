@@ -49,7 +49,8 @@ public interface ObservableQueue extends Lifecycle {
     /**
      * @param messages to be Nack'ed
      */
-    default void nack(List<Message> messages) {}
+    default void nack(List<Message> messages) {
+    }
 
     /**
      * @param messages Messages to be published
@@ -84,5 +85,6 @@ public interface ObservableQueue extends Lifecycle {
     long size();
 
     /** Used to close queue instance prior to remove from queues */
-    default void close() {}
+    default void close() {
+    }
 }

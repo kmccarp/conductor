@@ -43,7 +43,7 @@ public interface WorkflowService {
      */
     String startWorkflow(
             @NotNull(message = "StartWorkflowRequest cannot be null") @Valid
-                    StartWorkflowRequest startWorkflowRequest);
+            StartWorkflowRequest startWorkflowRequest);
 
     /**
      * Start a new workflow. Returns the ID of the workflow instance that can be later used for
@@ -61,8 +61,8 @@ public interface WorkflowService {
             Integer version,
             String correlationId,
             @Min(value = 0, message = "0 is the minimum priority value")
-                    @Max(value = 99, message = "99 is the maximum priority value")
-                    Integer priority,
+            @Max(value = 99, message = "99 is the maximum priority value")
+            Integer priority,
             Map<String, Object> input);
 
     /**
@@ -189,7 +189,7 @@ public interface WorkflowService {
     void skipTaskFromWorkflow(
             @NotEmpty(message = "WorkflowId name cannot be null or empty.") String workflowId,
             @NotEmpty(message = "TaskReferenceName cannot be null or empty.")
-                    String taskReferenceName,
+            String taskReferenceName,
             SkipTaskRequest skipTaskRequest);
 
     /**
@@ -202,7 +202,7 @@ public interface WorkflowService {
     String rerunWorkflow(
             @NotEmpty(message = "WorkflowId cannot be null or empty.") String workflowId,
             @NotNull(message = "RerunWorkflowRequest cannot be null.")
-                    RerunWorkflowRequest request);
+            RerunWorkflowRequest request);
 
     /**
      * Restarts a completed workflow.
@@ -256,10 +256,10 @@ public interface WorkflowService {
     SearchResult<WorkflowSummary> searchWorkflows(
             int start,
             @Max(
-                            value = 5_000,
-                            message =
-                                    "Cannot return more than {value} workflows. Please use pagination.")
-                    int size,
+                    value = 5_000,
+                    message =
+                            "Cannot return more than {value} workflows. Please use pagination.")
+            int size,
             String sort,
             String freeText,
             String query);
@@ -278,10 +278,10 @@ public interface WorkflowService {
     SearchResult<Workflow> searchWorkflowsV2(
             int start,
             @Max(
-                            value = 5_000,
-                            message =
-                                    "Cannot return more than {value} workflows. Please use pagination.")
-                    int size,
+                    value = 5_000,
+                    message =
+                            "Cannot return more than {value} workflows. Please use pagination.")
+            int size,
             String sort,
             String freeText,
             String query);
@@ -300,10 +300,10 @@ public interface WorkflowService {
     SearchResult<WorkflowSummary> searchWorkflows(
             int start,
             @Max(
-                            value = 5_000,
-                            message =
-                                    "Cannot return more than {value} workflows. Please use pagination.")
-                    int size,
+                    value = 5_000,
+                    message =
+                            "Cannot return more than {value} workflows. Please use pagination.")
+            int size,
             List<String> sort,
             String freeText,
             String query);
@@ -322,10 +322,10 @@ public interface WorkflowService {
     SearchResult<Workflow> searchWorkflowsV2(
             int start,
             @Max(
-                            value = 5_000,
-                            message =
-                                    "Cannot return more than {value} workflows. Please use pagination.")
-                    int size,
+                    value = 5_000,
+                    message =
+                            "Cannot return more than {value} workflows. Please use pagination.")
+            int size,
             List<String> sort,
             String freeText,
             String query);

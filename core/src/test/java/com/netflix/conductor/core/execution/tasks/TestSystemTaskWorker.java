@@ -101,10 +101,10 @@ public class TestSystemTaskWorker {
 
         CountDownLatch latch = new CountDownLatch(1);
         doAnswer(
-                        invocation -> {
-                            latch.countDown();
-                            return null;
-                        })
+                invocation -> {
+                    latch.countDown();
+                    return null;
+                })
                 .when(asyncSystemTaskExecutor)
                 .execute(any(), anyString());
 
@@ -121,10 +121,10 @@ public class TestSystemTaskWorker {
 
         CountDownLatch latch = new CountDownLatch(2);
         doAnswer(
-                        invocation -> {
-                            latch.countDown();
-                            return null;
-                        })
+                invocation -> {
+                    latch.countDown();
+                    return null;
+                })
                 .when(asyncSystemTaskExecutor)
                 .execute(any(), eq("t1"));
 
@@ -141,10 +141,10 @@ public class TestSystemTaskWorker {
 
         CountDownLatch latch = new CountDownLatch(1);
         doAnswer(
-                        invocation -> {
-                            latch.countDown();
-                            return null;
-                        })
+                invocation -> {
+                    latch.countDown();
+                    return null;
+                })
                 .when(asyncSystemTaskExecutor)
                 .execute(any(), eq("isolated_taskId"));
 

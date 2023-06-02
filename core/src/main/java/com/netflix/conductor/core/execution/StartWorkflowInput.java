@@ -34,7 +34,8 @@ public class StartWorkflowInput {
     private String workflowId;
     private String triggeringWorkflowId;
 
-    public StartWorkflowInput() {}
+    public StartWorkflowInput() {
+    }
 
     public StartWorkflowInput(StartWorkflowRequest startWorkflowRequest) {
         this.name = startWorkflowRequest.getName();
@@ -162,7 +163,7 @@ public class StartWorkflowInput {
                 && Objects.equals(workflowDefinition, that.workflowDefinition)
                 && Objects.equals(workflowInput, that.workflowInput)
                 && Objects.equals(
-                        externalInputPayloadStoragePath, that.externalInputPayloadStoragePath)
+                externalInputPayloadStoragePath, that.externalInputPayloadStoragePath)
                 && Objects.equals(correlationId, that.correlationId)
                 && Objects.equals(priority, that.priority)
                 && Objects.equals(parentWorkflowId, that.parentWorkflowId)

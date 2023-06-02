@@ -38,9 +38,11 @@ import static org.mockito.Mockito.when;
 @RunWith(SpringRunner.class)
 public class WorkflowClientTest {
 
-    @Mock ProtoMapper mockedProtoMapper;
+    @Mock
+    ProtoMapper mockedProtoMapper;
 
-    @Mock WorkflowServiceGrpc.WorkflowServiceBlockingStub mockedStub;
+    @Mock
+    WorkflowServiceGrpc.WorkflowServiceBlockingStub mockedStub;
 
     WorkflowClient workflowClient;
 

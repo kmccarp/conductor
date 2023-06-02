@@ -59,7 +59,8 @@ public class ForkJoinDynamicTaskMapper implements TaskMapper {
     private final ObjectMapper objectMapper;
     private final MetadataDAO metadataDAO;
     private static final TypeReference<List<WorkflowTask>> ListOfWorkflowTasks =
-            new TypeReference<>() {};
+            new TypeReference<>() {
+            };
 
     @Autowired
     public ForkJoinDynamicTaskMapper(
@@ -168,10 +169,10 @@ public class ForkJoinDynamicTaskMapper implements TaskMapper {
                                 .filter(
                                         runningTask ->
                                                 runningTask
-                                                                .getStatus()
-                                                                .equals(
-                                                                        TaskModel.Status
-                                                                                .IN_PROGRESS)
+                                                        .getStatus()
+                                                        .equals(
+                                                                TaskModel.Status
+                                                                        .IN_PROGRESS)
                                                         || runningTask.getStatus().isTerminal())
                                 .map(TaskModel::getReferenceTaskName)
                                 .filter(
@@ -407,7 +408,7 @@ public class ForkJoinDynamicTaskMapper implements TaskMapper {
                                             dynamicForkJoinTask.getType());
                                     if (dynamicForkJoinWorkflowTask.getTaskDefinition() == null
                                             && StringUtils.isNotBlank(
-                                                    dynamicForkJoinWorkflowTask.getName())) {
+                                            dynamicForkJoinWorkflowTask.getName())) {
                                         dynamicForkJoinWorkflowTask.setTaskDefinition(
                                                 metadataDAO.getTaskDef(
                                                         dynamicForkJoinTask.getTaskName()));

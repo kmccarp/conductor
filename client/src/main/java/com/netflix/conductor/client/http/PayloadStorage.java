@@ -68,13 +68,13 @@ class PayloadStorage implements ExternalPayloadStorage {
         }
         return clientBase.getForEntity(
                 String.format("%s/externalstoragelocation", uri),
-                new Object[] {
-                    "path",
-                    path,
-                    "operation",
-                    operation.toString(),
-                    "payloadType",
-                    payloadType.toString()
+                new Object[]{
+                        "path",
+                        path,
+                        "operation",
+                        operation.toString(),
+                        "payloadType",
+                        payloadType.toString()
                 },
                 ExternalStorageLocation.class);
     }

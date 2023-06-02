@@ -45,7 +45,8 @@ import static org.junit.Assert.assertTrue;
 @RunWith(SpringRunner.class)
 public class SubWorkflowParamsTest {
 
-    @Autowired private ObjectMapper objectMapper;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Test
     public void testWorkflowTaskName() {

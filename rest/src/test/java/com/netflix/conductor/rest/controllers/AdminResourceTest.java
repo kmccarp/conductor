@@ -35,9 +35,11 @@ import static org.mockito.Mockito.when;
 
 public class AdminResourceTest {
 
-    @Mock private AdminService mockAdminService;
+    @Mock
+    private AdminService mockAdminService;
 
-    @Mock private AdminResource adminResource;
+    @Mock
+    private AdminResource adminResource;
 
     @Before
     public void before() {

@@ -63,7 +63,8 @@ public abstract class WorkflowSystemTask {
      * @param task Instance of the Task
      * @param workflowExecutor Workflow Executor
      */
-    public void cancel(WorkflowModel workflow, TaskModel task, WorkflowExecutor workflowExecutor) {}
+    public void cancel(WorkflowModel workflow, TaskModel task, WorkflowExecutor workflowExecutor) {
+    }
 
     /**
      * @return True if the task is supposed to be started asynchronously using internal queues.

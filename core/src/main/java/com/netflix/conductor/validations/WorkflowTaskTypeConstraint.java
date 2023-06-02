@@ -63,7 +63,8 @@ public @interface WorkflowTaskTypeConstraint {
                 "%s field is required for taskType: %s taskName: %s";
 
         @Override
-        public void initialize(WorkflowTaskTypeConstraint constraintAnnotation) {}
+        public void initialize(WorkflowTaskTypeConstraint constraintAnnotation) {
+        }
 
         @Override
         public boolean isValid(WorkflowTask workflowTask, ConstraintValidatorContext context) {
@@ -157,7 +158,7 @@ public @interface WorkflowTaskTypeConstraint {
                 context.buildConstraintViolationWithTemplate(message).addConstraintViolation();
                 valid = false;
             } else if ((workflowTask.getDecisionCases() != null
-                            || workflowTask.getCaseExpression() != null)
+                    || workflowTask.getCaseExpression() != null)
                     && (workflowTask.getDecisionCases().size() == 0)) {
                 String message =
                         String.format(
@@ -310,7 +311,7 @@ public @interface WorkflowTaskTypeConstraint {
             // Both are not allowed.
             if (workflowTask.getDynamicForkJoinTasksParam() != null
                     && (workflowTask.getDynamicForkTasksParam() != null
-                            || workflowTask.getDynamicForkTasksInputParamName() != null)) {
+                    || workflowTask.getDynamicForkTasksInputParamName() != null)) {
                 String message =
                         String.format(
                                 "dynamicForkJoinTasksParam or combination of dynamicForkTasksInputParamName and dynamicForkTasksParam cam be used for taskType: %s taskName: %s",

@@ -127,7 +127,8 @@ public class TaskDef extends BaseDef {
     @Min(value = 1, message = "Backoff scale factor. Applicable for LINEAR_BACKOFF")
     private Integer backoffScaleFactor = 1;
 
-    public TaskDef() {}
+    public TaskDef() {
+    }
 
     public TaskDef(String name) {
         this.name = name;

@@ -35,8 +35,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ContextConfiguration(
         classes = {
-            TestObjectMapperConfiguration.class,
-            SummaryUtilTest.SummaryUtilTestConfiguration.class
+                TestObjectMapperConfiguration.class,
+                SummaryUtilTest.SummaryUtilTestConfiguration.class
         })
 @RunWith(SpringRunner.class)
 public class SummaryUtilTest {
@@ -50,7 +50,8 @@ public class SummaryUtilTest {
         }
     }
 
-    @Autowired private ObjectMapper objectMapper;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     private Map<String, Object> testObject;
 

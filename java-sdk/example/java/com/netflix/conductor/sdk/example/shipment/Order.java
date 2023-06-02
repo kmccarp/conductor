@@ -43,7 +43,8 @@ public class Order {
         this.unitPrice = unitPrice;
     }
 
-    public Order() {}
+    public Order() {
+    }
 
     public String getOrderNumber() {
         return orderNumber;

@@ -55,9 +55,11 @@ public class WorkflowBulkServiceTest {
         }
     }
 
-    @Autowired private WorkflowExecutor workflowExecutor;
+    @Autowired
+    private WorkflowExecutor workflowExecutor;
 
-    @Autowired private WorkflowBulkService workflowBulkService;
+    @Autowired
+    private WorkflowBulkService workflowBulkService;
 
     @Test(expected = ConstraintViolationException.class)
     public void testPauseWorkflowNull() {

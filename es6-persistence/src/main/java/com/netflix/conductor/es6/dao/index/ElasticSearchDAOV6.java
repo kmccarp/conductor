@@ -852,7 +852,7 @@ public class ElasticSearchDAOV6 extends ElasticSearchBaseDAO implements IndexDAO
                 new GetRequest(workflowIndexName, docType, workflowInstanceId)
                         .fetchSourceContext(
                                 new FetchSourceContext(
-                                        true, new String[] {fieldToGet}, Strings.EMPTY_ARRAY));
+                                        true, new String[]{fieldToGet}, Strings.EMPTY_ARRAY));
         GetResponse response = elasticSearchClient.get(request).actionGet();
 
         if (response.isExists()) {
@@ -1028,9 +1028,9 @@ public class ElasticSearchDAOV6 extends ElasticSearchBaseDAO implements IndexDAO
                         entry ->
                                 entry.getValue().getBulkRequestBuilder() != null
                                         && entry.getValue()
-                                                        .getBulkRequestBuilder()
-                                                        .numberOfActions()
-                                                > 0)
+                                        .getBulkRequestBuilder()
+                                        .numberOfActions()
+                                        > 0)
                 .forEach(
                         entry -> {
                             LOGGER.debug(

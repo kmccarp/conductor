@@ -39,7 +39,8 @@ public final class ProtoMapper extends AbstractProtoMapper {
     public static final ProtoMapper INSTANCE = new ProtoMapper();
     private static final int NO_RETRY_VALUE = -1;
 
-    private ProtoMapper() {}
+    private ProtoMapper() {
+    }
 
     /**
      * Convert an {@link Object} instance into its equivalent {@link Value}
@@ -78,12 +79,12 @@ public final class ProtoMapper extends AbstractProtoMapper {
             builder.setStructValue(struct.build());
         } else if (val instanceof List) {
             ListValue.Builder list = ListValue.newBuilder();
-            for (Object obj : (List<Object>)val) {
+            for (Object obj : (List<Object>) val) {
                 list.addValues(toProto(obj));
             }
             builder.setListValue(list.build());
         } else {
-            throw new ClassCastException("cannot map to Value type: "+val);
+            throw new ClassCastException("cannot map to Value type: " + val);
         }
         return builder.build();
     }
@@ -123,7 +124,7 @@ public final class ProtoMapper extends AbstractProtoMapper {
                 }
                 return list;
             default:
-                throw new ClassCastException("unset Value element: "+any);
+                throw new ClassCastException("unset Value element: " + any);
         }
     }
 
@@ -139,7 +140,8 @@ public final class ProtoMapper extends AbstractProtoMapper {
         return list.getTasksList().stream().map(this::fromProto).collect(Collectors.toList());
     }
 
-    @Override public WorkflowTaskPb.WorkflowTask toProto(final WorkflowTask from) {
+    @Override
+    public WorkflowTaskPb.WorkflowTask toProto(final WorkflowTask from) {
         final WorkflowTaskPb.WorkflowTask.Builder to = WorkflowTaskPb.WorkflowTask.newBuilder(super.toProto(from));
         if (from.getRetryCount() == null) {
             to.setRetryCount(NO_RETRY_VALUE);
@@ -147,14 +149,14 @@ public final class ProtoMapper extends AbstractProtoMapper {
         return to.build();
     }
 
-    @Override public WorkflowTask fromProto(final WorkflowTaskPb.WorkflowTask from) {
+    @Override
+    public WorkflowTask fromProto(final WorkflowTaskPb.WorkflowTask from) {
         final WorkflowTask workflowTask = super.fromProto(from);
         if (from.getRetryCount() == NO_RETRY_VALUE) {
             workflowTask.setRetryCount(null);
         }
         return workflowTask;
     }
-
 
 
     /**

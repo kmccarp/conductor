@@ -51,8 +51,8 @@ import static org.mockito.Mockito.when;
 
 @ContextConfiguration(
         classes = {
-            TestObjectMapperConfiguration.class,
-            SwitchTaskMapperTest.TestConfiguration.class
+                TestObjectMapperConfiguration.class,
+                SwitchTaskMapperTest.TestConfiguration.class
         })
 @RunWith(SpringRunner.class)
 public class SwitchTaskMapperTest {
@@ -65,13 +65,17 @@ public class SwitchTaskMapperTest {
 
     @Configuration
     @ComponentScan(basePackageClasses = {Evaluator.class}) // load all Evaluator beans.
-    public static class TestConfiguration {}
+    public static class TestConfiguration {
+    }
 
-    @Autowired private ObjectMapper objectMapper;
+    @Autowired
+    private ObjectMapper objectMapper;
 
-    @Autowired private Map<String, Evaluator> evaluators;
+    @Autowired
+    private Map<String, Evaluator> evaluators;
 
-    @Rule public ExpectedException expectedException = ExpectedException.none();
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
 
     Map<String, Object> ip1;
     WorkflowTask task1;

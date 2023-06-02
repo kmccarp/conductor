@@ -46,7 +46,8 @@ public class ParametersUtils {
     private static final Logger LOGGER = LoggerFactory.getLogger(ParametersUtils.class);
 
     private final ObjectMapper objectMapper;
-    private final TypeReference<Map<String, Object>> map = new TypeReference<>() {};
+    private final TypeReference<Map<String, Object>> map = new TypeReference<>() {
+    };
 
     public ParametersUtils(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
@@ -128,7 +129,7 @@ public class ParametersUtils {
                             inputMap.put(
                                     task.isLoopOverTask()
                                             ? TaskUtils.removeIterationFromTaskRefName(
-                                                    task.getReferenceTaskName())
+                                            task.getReferenceTaskName())
                                             : task.getReferenceTaskName(),
                                     taskParams);
                         });

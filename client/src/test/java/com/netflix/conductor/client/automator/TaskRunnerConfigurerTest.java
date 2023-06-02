@@ -199,18 +199,18 @@ public class TaskRunnerConfigurerTest {
         AtomicInteger task2Counter = new AtomicInteger(0);
         CountDownLatch latch = new CountDownLatch(2);
         doAnswer(
-                        invocation -> {
-                            Object[] args = invocation.getArguments();
-                            TaskResult result = (TaskResult) args[0];
-                            assertEquals(COMPLETED, result.getStatus());
-                            if (result.getWorkerId().equals("worker1")) {
-                                task1Counter.incrementAndGet();
-                            } else if (result.getWorkerId().equals("worker2")) {
-                                task2Counter.incrementAndGet();
-                            }
-                            latch.countDown();
-                            return null;
-                        })
+                invocation -> {
+                    Object[] args = invocation.getArguments();
+                    TaskResult result = (TaskResult) args[0];
+                    assertEquals(COMPLETED, result.getStatus());
+                    if (result.getWorkerId().equals("worker1")) {
+                        task1Counter.incrementAndGet();
+                    } else if (result.getWorkerId().equals("worker2")) {
+                        task2Counter.incrementAndGet();
+                    }
+                    latch.countDown();
+                    return null;
+                })
                 .when(taskClient)
                 .updateTask(any());
         configurer.init();

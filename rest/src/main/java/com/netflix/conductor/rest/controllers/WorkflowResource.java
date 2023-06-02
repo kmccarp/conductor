@@ -82,9 +82,9 @@ public class WorkflowResource {
             @PathVariable("name") String name,
             @PathVariable("correlationId") String correlationId,
             @RequestParam(value = "includeClosed", defaultValue = "false", required = false)
-                    boolean includeClosed,
+            boolean includeClosed,
             @RequestParam(value = "includeTasks", defaultValue = "false", required = false)
-                    boolean includeTasks) {
+            boolean includeTasks) {
         return workflowService.getWorkflows(name, correlationId, includeClosed, includeTasks);
     }
 
@@ -93,9 +93,9 @@ public class WorkflowResource {
     public Map<String, List<Workflow>> getWorkflows(
             @PathVariable("name") String name,
             @RequestParam(value = "includeClosed", defaultValue = "false", required = false)
-                    boolean includeClosed,
+            boolean includeClosed,
             @RequestParam(value = "includeTasks", defaultValue = "false", required = false)
-                    boolean includeTasks,
+            boolean includeTasks,
             @RequestBody List<String> correlationIds) {
         return workflowService.getWorkflows(name, includeClosed, includeTasks, correlationIds);
     }
@@ -105,7 +105,7 @@ public class WorkflowResource {
     public Workflow getExecutionStatus(
             @PathVariable("workflowId") String workflowId,
             @RequestParam(value = "includeTasks", defaultValue = "true", required = false)
-                    boolean includeTasks) {
+            boolean includeTasks) {
         return workflowService.getExecutionStatus(workflowId, includeTasks);
     }
 
@@ -114,7 +114,7 @@ public class WorkflowResource {
     public void delete(
             @PathVariable("workflowId") String workflowId,
             @RequestParam(value = "archiveWorkflow", defaultValue = "true", required = false)
-                    boolean archiveWorkflow) {
+            boolean archiveWorkflow) {
         workflowService.deleteWorkflow(workflowId, archiveWorkflow);
     }
 
@@ -171,7 +171,7 @@ public class WorkflowResource {
     public void restart(
             @PathVariable("workflowId") String workflowId,
             @RequestParam(value = "useLatestDefinitions", defaultValue = "false", required = false)
-                    boolean useLatestDefinitions) {
+            boolean useLatestDefinitions) {
         workflowService.restartWorkflow(workflowId, useLatestDefinitions);
     }
 
@@ -183,10 +183,10 @@ public class WorkflowResource {
     public void retry(
             @PathVariable("workflowId") String workflowId,
             @RequestParam(
-                            value = "resumeSubworkflowTasks",
-                            defaultValue = "false",
-                            required = false)
-                    boolean resumeSubworkflowTasks) {
+                    value = "resumeSubworkflowTasks",
+                    defaultValue = "false",
+                    required = false)
+            boolean resumeSubworkflowTasks) {
         workflowService.retryWorkflow(workflowId, resumeSubworkflowTasks);
     }
 

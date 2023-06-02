@@ -35,7 +35,8 @@ public class EventResourceTest {
 
     private EventResource eventResource;
 
-    @Mock private EventService mockEventService;
+    @Mock
+    private EventService mockEventService;
 
     @Before
     public void setUp() {

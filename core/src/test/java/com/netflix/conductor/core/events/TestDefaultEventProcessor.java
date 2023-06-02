@@ -61,9 +61,9 @@ import static org.mockito.Mockito.*;
 
 @ContextConfiguration(
         classes = {
-            TestObjectMapperConfiguration.class,
-            TestDefaultEventProcessor.TestConfiguration.class,
-            ConductorCoreConfiguration.class
+                TestObjectMapperConfiguration.class,
+                TestDefaultEventProcessor.TestConfiguration.class,
+                ConductorCoreConfiguration.class
         })
 @RunWith(SpringRunner.class)
 public class TestDefaultEventProcessor {
@@ -81,16 +81,19 @@ public class TestDefaultEventProcessor {
     private ConductorProperties properties;
     private Message message;
 
-    @Autowired private Map<String, Evaluator> evaluators;
+    @Autowired
+    private Map<String, Evaluator> evaluators;
 
-    @Autowired private ObjectMapper objectMapper;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Autowired
     private @Qualifier("onTransientErrorRetryTemplate") RetryTemplate retryTemplate;
 
     @Configuration
     @ComponentScan(basePackageClasses = {Evaluator.class}) // load all Evaluator beans
-    public static class TestConfiguration {}
+    public static class TestConfiguration {
+    }
 
     @Before
     public void setup() {
@@ -165,32 +168,32 @@ public class TestDefaultEventProcessor {
         String id = UUID.randomUUID().toString();
         AtomicBoolean started = new AtomicBoolean(false);
         doAnswer(
-                        (Answer<String>)
-                                invocation -> {
-                                    started.set(true);
-                                    return id;
-                                })
+                (Answer<String>)
+                        invocation -> {
+                            started.set(true);
+                            return id;
+                        })
                 .when(startWorkflowOperation)
                 .execute(
                         argThat(
                                 argument ->
                                         startWorkflowAction
-                                                        .getStart_workflow()
-                                                        .getName()
-                                                        .equals(argument.getName())
+                                                .getStart_workflow()
+                                                .getName()
+                                                .equals(argument.getName())
                                                 && startWorkflowAction
-                                                        .getStart_workflow()
-                                                        .getVersion()
-                                                        .equals(argument.getVersion())
+                                                .getStart_workflow()
+                                                .getVersion()
+                                                .equals(argument.getVersion())
                                                 && event.equals(argument.getEvent())));
 
         AtomicBoolean completed = new AtomicBoolean(false);
         doAnswer(
-                        (Answer<String>)
-                                invocation -> {
-                                    completed.set(true);
-                                    return null;
-                                })
+                (Answer<String>)
+                        invocation -> {
+                            completed.set(true);
+                            return null;
+                        })
                 .when(workflowExecutor)
                 .updateTask(any());
 
@@ -199,7 +202,7 @@ public class TestDefaultEventProcessor {
         WorkflowModel workflow = new WorkflowModel();
         workflow.setTasks(Collections.singletonList(task));
         when(workflowExecutor.getWorkflow(
-                        completeTaskAction.getComplete_task().getWorkflowId(), true))
+                completeTaskAction.getComplete_task().getWorkflowId(), true))
                 .thenReturn(workflow);
         doNothing().when(externalPayloadStorageUtils).verifyAndUpload(any(), any());
 
@@ -257,23 +260,23 @@ public class TestDefaultEventProcessor {
         String id = UUID.randomUUID().toString();
         AtomicBoolean started = new AtomicBoolean(false);
         doAnswer(
-                        (Answer<String>)
-                                invocation -> {
-                                    started.set(true);
-                                    return id;
-                                })
+                (Answer<String>)
+                        invocation -> {
+                            started.set(true);
+                            return id;
+                        })
                 .when(startWorkflowOperation)
                 .execute(
                         argThat(
                                 argument ->
                                         startWorkflowAction
-                                                        .getStart_workflow()
-                                                        .getName()
-                                                        .equals(argument.getName())
+                                                .getStart_workflow()
+                                                .getName()
+                                                .equals(argument.getName())
                                                 && startWorkflowAction
-                                                        .getStart_workflow()
-                                                        .getVersion()
-                                                        .equals(argument.getVersion())
+                                                .getStart_workflow()
+                                                .getVersion()
+                                                .equals(argument.getVersion())
                                                 && event.equals(argument.getEvent())));
 
         SimpleActionProcessor actionProcessor =
@@ -327,23 +330,23 @@ public class TestDefaultEventProcessor {
         String id = UUID.randomUUID().toString();
         AtomicBoolean started = new AtomicBoolean(false);
         doAnswer(
-                        (Answer<String>)
-                                invocation -> {
-                                    started.set(true);
-                                    return id;
-                                })
+                (Answer<String>)
+                        invocation -> {
+                            started.set(true);
+                            return id;
+                        })
                 .when(startWorkflowOperation)
                 .execute(
                         argThat(
                                 argument ->
                                         startWorkflowAction
-                                                        .getStart_workflow()
-                                                        .getName()
-                                                        .equals(argument.getName())
+                                                .getStart_workflow()
+                                                .getName()
+                                                .equals(argument.getName())
                                                 && startWorkflowAction
-                                                        .getStart_workflow()
-                                                        .getVersion()
-                                                        .equals(argument.getVersion())
+                                                .getStart_workflow()
+                                                .getVersion()
+                                                .equals(argument.getVersion())
                                                 && event.equals(argument.getEvent())));
 
         SimpleActionProcessor actionProcessor =
@@ -443,11 +446,11 @@ public class TestDefaultEventProcessor {
     public void testExecuteInvalidAction() {
         AtomicInteger executeInvoked = new AtomicInteger(0);
         doAnswer(
-                        (Answer<Map<String, Object>>)
-                                invocation -> {
-                                    executeInvoked.incrementAndGet();
-                                    throw new UnsupportedOperationException("error");
-                                })
+                (Answer<Map<String, Object>>)
+                        invocation -> {
+                            executeInvoked.incrementAndGet();
+                            throw new UnsupportedOperationException("error");
+                        })
                 .when(actionProcessor)
                 .execute(any(), any(), any(), any());
 
@@ -478,11 +481,11 @@ public class TestDefaultEventProcessor {
     public void testExecuteNonRetriableException() {
         AtomicInteger executeInvoked = new AtomicInteger(0);
         doAnswer(
-                        (Answer<Map<String, Object>>)
-                                invocation -> {
-                                    executeInvoked.incrementAndGet();
-                                    throw new IllegalArgumentException("some non-retriable error");
-                                })
+                (Answer<Map<String, Object>>)
+                        invocation -> {
+                            executeInvoked.incrementAndGet();
+                            throw new IllegalArgumentException("some non-retriable error");
+                        })
                 .when(actionProcessor)
                 .execute(any(), any(), any(), any());
 
@@ -514,11 +517,11 @@ public class TestDefaultEventProcessor {
     public void testExecuteTransientException() {
         AtomicInteger executeInvoked = new AtomicInteger(0);
         doAnswer(
-                        (Answer<Map<String, Object>>)
-                                invocation -> {
-                                    executeInvoked.incrementAndGet();
-                                    throw new TransientException("some retriable error");
-                                })
+                (Answer<Map<String, Object>>)
+                        invocation -> {
+                            executeInvoked.incrementAndGet();
+                            throw new TransientException("some retriable error");
+                        })
                 .when(actionProcessor)
                 .execute(any(), any(), any(), any());
 

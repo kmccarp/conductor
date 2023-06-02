@@ -37,7 +37,8 @@ public class RedisPollDataDAOTest extends PollDataDAOTest {
 
     private PollDataDAO redisPollDataDAO;
 
-    @Autowired private ObjectMapper objectMapper;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Before
     public void init() {

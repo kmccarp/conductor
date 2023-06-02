@@ -30,7 +30,8 @@ public class TaskExecLog {
     @ProtoField(id = 3)
     private long createdTime;
 
-    public TaskExecLog() {}
+    public TaskExecLog() {
+    }
 
     public TaskExecLog(String log) {
         this.log = log;

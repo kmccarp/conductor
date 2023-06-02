@@ -47,7 +47,8 @@ public @interface OwnerEmailMandatoryConstraint {
             implements ConstraintValidator<OwnerEmailMandatoryConstraint, String> {
 
         @Override
-        public void initialize(OwnerEmailMandatoryConstraint constraintAnnotation) {}
+        public void initialize(OwnerEmailMandatoryConstraint constraintAnnotation) {
+        }
 
         @Override
         public boolean isValid(String ownerEmail, ConstraintValidatorContext context) {

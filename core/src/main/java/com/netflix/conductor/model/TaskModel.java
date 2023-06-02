@@ -153,13 +153,17 @@ public class TaskModel {
      */
     private boolean subworkflowChanged;
 
-    @JsonIgnore private Map<String, Object> inputPayload = new HashMap<>();
+    @JsonIgnore
+    private Map<String, Object> inputPayload = new HashMap<>();
 
-    @JsonIgnore private Map<String, Object> outputPayload = new HashMap<>();
+    @JsonIgnore
+    private Map<String, Object> outputPayload = new HashMap<>();
 
-    @JsonIgnore private Map<String, Object> inputData = new HashMap<>();
+    @JsonIgnore
+    private Map<String, Object> inputData = new HashMap<>();
 
-    @JsonIgnore private Map<String, Object> outputData = new HashMap<>();
+    @JsonIgnore
+    private Map<String, Object> outputData = new HashMap<>();
 
     public String getTaskType() {
         return taskType;
@@ -543,8 +547,8 @@ public class TaskModel {
             return this.getOutputData() != null && this.getOutputData().get("subWorkflowId") != null
                     ? (String) this.getOutputData().get("subWorkflowId")
                     : this.getInputData() != null
-                            ? (String) this.getInputData().get("subWorkflowId")
-                            : null;
+                    ? (String) this.getInputData().get("subWorkflowId")
+                    : null;
         }
     }
 
@@ -783,11 +787,11 @@ public class TaskModel {
                 && Objects.equals(getInputMessage(), taskModel.getInputMessage())
                 && Objects.equals(getOutputMessage(), taskModel.getOutputMessage())
                 && Objects.equals(
-                        getExternalInputPayloadStoragePath(),
-                        taskModel.getExternalInputPayloadStoragePath())
+                getExternalInputPayloadStoragePath(),
+                taskModel.getExternalInputPayloadStoragePath())
                 && Objects.equals(
-                        getExternalOutputPayloadStoragePath(),
-                        taskModel.getExternalOutputPayloadStoragePath())
+                getExternalOutputPayloadStoragePath(),
+                taskModel.getExternalOutputPayloadStoragePath())
                 && Objects.equals(getExecutionNameSpace(), taskModel.getExecutionNameSpace())
                 && Objects.equals(getIsolationGroupId(), taskModel.getIsolationGroupId())
                 && Objects.equals(getSubWorkflowId(), taskModel.getSubWorkflowId());

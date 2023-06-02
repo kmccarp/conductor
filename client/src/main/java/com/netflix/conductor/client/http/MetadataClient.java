@@ -117,7 +117,7 @@ public class MetadataClient extends ClientBase {
         Validate.notBlank(name, "name cannot be blank");
         return getForEntity(
                 "metadata/workflow/{name}",
-                new Object[] {"version", version},
+                new Object[]{"version", version},
                 WorkflowDef.class,
                 name);
     }

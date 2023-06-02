@@ -125,7 +125,7 @@ public class WorkflowTestService {
                                 existing.setScheduledTime(
                                         System.currentTimeMillis()
                                                 - (task.getExecutionTime()
-                                                        + task.getQueueWaitTime()));
+                                                + task.getQueueWaitTime()));
                                 existing.setStartTime(
                                         System.currentTimeMillis() - task.getExecutionTime());
                                 existing.setStatus(

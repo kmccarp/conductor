@@ -38,7 +38,8 @@ public class KafkaPublishTaskMapperTest {
     private IDGenerator idGenerator;
     private KafkaPublishTaskMapper kafkaTaskMapper;
 
-    @Rule public ExpectedException expectedException = ExpectedException.none();
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
 
     @Before
     public void setUp() {

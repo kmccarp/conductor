@@ -39,9 +39,11 @@ import static org.mockito.MockitoAnnotations.initMocks;
 
 public class TaskServiceImplTest {
 
-    @Mock private TaskService taskService;
+    @Mock
+    private TaskService taskService;
 
-    @Mock private ExecutionService executionService;
+    @Mock
+    private ExecutionService executionService;
 
     private TaskServiceImpl taskServiceImpl;
 
@@ -68,7 +70,8 @@ public class TaskServiceImplTest {
         StreamObserver<TaskServicePb.TaskSummarySearchResult> streamObserver =
                 new StreamObserver<>() {
                     @Override
-                    public void onNext(TaskServicePb.TaskSummarySearchResult value) {}
+                    public void onNext(TaskServicePb.TaskSummarySearchResult value) {
+                    }
 
                     @Override
                     public void onError(Throwable t) {
@@ -108,7 +111,8 @@ public class TaskServiceImplTest {
         StreamObserver<TaskServicePb.TaskSearchResult> streamObserver =
                 new StreamObserver<>() {
                     @Override
-                    public void onNext(TaskServicePb.TaskSearchResult value) {}
+                    public void onNext(TaskServicePb.TaskSearchResult value) {
+                    }
 
                     @Override
                     public void onError(Throwable t) {

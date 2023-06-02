@@ -48,7 +48,7 @@ public class EventTaskMapperTest {
         eventTaskInput.put("sink", "SQSSINK");
 
         when(parametersUtils.getTaskInput(
-                        anyMap(), any(WorkflowModel.class), any(TaskDef.class), anyString()))
+                anyMap(), any(WorkflowModel.class), any(TaskDef.class), anyString()))
                 .thenReturn(eventTaskInput);
 
         WorkflowDef workflowDef = new WorkflowDef();

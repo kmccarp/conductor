@@ -50,7 +50,8 @@ public class EventQueueResolutionTest {
     private EventQueues eventQueues;
     private ParametersUtils parametersUtils;
 
-    @Autowired private ObjectMapper objectMapper;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Before
     public void setup() {

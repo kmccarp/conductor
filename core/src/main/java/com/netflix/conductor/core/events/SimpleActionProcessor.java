@@ -134,7 +134,7 @@ public class SimpleActionProcessor implements ActionProcessor {
                             .filter(
                                     t ->
                                             TaskUtils.removeIterationFromTaskRefName(
-                                                            t.getReferenceTaskName())
+                                                    t.getReferenceTaskName())
                                                     .equals(taskRefName))
                             .collect(Collectors.toList());
             if (!loopOverTaskList.isEmpty()) {

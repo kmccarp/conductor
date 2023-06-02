@@ -90,7 +90,8 @@ public class WorkflowTask {
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private Map<String, @Valid List<@Valid WorkflowTask>> decisionCases = new LinkedHashMap<>();
 
-    @Deprecated private String dynamicForkJoinTasksParam;
+    @Deprecated
+    private String dynamicForkJoinTasksParam;
 
     @ProtoField(id = 10)
     private String dynamicForkTasksParam;
@@ -723,11 +724,11 @@ public class WorkflowTask {
                 && Objects.equals(getCaseExpression(), that.getCaseExpression())
                 && Objects.equals(getDecisionCases(), that.getDecisionCases())
                 && Objects.equals(
-                        getDynamicForkJoinTasksParam(), that.getDynamicForkJoinTasksParam())
+                getDynamicForkJoinTasksParam(), that.getDynamicForkJoinTasksParam())
                 && Objects.equals(getDynamicForkTasksParam(), that.getDynamicForkTasksParam())
                 && Objects.equals(
-                        getDynamicForkTasksInputParamName(),
-                        that.getDynamicForkTasksInputParamName())
+                getDynamicForkTasksInputParamName(),
+                that.getDynamicForkTasksInputParamName())
                 && Objects.equals(getDefaultCase(), that.getDefaultCase())
                 && Objects.equals(getForkTasks(), that.getForkTasks())
                 && Objects.equals(getSubWorkflowParam(), that.getSubWorkflowParam())

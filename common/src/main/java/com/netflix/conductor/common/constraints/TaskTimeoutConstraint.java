@@ -45,7 +45,8 @@ public @interface TaskTimeoutConstraint {
     class TaskTimeoutValidator implements ConstraintValidator<TaskTimeoutConstraint, TaskDef> {
 
         @Override
-        public void initialize(TaskTimeoutConstraint constraintAnnotation) {}
+        public void initialize(TaskTimeoutConstraint constraintAnnotation) {
+        }
 
         @Override
         public boolean isValid(TaskDef taskDef, ConstraintValidatorContext context) {

@@ -97,19 +97,22 @@ import static org.mockito.Mockito.when;
 
 @ContextConfiguration(
         classes = {
-            TestObjectMapperConfiguration.class,
-            TestDeciderOutcomes.TestConfiguration.class
+                TestObjectMapperConfiguration.class,
+                TestDeciderOutcomes.TestConfiguration.class
         })
 @RunWith(SpringRunner.class)
 public class TestDeciderOutcomes {
 
     private DeciderService deciderService;
 
-    @Autowired private Map<String, Evaluator> evaluators;
+    @Autowired
+    private Map<String, Evaluator> evaluators;
 
-    @Autowired private ObjectMapper objectMapper;
+    @Autowired
+    private ObjectMapper objectMapper;
 
-    @Autowired private SystemTaskRegistry systemTaskRegistry;
+    @Autowired
+    private SystemTaskRegistry systemTaskRegistry;
 
     @Configuration
     @ComponentScan(basePackageClasses = {Evaluator.class}) // load all Evaluator beans.

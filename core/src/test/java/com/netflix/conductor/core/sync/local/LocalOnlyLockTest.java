@@ -61,17 +61,17 @@ public class LocalOnlyLockTest {
     public void testLockTimeout() throws InterruptedException, ExecutionException {
         final ExecutorService executor = Executors.newFixedThreadPool(1);
         executor.submit(
-                        () -> {
-                            localOnlyLock.acquireLock("c", 100, 1000, TimeUnit.MILLISECONDS);
-                        })
+                () -> {
+                    localOnlyLock.acquireLock("c", 100, 1000, TimeUnit.MILLISECONDS);
+                })
                 .get();
         assertTrue(localOnlyLock.acquireLock("d", 100, 1000, TimeUnit.MILLISECONDS));
         assertFalse(localOnlyLock.acquireLock("c", 100, 1000, TimeUnit.MILLISECONDS));
         assertEquals(localOnlyLock.scheduledFutures().size(), 2);
         executor.submit(
-                        () -> {
-                            localOnlyLock.releaseLock("c");
-                        })
+                () -> {
+                    localOnlyLock.releaseLock("c");
+                })
                 .get();
         localOnlyLock.releaseLock("d");
         assertEquals(localOnlyLock.scheduledFutures().size(), 0);
@@ -81,9 +81,9 @@ public class LocalOnlyLockTest {
     public void testReleaseFromAnotherThread() throws InterruptedException, ExecutionException {
         final ExecutorService executor = Executors.newFixedThreadPool(1);
         executor.submit(
-                        () -> {
-                            localOnlyLock.acquireLock("c", 100, 10000, TimeUnit.MILLISECONDS);
-                        })
+                () -> {
+                    localOnlyLock.acquireLock("c", 100, 10000, TimeUnit.MILLISECONDS);
+                })
                 .get();
         try {
             localOnlyLock.releaseLock("c");
@@ -93,9 +93,9 @@ public class LocalOnlyLockTest {
             return;
         } finally {
             executor.submit(
-                            () -> {
-                                localOnlyLock.releaseLock("c");
-                            })
+                    () -> {
+                        localOnlyLock.releaseLock("c");
+                    })
                     .get();
         }
 

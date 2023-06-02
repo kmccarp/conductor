@@ -86,7 +86,7 @@ public class AsyncSystemTaskExecutor {
             }
             if (task.getRateLimitPerFrequency() > 0
                     && executionDAOFacade.exceedsRateLimitPerFrequency(
-                            task, metadataDAO.getTaskDef(task.getTaskDefName()))) {
+                    task, metadataDAO.getTaskDef(task.getTaskDefName()))) {
                 LOGGER.warn(
                         "RateLimit Execution limited for {}:{}, limit:{}",
                         taskId,

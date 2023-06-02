@@ -203,7 +203,8 @@ public class AnnotatedWorkerTests {
 
     @Retention(RetentionPolicy.RUNTIME)
     @Target(ElementType.PARAMETER)
-    public @interface AnotherAnnotation {}
+    public @interface AnotherAnnotation {
+    }
 
     static class AnotherAnnotationInput {
         @WorkerTask("test_2")

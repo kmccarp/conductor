@@ -74,8 +74,8 @@ import static org.mockito.Mockito.*;
 
 @ContextConfiguration(
         classes = {
-            TestObjectMapperConfiguration.class,
-            TestWorkflowExecutor.TestConfiguration.class
+                TestObjectMapperConfiguration.class,
+                TestWorkflowExecutor.TestConfiguration.class
         })
 @RunWith(SpringRunner.class)
 public class TestWorkflowExecutor {
@@ -144,13 +144,17 @@ public class TestWorkflowExecutor {
         }
     }
 
-    @Autowired private ObjectMapper objectMapper;
+    @Autowired
+    private ObjectMapper objectMapper;
 
-    @Autowired private SystemTaskRegistry systemTaskRegistry;
+    @Autowired
+    private SystemTaskRegistry systemTaskRegistry;
 
-    @Autowired private DefaultListableBeanFactory beanFactory;
+    @Autowired
+    private DefaultListableBeanFactory beanFactory;
 
-    @Autowired private Map<String, Evaluator> evaluators;
+    @Autowired
+    private Map<String, Evaluator> evaluators;
 
     private ApplicationEventPublisher eventPublisher;
 
@@ -294,10 +298,10 @@ public class TestWorkflowExecutor {
         when(executionDAOFacade.createTasks(tasks)).thenReturn(tasks);
         AtomicInteger startedTaskCount = new AtomicInteger(0);
         doAnswer(
-                        invocation -> {
-                            startedTaskCount.incrementAndGet();
-                            return null;
-                        })
+                invocation -> {
+                    startedTaskCount.incrementAndGet();
+                    return null;
+                })
                 .when(executionDAOFacade)
                 .updateTask(any());
 
@@ -389,28 +393,28 @@ public class TestWorkflowExecutor {
 
         AtomicInteger updateWorkflowCalledCounter = new AtomicInteger(0);
         doAnswer(
-                        invocation -> {
-                            updateWorkflowCalledCounter.incrementAndGet();
-                            return null;
-                        })
+                invocation -> {
+                    updateWorkflowCalledCounter.incrementAndGet();
+                    return null;
+                })
                 .when(executionDAOFacade)
                 .updateWorkflow(any());
 
         AtomicInteger updateTasksCalledCounter = new AtomicInteger(0);
         doAnswer(
-                        invocation -> {
-                            updateTasksCalledCounter.incrementAndGet();
-                            return null;
-                        })
+                invocation -> {
+                    updateTasksCalledCounter.incrementAndGet();
+                    return null;
+                })
                 .when(executionDAOFacade)
                 .updateTasks(any());
 
         AtomicInteger removeQueueEntryCalledCounter = new AtomicInteger(0);
         doAnswer(
-                        invocation -> {
-                            removeQueueEntryCalledCounter.incrementAndGet();
-                            return null;
-                        })
+                invocation -> {
+                    removeQueueEntryCalledCounter.incrementAndGet();
+                    return null;
+                })
                 .when(queueDAO)
                 .remove(anyString(), anyString());
 
@@ -452,28 +456,28 @@ public class TestWorkflowExecutor {
 
         AtomicInteger updateWorkflowCalledCounter = new AtomicInteger(0);
         doAnswer(
-                        invocation -> {
-                            updateWorkflowCalledCounter.incrementAndGet();
-                            return null;
-                        })
+                invocation -> {
+                    updateWorkflowCalledCounter.incrementAndGet();
+                    return null;
+                })
                 .when(executionDAOFacade)
                 .updateWorkflow(any());
 
         AtomicInteger updateTasksCalledCounter = new AtomicInteger(0);
         doAnswer(
-                        invocation -> {
-                            updateTasksCalledCounter.incrementAndGet();
-                            return null;
-                        })
+                invocation -> {
+                    updateTasksCalledCounter.incrementAndGet();
+                    return null;
+                })
                 .when(executionDAOFacade)
                 .updateTasks(any());
 
         AtomicInteger removeQueueEntryCalledCounter = new AtomicInteger(0);
         doAnswer(
-                        invocation -> {
-                            removeQueueEntryCalledCounter.incrementAndGet();
-                            return null;
-                        })
+                invocation -> {
+                    removeQueueEntryCalledCounter.incrementAndGet();
+                    return null;
+                })
                 .when(queueDAO)
                 .remove(anyString(), anyString());
 
@@ -529,10 +533,10 @@ public class TestWorkflowExecutor {
 
         AtomicInteger updateWorkflowCalledCounter = new AtomicInteger(0);
         doAnswer(
-                        invocation -> {
-                            updateWorkflowCalledCounter.incrementAndGet();
-                            return null;
-                        })
+                invocation -> {
+                    updateWorkflowCalledCounter.incrementAndGet();
+                    return null;
+                })
                 .when(executionDAOFacade)
                 .updateWorkflow(any());
 
@@ -567,19 +571,19 @@ public class TestWorkflowExecutor {
 
         AtomicInteger updateWorkflowCalledCounter = new AtomicInteger(0);
         doAnswer(
-                        invocation -> {
-                            updateWorkflowCalledCounter.incrementAndGet();
-                            return null;
-                        })
+                invocation -> {
+                    updateWorkflowCalledCounter.incrementAndGet();
+                    return null;
+                })
                 .when(executionDAOFacade)
                 .updateWorkflow(any());
 
         AtomicInteger updateTasksCalledCounter = new AtomicInteger(0);
         doAnswer(
-                        invocation -> {
-                            updateTasksCalledCounter.incrementAndGet();
-                            return null;
-                        })
+                invocation -> {
+                    updateTasksCalledCounter.incrementAndGet();
+                    return null;
+                })
                 .when(executionDAOFacade)
                 .updateTasks(any());
 
@@ -759,28 +763,28 @@ public class TestWorkflowExecutor {
 
         AtomicInteger updateWorkflowCalledCounter = new AtomicInteger(0);
         doAnswer(
-                        invocation -> {
-                            updateWorkflowCalledCounter.incrementAndGet();
-                            return null;
-                        })
+                invocation -> {
+                    updateWorkflowCalledCounter.incrementAndGet();
+                    return null;
+                })
                 .when(executionDAOFacade)
                 .updateWorkflow(any());
 
         AtomicInteger updateTasksCalledCounter = new AtomicInteger(0);
         doAnswer(
-                        invocation -> {
-                            updateTasksCalledCounter.incrementAndGet();
-                            return null;
-                        })
+                invocation -> {
+                    updateTasksCalledCounter.incrementAndGet();
+                    return null;
+                })
                 .when(executionDAOFacade)
                 .updateTasks(any());
 
         AtomicInteger updateTaskCalledCounter = new AtomicInteger(0);
         doAnswer(
-                        invocation -> {
-                            updateTaskCalledCounter.incrementAndGet();
-                            return null;
-                        })
+                invocation -> {
+                    updateTaskCalledCounter.incrementAndGet();
+                    return null;
+                })
                 .when(executionDAOFacade)
                 .updateTask(any());
 
@@ -1221,19 +1225,19 @@ public class TestWorkflowExecutor {
 
         AtomicInteger updateWorkflowCalledCounter = new AtomicInteger(0);
         doAnswer(
-                        invocation -> {
-                            updateWorkflowCalledCounter.incrementAndGet();
-                            return null;
-                        })
+                invocation -> {
+                    updateWorkflowCalledCounter.incrementAndGet();
+                    return null;
+                })
                 .when(executionDAOFacade)
                 .updateWorkflow(any());
 
         AtomicInteger updateTasksCalledCounter = new AtomicInteger(0);
         doAnswer(
-                        invocation -> {
-                            updateTasksCalledCounter.incrementAndGet();
-                            return null;
-                        })
+                invocation -> {
+                    updateTasksCalledCounter.incrementAndGet();
+                    return null;
+                })
                 .when(executionDAOFacade)
                 .updateTasks(any());
         // end of setup
@@ -1649,7 +1653,7 @@ public class TestWorkflowExecutor {
     @Test
     public void testGetActiveDomain() throws Exception {
         String taskType = "test-task";
-        String[] domains = new String[] {"domain1", "domain2"};
+        String[] domains = new String[]{"domain1", "domain2"};
 
         PollData pollData1 =
                 new PollData(
@@ -1672,20 +1676,20 @@ public class TestWorkflowExecutor {
         activeDomain = workflowExecutor.getActiveDomain(taskType, domains);
         assertEquals(domains[1], activeDomain);
 
-        domains = new String[] {""};
+        domains = new String[]{""};
         when(executionDAOFacade.getTaskPollDataByDomain(any(), any())).thenReturn(new PollData());
         activeDomain = workflowExecutor.getActiveDomain(taskType, domains);
         assertNotNull(activeDomain);
         assertEquals("", activeDomain);
 
-        domains = new String[] {};
+        domains = new String[]{};
         activeDomain = workflowExecutor.getActiveDomain(taskType, domains);
         assertNull(activeDomain);
 
         activeDomain = workflowExecutor.getActiveDomain(taskType, null);
         assertNull(activeDomain);
 
-        domains = new String[] {"test-domain"};
+        domains = new String[]{"test-domain"};
         when(executionDAOFacade.getTaskPollDataByDomain(anyString(), anyString())).thenReturn(null);
         activeDomain = workflowExecutor.getActiveDomain(taskType, domains);
         assertNotNull(activeDomain);
@@ -1695,7 +1699,7 @@ public class TestWorkflowExecutor {
     @Test
     public void testInactiveDomains() {
         String taskType = "test-task";
-        String[] domains = new String[] {"domain1", "domain2"};
+        String[] domains = new String[]{"domain1", "domain2"};
 
         PollData pollData1 =
                 new PollData(
@@ -1710,7 +1714,7 @@ public class TestWorkflowExecutor {
     @Test
     public void testDefaultDomain() {
         String taskType = "test-task";
-        String[] domains = new String[] {"domain1", "domain2", "NO_DOMAIN"};
+        String[] domains = new String[]{"domain1", "domain2", "NO_DOMAIN"};
 
         PollData pollData1 =
                 new PollData(

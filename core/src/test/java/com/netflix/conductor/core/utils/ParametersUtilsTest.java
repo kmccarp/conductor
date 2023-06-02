@@ -48,7 +48,8 @@ public class ParametersUtilsTest {
     private ParametersUtils parametersUtils;
     private JsonUtils jsonUtils;
 
-    @Autowired private ObjectMapper objectMapper;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Before
     public void setup() {
@@ -143,29 +144,29 @@ public class ParametersUtilsTest {
         inputParams.put("k2", "${name}");
 
         CompletableFuture.runAsync(
-                        () -> {
-                            for (int i = 0; i < 10000; i++) {
-                                generatedId.set("test-" + i);
-                                payload.put("someId", generatedId.get());
-                                Object jsonObj = null;
-                                try {
-                                    jsonObj =
-                                            objectMapper.readValue(
-                                                    objectMapper.writeValueAsString(input),
-                                                    Object.class);
-                                } catch (JsonProcessingException e) {
-                                    e.printStackTrace();
-                                    return;
-                                }
-                                Map<String, Object> replaced =
-                                        parametersUtils.replace(inputParams, jsonObj);
-                                assertNotNull(replaced);
-                                assertEquals(generatedId.get(), replaced.get("k1"));
-                                assertEquals("conductor", replaced.get("k2"));
-                                assertNull(replaced.get("k3"));
-                            }
-                        },
-                        executorService)
+                () -> {
+                    for (int i = 0; i < 10000; i++) {
+                        generatedId.set("test-" + i);
+                        payload.put("someId", generatedId.get());
+                        Object jsonObj = null;
+                        try {
+                            jsonObj =
+                                    objectMapper.readValue(
+                                            objectMapper.writeValueAsString(input),
+                                            Object.class);
+                        } catch (JsonProcessingException e) {
+                            e.printStackTrace();
+                            return;
+                        }
+                        Map<String, Object> replaced =
+                                parametersUtils.replace(inputParams, jsonObj);
+                        assertNotNull(replaced);
+                        assertEquals(generatedId.get(), replaced.get("k1"));
+                        assertEquals("conductor", replaced.get("k2"));
+                        assertNull(replaced.get("k3"));
+                    }
+                },
+                executorService)
                 .get();
 
         executorService.shutdown();

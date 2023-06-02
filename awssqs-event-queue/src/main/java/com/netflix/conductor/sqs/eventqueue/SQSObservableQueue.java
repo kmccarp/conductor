@@ -340,15 +340,15 @@ public class SQSObservableQueue implements ObservableQueue {
         return subscriber -> {
             Observable<Long> interval = Observable.interval(pollTimeInMS, TimeUnit.MILLISECONDS);
             interval.flatMap(
-                            (Long x) -> {
-                                if (!isRunning()) {
-                                    LOGGER.debug(
-                                            "Component stopped, skip listening for messages from SQS");
-                                    return Observable.from(Collections.emptyList());
-                                }
-                                List<Message> messages = receiveMessages();
-                                return Observable.from(messages);
-                            })
+                    (Long x) -> {
+                        if (!isRunning()) {
+                            LOGGER.debug(
+                                    "Component stopped, skip listening for messages from SQS");
+                            return Observable.from(Collections.emptyList());
+                        }
+                        List<Message> messages = receiveMessages();
+                        return Observable.from(messages);
+                    })
                     .subscribe(subscriber::onNext, subscriber::onError);
         };
     }

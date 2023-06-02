@@ -353,7 +353,7 @@ public class ExecutionService {
                         workflow -> {
                             if (includeClosed
                                     || workflow.getStatus()
-                                            .equals(Workflow.WorkflowStatus.RUNNING)) {
+                                    .equals(Workflow.WorkflowStatus.RUNNING)) {
                                 // including tasks for subset of workflows to increase performance
                                 if (includeTasks) {
                                     List<Task> tasks =

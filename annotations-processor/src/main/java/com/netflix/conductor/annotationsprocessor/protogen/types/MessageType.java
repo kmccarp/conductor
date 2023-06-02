@@ -74,5 +74,6 @@ public class MessageType extends AbstractType {
     }
 
     @Override
-    public void generateAbstractMethods(Set<MethodSpec> specs) {}
+    public void generateAbstractMethods(Set<MethodSpec> specs) {
+    }
 }

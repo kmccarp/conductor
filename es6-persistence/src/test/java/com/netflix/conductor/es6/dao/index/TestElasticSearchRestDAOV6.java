@@ -151,8 +151,8 @@ public class TestElasticSearchRestDAOV6 extends ElasticSearchRestDaoBaseTest {
 
         indexDAO.updateWorkflow(
                 workflowSummary.getWorkflowId(),
-                new String[] {"status"},
-                new Object[] {WorkflowStatus.COMPLETED});
+                new String[]{"status"},
+                new Object[]{WorkflowStatus.COMPLETED});
 
         workflowSummary.setStatus(WorkflowStatus.COMPLETED);
         assertWorkflowSummary(workflowSummary.getWorkflowId(), workflowSummary);
@@ -165,9 +165,9 @@ public class TestElasticSearchRestDAOV6 extends ElasticSearchRestDaoBaseTest {
         indexDAO.indexWorkflow(workflowSummary);
 
         indexDAO.asyncUpdateWorkflow(
-                        workflowSummary.getWorkflowId(),
-                        new String[] {"status"},
-                        new Object[] {WorkflowStatus.FAILED})
+                workflowSummary.getWorkflowId(),
+                new String[]{"status"},
+                new Object[]{WorkflowStatus.FAILED})
                 .get();
 
         workflowSummary.setStatus(WorkflowStatus.FAILED);
@@ -481,13 +481,13 @@ public class TestElasticSearchRestDAOV6 extends ElasticSearchRestDaoBaseTest {
 
     private List<String> searchWorkflows(String workflowId) {
         return indexDAO.searchWorkflows(
-                        "", "workflowId:\"" + workflowId + "\"", 0, 100, Collections.emptyList())
+                "", "workflowId:\"" + workflowId + "\"", 0, 100, Collections.emptyList())
                 .getResults();
     }
 
     private List<WorkflowSummary> searchWorkflowSummary(String workflowId) {
         return indexDAO.searchWorkflowSummary(
-                        "", "workflowId:\"" + workflowId + "\"", 0, 100, Collections.emptyList())
+                "", "workflowId:\"" + workflowId + "\"", 0, 100, Collections.emptyList())
                 .getResults();
     }
 
@@ -495,31 +495,31 @@ public class TestElasticSearchRestDAOV6 extends ElasticSearchRestDaoBaseTest {
         List<String> sortOptions = new ArrayList<>();
         sortOptions.add("startTime:DESC");
         return indexDAO.searchWorkflows(
-                        "status=\"" + status + "\" AND workflowType=\"" + workflowName + "\"",
-                        "*",
-                        0,
-                        1000,
-                        sortOptions)
+                "status=\"" + status + "\" AND workflowType=\"" + workflowName + "\"",
+                "*",
+                0,
+                1000,
+                sortOptions)
                 .getResults();
     }
 
     private List<String> searchTasks(TaskSummary taskSummary) {
         return indexDAO.searchTasks(
-                        "",
-                        "workflowId:\"" + taskSummary.getWorkflowId() + "\"",
-                        0,
-                        100,
-                        Collections.emptyList())
+                "",
+                "workflowId:\"" + taskSummary.getWorkflowId() + "\"",
+                0,
+                100,
+                Collections.emptyList())
                 .getResults();
     }
 
     private List<TaskSummary> searchTaskSummary(TaskSummary taskSummary) {
         return indexDAO.searchTaskSummary(
-                        "",
-                        "workflowId:\"" + taskSummary.getWorkflowId() + "\"",
-                        0,
-                        100,
-                        Collections.emptyList())
+                "",
+                "workflowId:\"" + taskSummary.getWorkflowId() + "\"",
+                0,
+                100,
+                Collections.emptyList())
                 .getResults();
     }
 

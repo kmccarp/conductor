@@ -70,9 +70,11 @@ public class MetadataMapperServiceTest {
         }
     }
 
-    @Autowired private MetadataDAO metadataDAO;
+    @Autowired
+    private MetadataDAO metadataDAO;
 
-    @Autowired private MetadataMapperService metadataMapperService;
+    @Autowired
+    private MetadataMapperService metadataMapperService;
 
     @After
     public void cleanUp() {

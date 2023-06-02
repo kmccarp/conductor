@@ -127,8 +127,10 @@ public abstract class AbstractMessage {
             return field.getName().toUpperCase();
         }
 
-        public void getDependencies(Set<String> deps) {}
+        public void getDependencies(Set<String> deps) {
+        }
 
-        public void generateAbstractMethods(Set<MethodSpec> specs) {}
+        public void generateAbstractMethods(Set<MethodSpec> specs) {
+        }
     }
 }

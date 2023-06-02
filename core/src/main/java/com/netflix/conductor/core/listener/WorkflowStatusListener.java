@@ -39,5 +39,6 @@ public interface WorkflowStatusListener {
 
     void onWorkflowTerminated(WorkflowModel workflow);
 
-    default void onWorkflowFinalized(WorkflowModel workflow) {}
+    default void onWorkflowFinalized(WorkflowModel workflow) {
+    }
 }

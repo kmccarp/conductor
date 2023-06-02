@@ -38,9 +38,11 @@ import static org.mockito.Mockito.when;
 @RunWith(SpringRunner.class)
 public class TaskClientTest {
 
-    @Mock ProtoMapper mockedProtoMapper;
+    @Mock
+    ProtoMapper mockedProtoMapper;
 
-    @Mock TaskServiceGrpc.TaskServiceBlockingStub mockedStub;
+    @Mock
+    TaskServiceGrpc.TaskServiceBlockingStub mockedStub;
 
     TaskClient taskClient;
 

@@ -63,7 +63,7 @@ public class WorkflowMonitor {
             QueueDAO queueDAO,
             ExecutionDAOFacade executionDAOFacade,
             @Value("${conductor.workflow-monitor.metadata-refresh-interval:10}")
-                    int metadataRefreshInterval,
+            int metadataRefreshInterval,
             @Qualifier(ASYNC_SYSTEM_TASKS_QUALIFIER) Set<WorkflowSystemTask> asyncSystemTasks) {
         this.metadataService = metadataService;
         this.queueDAO = queueDAO;

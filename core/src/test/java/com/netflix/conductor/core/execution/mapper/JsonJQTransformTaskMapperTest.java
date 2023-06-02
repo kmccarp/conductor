@@ -55,8 +55,8 @@ public class JsonJQTransformTaskMapperTest {
         workflowTask.setTaskDefinition(new TaskDef("json_jq_transform_task"));
 
         Map<String, Object> taskInput = new HashMap<>();
-        taskInput.put("in1", new String[] {"a", "b"});
-        taskInput.put("in2", new String[] {"c", "d"});
+        taskInput.put("in1", new String[]{"a", "b"});
+        taskInput.put("in2", new String[]{"c", "d"});
         taskInput.put("queryExpression", "{ out: (.in1 + .in2) }");
         workflowTask.setInputParameters(taskInput);
 
@@ -92,8 +92,8 @@ public class JsonJQTransformTaskMapperTest {
         workflowTask.setType(TaskType.JSON_JQ_TRANSFORM.name());
 
         Map<String, Object> taskInput = new HashMap<>();
-        taskInput.put("in1", new String[] {"a", "b"});
-        taskInput.put("in2", new String[] {"c", "d"});
+        taskInput.put("in1", new String[]{"a", "b"});
+        taskInput.put("in2", new String[]{"c", "d"});
         taskInput.put("queryExpression", "{ out: (.in1 + .in2) }");
         workflowTask.setInputParameters(taskInput);
 

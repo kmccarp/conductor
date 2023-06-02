@@ -127,19 +127,24 @@ public class TestDeciderService {
     private ExternalPayloadStorageUtils externalPayloadStorageUtils;
     private static Registry registry;
 
-    @Autowired private ObjectMapper objectMapper;
+    @Autowired
+    private ObjectMapper objectMapper;
 
-    @Autowired private SystemTaskRegistry systemTaskRegistry;
+    @Autowired
+    private SystemTaskRegistry systemTaskRegistry;
 
     @Autowired
     @Qualifier("taskMapperMap")
     private Map<String, TaskMapper> taskMappers;
 
-    @Autowired private ParametersUtils parametersUtils;
+    @Autowired
+    private ParametersUtils parametersUtils;
 
-    @Autowired private MetadataDAO metadataDAO;
+    @Autowired
+    private MetadataDAO metadataDAO;
 
-    @Rule public ExpectedException exception = ExpectedException.none();
+    @Rule
+    public ExpectedException exception = ExpectedException.none();
 
     @BeforeClass
     public static void init() {

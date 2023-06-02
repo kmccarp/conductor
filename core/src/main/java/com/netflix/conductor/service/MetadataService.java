@@ -37,8 +37,8 @@ public interface MetadataService {
      */
     void registerTaskDef(
             @NotNull(message = "TaskDefList cannot be empty or null")
-                    @Size(min = 1, message = "TaskDefList is empty")
-                    List<@Valid TaskDef> taskDefinitions);
+            @Size(min = 1, message = "TaskDefList is empty")
+            List<@Valid TaskDef> taskDefinitions);
 
     /**
      * @param taskDefinition Task Definition to be updated
@@ -71,9 +71,9 @@ public interface MetadataService {
      */
     BulkResponse updateWorkflowDef(
             @NotNull(message = "WorkflowDef list name cannot be null or empty")
-                    @Size(min = 1, message = "WorkflowDefList is empty")
-                    List<@NotNull(message = "WorkflowDef cannot be null") @Valid WorkflowDef>
-                            workflowDefList);
+            @Size(min = 1, message = "WorkflowDefList is empty")
+            List<@NotNull(message = "WorkflowDef cannot be null") @Valid WorkflowDef>
+                    workflowDefList);
 
     /**
      * @param name Name of the workflow to retrieve

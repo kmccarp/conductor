@@ -71,8 +71,10 @@ public class ScalarType extends AbstractType {
     }
 
     @Override
-    public void getDependencies(Set<String> deps) {}
+    public void getDependencies(Set<String> deps) {
+    }
 
     @Override
-    public void generateAbstractMethods(Set<MethodSpec> specs) {}
+    public void generateAbstractMethods(Set<MethodSpec> specs) {
+    }
 }

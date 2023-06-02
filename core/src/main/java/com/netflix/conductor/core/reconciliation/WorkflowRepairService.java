@@ -66,10 +66,10 @@ public class WorkflowRepairService {
                             systemTaskRegistry.get(task.getTaskType());
                     return workflowSystemTask.isAsync()
                             && (!workflowSystemTask.isAsyncComplete(task)
-                                    || (workflowSystemTask.isAsyncComplete(task)
-                                            && task.getStatus() == TaskModel.Status.SCHEDULED))
+                            || (workflowSystemTask.isAsyncComplete(task)
+                            && task.getStatus() == TaskModel.Status.SCHEDULED))
                             && (task.getStatus() == TaskModel.Status.IN_PROGRESS
-                                    || task.getStatus() == TaskModel.Status.SCHEDULED);
+                            || task.getStatus() == TaskModel.Status.SCHEDULED);
                 } else { // Else if simple task
                     return task.getStatus() == TaskModel.Status.SCHEDULED;
                 }

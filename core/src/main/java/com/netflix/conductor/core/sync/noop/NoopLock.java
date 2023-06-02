@@ -19,7 +19,8 @@ import com.netflix.conductor.core.sync.Lock;
 public class NoopLock implements Lock {
 
     @Override
-    public void acquireLock(String lockId) {}
+    public void acquireLock(String lockId) {
+    }
 
     @Override
     public boolean acquireLock(String lockId, long timeToTry, TimeUnit unit) {
@@ -32,8 +33,10 @@ public class NoopLock implements Lock {
     }
 
     @Override
-    public void releaseLock(String lockId) {}
+    public void releaseLock(String lockId) {
+    }
 
     @Override
-    public void deleteLock(String lockId) {}
+    public void deleteLock(String lockId) {
+    }
 }

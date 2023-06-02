@@ -295,7 +295,7 @@ public class ExecutionDAOFacade {
         if (properties.isAsyncIndexingEnabled()) {
             if (workflowModel.getStatus().isTerminal()
                     && workflowModel.getEndTime() - workflowModel.getCreateTime()
-                            < properties.getAsyncUpdateShortRunningWorkflowDuration().toMillis()) {
+                    < properties.getAsyncUpdateShortRunningWorkflowDuration().toMillis()) {
                 final String workflowId = workflowModel.getWorkflowId();
                 DelayWorkflowUpdate delayWorkflowUpdate = new DelayWorkflowUpdate(workflowId);
                 LOGGER.debug(
@@ -386,8 +386,8 @@ public class ExecutionDAOFacade {
                 // DO NOT archive async, since if archival errors out, workflow data will be lost
                 indexDAO.updateWorkflow(
                         workflow.getWorkflowId(),
-                        new String[] {RAW_JSON_FIELD, ARCHIVED_FIELD},
-                        new Object[] {objectMapper.writeValueAsString(workflow), true});
+                        new String[]{RAW_JSON_FIELD, ARCHIVED_FIELD},
+                        new Object[]{objectMapper.writeValueAsString(workflow), true});
             } else {
                 throw new IllegalArgumentException(
                         String.format(
@@ -543,8 +543,8 @@ public class ExecutionDAOFacade {
                 indexDAO.updateTask(
                         workflow.getWorkflowId(),
                         task.getTaskId(),
-                        new String[] {ARCHIVED_FIELD},
-                        new Object[] {true});
+                        new String[]{ARCHIVED_FIELD},
+                        new Object[]{true});
             } else {
                 throw new IllegalArgumentException(
                         String.format(

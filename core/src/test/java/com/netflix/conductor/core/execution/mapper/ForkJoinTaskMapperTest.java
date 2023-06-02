@@ -43,7 +43,8 @@ public class ForkJoinTaskMapperTest {
     private ForkJoinTaskMapper forkJoinTaskMapper;
     private IDGenerator idGenerator;
 
-    @Rule public ExpectedException expectedException = ExpectedException.none();
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
 
     @Before
     public void setUp() {

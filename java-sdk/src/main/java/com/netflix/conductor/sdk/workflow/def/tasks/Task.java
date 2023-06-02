@@ -220,7 +220,8 @@ public abstract class Task<T> {
      *
      * @param workflowTask
      */
-    protected void updateWorkflowTask(WorkflowTask workflowTask) {}
+    protected void updateWorkflowTask(WorkflowTask workflowTask) {
+    }
 
     /**
      * Override this method when sub-classes will generate multiple workflow tasks. Used by tasks

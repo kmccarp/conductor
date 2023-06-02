@@ -42,12 +42,18 @@ import static org.mockito.Mockito.when;
 @RunWith(SpringRunner.class)
 public class ExecutionServiceTest {
 
-    @Mock private WorkflowExecutor workflowExecutor;
-    @Mock private ExecutionDAOFacade executionDAOFacade;
-    @Mock private QueueDAO queueDAO;
-    @Mock private ConductorProperties conductorProperties;
-    @Mock private ExternalPayloadStorage externalPayloadStorage;
-    @Mock private SystemTaskRegistry systemTaskRegistry;
+    @Mock
+    private WorkflowExecutor workflowExecutor;
+    @Mock
+    private ExecutionDAOFacade executionDAOFacade;
+    @Mock
+    private QueueDAO queueDAO;
+    @Mock
+    private ConductorProperties conductorProperties;
+    @Mock
+    private ExternalPayloadStorage externalPayloadStorage;
+    @Mock
+    private SystemTaskRegistry systemTaskRegistry;
 
     private ExecutionService executionService;
 

@@ -91,7 +91,8 @@ public class TaskSummary {
     @ProtoField(id = 20)
     private String domain;
 
-    public TaskSummary() {}
+    public TaskSummary() {
+    }
 
     public TaskSummary(Task task) {
 

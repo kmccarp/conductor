@@ -54,7 +54,8 @@ public class RedisMetadataDAOTest {
 
     private RedisMetadataDAO redisMetadataDAO;
 
-    @Autowired private ObjectMapper objectMapper;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Before
     public void init() {

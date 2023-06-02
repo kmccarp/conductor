@@ -54,12 +54,14 @@ public class ExternalPayloadStorageUtilsTest {
     private ExternalPayloadStorage externalPayloadStorage;
     private ExternalStorageLocation location;
 
-    @Autowired private ObjectMapper objectMapper;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     // Subject
     private ExternalPayloadStorageUtils externalPayloadStorageUtils;
 
-    @Rule public ExpectedException expectedException = ExpectedException.none();
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
 
     @Before
     public void setup() {
@@ -115,16 +117,16 @@ public class ExternalPayloadStorageUtilsTest {
 
         byte[] payloadBytes = objectMapper.writeValueAsString(payload).getBytes();
         when(externalPayloadStorage.getLocation(
-                        ExternalPayloadStorage.Operation.WRITE,
-                        ExternalPayloadStorage.PayloadType.TASK_INPUT,
-                        "",
-                        payloadBytes))
+                ExternalPayloadStorage.Operation.WRITE,
+                ExternalPayloadStorage.PayloadType.TASK_INPUT,
+                "",
+                payloadBytes))
                 .thenReturn(location);
         doAnswer(
-                        invocation -> {
-                            uploadCount.incrementAndGet();
-                            return null;
-                        })
+                invocation -> {
+                    uploadCount.incrementAndGet();
+                    return null;
+                })
                 .when(externalPayloadStorage)
                 .upload(anyString(), any(), anyLong());
 
@@ -150,16 +152,16 @@ public class ExternalPayloadStorageUtilsTest {
 
         byte[] payloadBytes = objectMapper.writeValueAsString(payload).getBytes();
         when(externalPayloadStorage.getLocation(
-                        ExternalPayloadStorage.Operation.WRITE,
-                        ExternalPayloadStorage.PayloadType.WORKFLOW_OUTPUT,
-                        "",
-                        payloadBytes))
+                ExternalPayloadStorage.Operation.WRITE,
+                ExternalPayloadStorage.PayloadType.WORKFLOW_OUTPUT,
+                "",
+                payloadBytes))
                 .thenReturn(location);
         doAnswer(
-                        invocation -> {
-                            uploadCount.incrementAndGet();
-                            return null;
-                        })
+                invocation -> {
+                    uploadCount.incrementAndGet();
+                    return null;
+                })
                 .when(externalPayloadStorage)
                 .upload(anyString(), any(), anyLong());
 
@@ -186,17 +188,17 @@ public class ExternalPayloadStorageUtilsTest {
 
         when(externalPayloadStorage.getLocation(any(), any(), any(), any())).thenReturn(location);
         doAnswer(
-                        invocation -> {
-                            uploadCount.incrementAndGet();
-                            return null;
-                        })
+                invocation -> {
+                    uploadCount.incrementAndGet();
+                    return null;
+                })
                 .when(externalPayloadStorage)
                 .upload(anyString(), any(), anyLong());
 
         assertEquals(
                 path,
                 externalPayloadStorageUtils.uploadHelper(
-                        new byte[] {}, 10L, ExternalPayloadStorage.PayloadType.TASK_OUTPUT));
+                        new byte[]{}, 10L, ExternalPayloadStorage.PayloadType.TASK_OUTPUT));
         assertEquals(1, uploadCount.get());
     }
 

@@ -31,7 +31,8 @@ public class DynamicForkInput {
         this.inputs = inputs;
     }
 
-    public DynamicForkInput() {}
+    public DynamicForkInput() {
+    }
 
     public List<Task<?>> getTasks() {
         return tasks;

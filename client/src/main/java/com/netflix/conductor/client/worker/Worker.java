@@ -49,7 +49,8 @@ public interface Worker {
      *
      * @param task Task which cannot be updated back to the server.
      */
-    default void onErrorUpdate(Task task) {}
+    default void onErrorUpdate(Task task) {
+    }
 
     /**
      * Override this method to pause the worker from polling.

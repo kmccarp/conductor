@@ -110,8 +110,8 @@ class TaskPollExecutor {
     void pollAndExecute(Worker worker) {
         Boolean discoveryOverride =
                 Optional.ofNullable(
-                                PropertyFactory.getBoolean(
-                                        worker.getTaskDefName(), OVERRIDE_DISCOVERY, null))
+                        PropertyFactory.getBoolean(
+                                worker.getTaskDefName(), OVERRIDE_DISCOVERY, null))
                         .orElseGet(
                                 () ->
                                         PropertyFactory.getBoolean(
@@ -144,8 +144,8 @@ class TaskPollExecutor {
                             .orElseGet(
                                     () ->
                                             Optional.ofNullable(
-                                                            PropertyFactory.getString(
-                                                                    ALL_WORKERS, DOMAIN, null))
+                                                    PropertyFactory.getString(
+                                                            ALL_WORKERS, DOMAIN, null))
                                                     .orElse(taskToDomain.get(taskType)));
 
             LOGGER.debug("Polling task of type: {} in domain: '{}'", taskType, domain);

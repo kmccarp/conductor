@@ -265,7 +265,7 @@ public class WorkflowDefValidatorTest {
 
         Map<String, Object> map = new HashMap<>();
         map.put("blabla", "");
-        map.put("foo", new String[] {""});
+        map.put("foo", new String[]{""});
         workflowTask.setInputParameters(map);
 
         workflowDef.getTasks().add(workflowTask);

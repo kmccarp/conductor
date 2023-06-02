@@ -80,8 +80,8 @@ public class DoWhileTaskMapper implements TaskMapper {
                         .orElseGet(
                                 () ->
                                         Optional.ofNullable(
-                                                        metadataDAO.getTaskDef(
-                                                                workflowTask.getName()))
+                                                metadataDAO.getTaskDef(
+                                                        workflowTask.getName()))
                                                 .orElseGet(TaskDef::new));
 
         TaskModel doWhileTask = taskMapperContext.createTaskModel();

@@ -41,7 +41,9 @@ public abstract class LifecycleAwareComponent implements SmartLifecycle {
         return running;
     }
 
-    public void doStart() {}
+    public void doStart() {
+    }
 
-    public void doStop() {}
+    public void doStop() {
+    }
 }

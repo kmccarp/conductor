@@ -57,9 +57,11 @@ public class TaskServiceTest {
         }
     }
 
-    @Autowired private TaskService taskService;
+    @Autowired
+    private TaskService taskService;
 
-    @Autowired private ExecutionService executionService;
+    @Autowired
+    private ExecutionService executionService;
 
     @Test(expected = ConstraintViolationException.class)
     public void testPoll() {

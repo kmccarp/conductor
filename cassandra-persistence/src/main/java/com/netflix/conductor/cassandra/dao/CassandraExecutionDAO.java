@@ -113,8 +113,8 @@ public class CassandraExecutionDAO extends CassandraBaseDAO
                         .setConsistencyLevel(properties.getReadConsistencyLevel());
         this.selectEventExecutionsStatement =
                 session.prepare(
-                                statements
-                                        .getSelectAllEventExecutionsForMessageFromEventExecutionsStatement())
+                        statements
+                                .getSelectAllEventExecutionsForMessageFromEventExecutionsStatement())
                         .setConsistencyLevel(properties.getReadConsistencyLevel());
 
         this.updateWorkflowStatement =
@@ -630,11 +630,11 @@ public class CassandraExecutionDAO extends CassandraBaseDAO
             recordCassandraDaoPayloadSize(
                     "addEventExecution", jsonPayload.length(), eventExecution.getEvent(), "n/a");
             return session.execute(
-                            insertEventExecutionStatement.bind(
-                                    eventExecution.getMessageId(),
-                                    eventExecution.getName(),
-                                    eventExecution.getId(),
-                                    jsonPayload))
+                    insertEventExecutionStatement.bind(
+                            eventExecution.getMessageId(),
+                            eventExecution.getName(),
+                            eventExecution.getId(),
+                            jsonPayload))
                     .wasApplied();
         } catch (DriverException e) {
             Monitors.error(CLASS_NAME, "addEventExecution");

@@ -54,7 +54,8 @@ public class ExecutionDAOFacadeTest {
     private ExecutionDAOFacade executionDAOFacade;
     private ExternalPayloadStorageUtils externalPayloadStorageUtils;
 
-    @Autowired private ObjectMapper objectMapper;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Before
     public void setUp() {

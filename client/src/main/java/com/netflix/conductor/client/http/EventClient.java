@@ -29,7 +29,8 @@ import com.sun.jersey.api.client.filter.ClientFilter;
 // Client class for all Event Handler operations
 public class EventClient extends ClientBase {
     private static final GenericType<List<EventHandler>> eventHandlerList =
-            new GenericType<List<EventHandler>>() {};
+            new GenericType<List<EventHandler>>() {
+            };
 
     /** Creates a default metadata client */
     public EventClient() {
@@ -111,7 +112,7 @@ public class EventClient extends ClientBase {
         Validate.notBlank(event, "Event cannot be blank");
 
         return getForEntity(
-                "event/{event}", new Object[] {"activeOnly", activeOnly}, eventHandlerList, event);
+                "event/{event}", new Object[]{"activeOnly", activeOnly}, eventHandlerList, event);
     }
 
     /**

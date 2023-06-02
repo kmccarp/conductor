@@ -43,10 +43,12 @@ import com.sun.jersey.api.client.filter.ClientFilter;
 public class WorkflowClient extends ClientBase {
 
     private static final GenericType<SearchResult<WorkflowSummary>> searchResultWorkflowSummary =
-            new GenericType<SearchResult<WorkflowSummary>>() {};
+            new GenericType<SearchResult<WorkflowSummary>>() {
+            };
 
     private static final GenericType<SearchResult<Workflow>> searchResultWorkflow =
-            new GenericType<SearchResult<Workflow>>() {};
+            new GenericType<SearchResult<Workflow>>() {
+            };
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WorkflowClient.class);
 
@@ -136,9 +138,9 @@ public class WorkflowClient extends ClientBase {
                     > conductorClientConfiguration.getWorkflowInputPayloadThresholdKB() * 1024L) {
                 if (!conductorClientConfiguration.isExternalPayloadStorageEnabled()
                         || (workflowInputSize
-                                > conductorClientConfiguration
-                                                .getWorkflowInputMaxPayloadThresholdKB()
-                                        * 1024L)) {
+                        > conductorClientConfiguration
+                        .getWorkflowInputMaxPayloadThresholdKB()
+                        * 1024L)) {
                     String errorMsg =
                             String.format(
                                     "Input payload larger than the allowed threshold of: %d KB",
@@ -198,7 +200,7 @@ public class WorkflowClient extends ClientBase {
         Workflow workflow =
                 getForEntity(
                         "workflow/{workflowId}",
-                        new Object[] {"includeTasks", includeTasks},
+                        new Object[]{"includeTasks", includeTasks},
                         Workflow.class,
                         workflowId);
         populateWorkflowOutput(workflow);
@@ -220,12 +222,13 @@ public class WorkflowClient extends ClientBase {
         Validate.notBlank(correlationId, "correlationId cannot be blank");
 
         Object[] params =
-                new Object[] {"includeClosed", includeClosed, "includeTasks", includeTasks};
+                new Object[]{"includeClosed", includeClosed, "includeTasks", includeTasks};
         List<Workflow> workflows =
                 getForEntity(
                         "workflow/{name}/correlated/{correlationId}",
                         params,
-                        new GenericType<List<Workflow>>() {},
+                        new GenericType<List<Workflow>>() {
+                        },
                         name,
                         correlationId);
         workflows.forEach(this::populateWorkflowOutput);
@@ -261,7 +264,7 @@ public class WorkflowClient extends ClientBase {
     public void deleteWorkflow(String workflowId, boolean archiveWorkflow) {
         Validate.notBlank(workflowId, "Workflow id cannot be blank");
 
-        Object[] params = new Object[] {"archiveWorkflow", archiveWorkflow};
+        Object[] params = new Object[]{"archiveWorkflow", archiveWorkflow};
         deleteWithUriVariables(params, "workflow/{workflowId}/remove", workflowId);
     }
 
@@ -277,7 +280,7 @@ public class WorkflowClient extends ClientBase {
         return postForEntity(
                 "workflow/bulk/terminate",
                 workflowIds,
-                new Object[] {"reason", reason},
+                new Object[]{"reason", reason},
                 BulkResponse.class);
     }
 
@@ -292,8 +295,9 @@ public class WorkflowClient extends ClientBase {
         Validate.notBlank(workflowName, "Workflow name cannot be blank");
         return getForEntity(
                 "workflow/running/{name}",
-                new Object[] {"version", version},
-                new GenericType<List<String>>() {},
+                new Object[]{"version", version},
+                new GenericType<List<String>>() {
+                },
                 workflowName);
     }
 
@@ -313,11 +317,12 @@ public class WorkflowClient extends ClientBase {
         Validate.notNull(endTime, "End time cannot be null");
 
         Object[] params =
-                new Object[] {"version", version, "startTime", startTime, "endTime", endTime};
+                new Object[]{"version", version, "startTime", startTime, "endTime", endTime};
         return getForEntity(
                 "workflow/running/{name}",
                 params,
-                new GenericType<List<String>>() {},
+                new GenericType<List<String>>() {
+                },
                 workflowName);
     }
 
@@ -398,7 +403,7 @@ public class WorkflowClient extends ClientBase {
      */
     public void restart(String workflowId, boolean useLatestDefinitions) {
         Validate.notBlank(workflowId, "workflow id cannot be blank");
-        Object[] params = new Object[] {"useLatestDefinitions", useLatestDefinitions};
+        Object[] params = new Object[]{"useLatestDefinitions", useLatestDefinitions};
         postForEntity("workflow/{workflowId}/restart", null, params, Void.TYPE, workflowId);
     }
 
@@ -431,7 +436,7 @@ public class WorkflowClient extends ClientBase {
     public void terminateWorkflow(String workflowId, String reason) {
         Validate.notBlank(workflowId, "workflow id cannot be blank");
         deleteWithUriVariables(
-                new Object[] {"reason", reason}, "workflow/{workflowId}", workflowId);
+                new Object[]{"reason", reason}, "workflow/{workflowId}", workflowId);
     }
 
     /**
@@ -442,7 +447,7 @@ public class WorkflowClient extends ClientBase {
      */
     public SearchResult<WorkflowSummary> search(String query) {
         return getForEntity(
-                "workflow/search", new Object[] {"query", query}, searchResultWorkflowSummary);
+                "workflow/search", new Object[]{"query", query}, searchResultWorkflowSummary);
     }
 
     /**
@@ -453,7 +458,7 @@ public class WorkflowClient extends ClientBase {
      */
     public SearchResult<Workflow> searchV2(String query) {
         return getForEntity(
-                "workflow/search-v2", new Object[] {"query", query}, searchResultWorkflow);
+                "workflow/search-v2", new Object[]{"query", query}, searchResultWorkflow);
     }
 
     /**
@@ -469,8 +474,8 @@ public class WorkflowClient extends ClientBase {
     public SearchResult<WorkflowSummary> search(
             Integer start, Integer size, String sort, String freeText, String query) {
         Object[] params =
-                new Object[] {
-                    "start", start, "size", size, "sort", sort, "freeText", freeText, "query", query
+                new Object[]{
+                        "start", start, "size", size, "sort", sort, "freeText", freeText, "query", query
                 };
         return getForEntity("workflow/search", params, searchResultWorkflowSummary);
     }
@@ -488,8 +493,8 @@ public class WorkflowClient extends ClientBase {
     public SearchResult<Workflow> searchV2(
             Integer start, Integer size, String sort, String freeText, String query) {
         Object[] params =
-                new Object[] {
-                    "start", start, "size", size, "sort", sort, "freeText", freeText, "query", query
+                new Object[]{
+                        "start", start, "size", size, "sort", sort, "freeText", freeText, "query", query
                 };
         return getForEntity("workflow/search-v2", params, searchResultWorkflow);
     }

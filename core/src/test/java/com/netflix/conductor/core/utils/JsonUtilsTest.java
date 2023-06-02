@@ -40,7 +40,8 @@ public class JsonUtilsTest {
 
     private JsonUtils jsonUtils;
 
-    @Autowired private ObjectMapper objectMapper;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Before
     public void setup() {
@@ -124,7 +125,7 @@ public class JsonUtilsTest {
                         instanceof Integer);
         assertTrue(
                 ((LinkedHashMap<?, ?>) ((LinkedHashMap<?, ?>) jsonObject).get("inner"))
-                                .get("status")
+                        .get("status")
                         instanceof String);
     }
 }

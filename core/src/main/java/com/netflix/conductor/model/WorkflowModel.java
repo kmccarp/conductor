@@ -108,13 +108,17 @@ public class WorkflowModel {
 
     private Status previousStatus;
 
-    @JsonIgnore private Map<String, Object> input = new HashMap<>();
+    @JsonIgnore
+    private Map<String, Object> input = new HashMap<>();
 
-    @JsonIgnore private Map<String, Object> output = new HashMap<>();
+    @JsonIgnore
+    private Map<String, Object> output = new HashMap<>();
 
-    @JsonIgnore private Map<String, Object> inputPayload = new HashMap<>();
+    @JsonIgnore
+    private Map<String, Object> inputPayload = new HashMap<>();
 
-    @JsonIgnore private Map<String, Object> outputPayload = new HashMap<>();
+    @JsonIgnore
+    private Map<String, Object> outputPayload = new HashMap<>();
 
     public Status getPreviousStatus() {
         return previousStatus;
@@ -522,11 +526,11 @@ public class WorkflowModel {
                 && Objects.equals(getFailedTaskNames(), that.getFailedTaskNames())
                 && Objects.equals(getWorkflowDefinition(), that.getWorkflowDefinition())
                 && Objects.equals(
-                        getExternalInputPayloadStoragePath(),
-                        that.getExternalInputPayloadStoragePath())
+                getExternalInputPayloadStoragePath(),
+                that.getExternalInputPayloadStoragePath())
                 && Objects.equals(
-                        getExternalOutputPayloadStoragePath(),
-                        that.getExternalOutputPayloadStoragePath())
+                getExternalOutputPayloadStoragePath(),
+                that.getExternalOutputPayloadStoragePath())
                 && Objects.equals(getVariables(), that.getVariables())
                 && Objects.equals(getOwnerApp(), that.getOwnerApp())
                 && Objects.equals(getCreateTime(), that.getCreateTime())

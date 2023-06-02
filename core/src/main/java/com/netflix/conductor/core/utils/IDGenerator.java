@@ -32,7 +32,8 @@ import org.springframework.stereotype.Component;
  */
 public class IDGenerator {
 
-    public IDGenerator() {}
+    public IDGenerator() {
+    }
 
     public String generate() {
         return UUID.randomUUID().toString();

@@ -157,10 +157,10 @@ public class CassandraMetadataDAO extends CassandraBaseDAO implements MetadataDA
         try {
             String workflowDefinition = toJson(workflowDef);
             if (!session.execute(
-                            insertWorkflowDefStatement.bind(
-                                    workflowDef.getName(),
-                                    workflowDef.getVersion(),
-                                    workflowDefinition))
+                    insertWorkflowDefStatement.bind(
+                            workflowDef.getName(),
+                            workflowDef.getVersion(),
+                            workflowDefinition))
                     .wasApplied()) {
                 throw new ConflictException(
                         "Workflow: %s, version: %s already exists!",

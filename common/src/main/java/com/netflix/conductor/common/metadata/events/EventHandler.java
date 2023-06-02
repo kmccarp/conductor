@@ -54,7 +54,8 @@ public class EventHandler {
     @ProtoField(id = 6)
     private String evaluatorType;
 
-    public EventHandler() {}
+    public EventHandler() {
+    }
 
     /**
      * @return the name MUST be unique within a conductor instance

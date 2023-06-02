@@ -59,8 +59,7 @@ public class ShipmentWorkers {
             }
 
             if (orderDetail.getCountryCode().equals("US"))
-                orderDetail.setShippingMethod(Order.ShippingMethod.SAME_DAY);
-            else if (orderDetail.getCountryCode().equals("CA"))
+                orderDetail.setShippingMethod(Order.ShippingMethod.SAME_DAY);else if (orderDetail.getCountryCode().equals("CA"))
                 orderDetail.setShippingMethod(Order.ShippingMethod.NEXT_DAY_AIR);
             else orderDetail.setShippingMethod(Order.ShippingMethod.GROUND);
 
@@ -137,5 +136,6 @@ public class ShipmentWorkers {
     public void sendEmail(
             @InputParam("name") String name,
             @InputParam("email") String email,
-            @InputParam("orderNo") String orderNo) {}
+            @InputParam("orderNo") String orderNo) {
+    }
 }

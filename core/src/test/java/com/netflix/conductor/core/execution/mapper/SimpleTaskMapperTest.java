@@ -39,7 +39,8 @@ public class SimpleTaskMapperTest {
 
     private IDGenerator idGenerator = new IDGenerator();
 
-    @Rule public ExpectedException expectedException = ExpectedException.none();
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
 
     @Before
     public void setUp() {

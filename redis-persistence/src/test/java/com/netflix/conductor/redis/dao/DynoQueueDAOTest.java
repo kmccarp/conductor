@@ -76,7 +76,8 @@ public class DynoQueueDAOTest {
         queueDAO = new DynoQueueDAO(redisQueues);
     }
 
-    @Rule public ExpectedException expected = ExpectedException.none();
+    @Rule
+    public ExpectedException expected = ExpectedException.none();
 
     @Test
     public void test() {

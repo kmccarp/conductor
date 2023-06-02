@@ -21,7 +21,8 @@ public class Message {
     private String receipt;
     private int priority;
 
-    public Message() {}
+    public Message() {
+    }
 
     public Message(String id, String payload, String receipt) {
         this.payload = payload;

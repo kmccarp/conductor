@@ -38,9 +38,11 @@ import static org.mockito.Mockito.when;
 @RunWith(SpringRunner.class)
 public class EventClientTest {
 
-    @Mock ProtoMapper mockedProtoMapper;
+    @Mock
+    ProtoMapper mockedProtoMapper;
 
-    @Mock EventServiceGrpc.EventServiceBlockingStub mockedStub;
+    @Mock
+    EventServiceGrpc.EventServiceBlockingStub mockedStub;
 
     EventClient eventClient;
 

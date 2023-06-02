@@ -47,7 +47,8 @@ public class TaskRunnerConfigurer {
     private final List<Worker> workers = new LinkedList<>();
     private final int sleepWhenRetry;
     private final int updateRetryCount;
-    @Deprecated private final int threadCount;
+    @Deprecated
+    private final int threadCount;
     private final int shutdownGracePeriodSeconds;
     private final String workerNamePrefix;
     private final Map<String /*taskType*/, String /*domain*/> taskToDomain;
@@ -104,7 +105,8 @@ public class TaskRunnerConfigurer {
         private String workerNamePrefix = "workflow-worker-%d";
         private int sleepWhenRetry = 500;
         private int updateRetryCount = 3;
-        @Deprecated private int threadCount = -1;
+        @Deprecated
+        private int threadCount = -1;
         private int shutdownGracePeriodSeconds = 10;
         private final Iterable<Worker> workers;
         private EurekaClient eurekaClient;

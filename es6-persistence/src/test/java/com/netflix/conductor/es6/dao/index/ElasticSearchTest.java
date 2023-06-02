@@ -50,9 +50,11 @@ abstract class ElasticSearchTest {
                     DockerImageName.parse("docker.elastic.co/elasticsearch/elasticsearch-oss")
                             .withTag("6.8.12")); // this should match the client version
 
-    @Autowired protected ObjectMapper objectMapper;
+    @Autowired
+    protected ObjectMapper objectMapper;
 
-    @Autowired protected ElasticSearchProperties properties;
+    @Autowired
+    protected ElasticSearchProperties properties;
 
     @BeforeClass
     public static void startServer() {

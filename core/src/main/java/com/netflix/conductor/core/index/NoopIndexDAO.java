@@ -31,10 +31,12 @@ import com.netflix.conductor.dao.IndexDAO;
 public class NoopIndexDAO implements IndexDAO {
 
     @Override
-    public void setup() {}
+    public void setup() {
+    }
 
     @Override
-    public void indexWorkflow(WorkflowSummary workflowSummary) {}
+    public void indexWorkflow(WorkflowSummary workflowSummary) {
+    }
 
     @Override
     public CompletableFuture<Void> asyncIndexWorkflow(WorkflowSummary workflowSummary) {
@@ -42,7 +44,8 @@ public class NoopIndexDAO implements IndexDAO {
     }
 
     @Override
-    public void indexTask(TaskSummary taskSummary) {}
+    public void indexTask(TaskSummary taskSummary) {
+    }
 
     @Override
     public CompletableFuture<Void> asyncIndexTask(TaskSummary taskSummary) {
@@ -74,7 +77,8 @@ public class NoopIndexDAO implements IndexDAO {
     }
 
     @Override
-    public void removeWorkflow(String workflowId) {}
+    public void removeWorkflow(String workflowId) {
+    }
 
     @Override
     public CompletableFuture<Void> asyncRemoveWorkflow(String workflowId) {
@@ -82,7 +86,8 @@ public class NoopIndexDAO implements IndexDAO {
     }
 
     @Override
-    public void updateWorkflow(String workflowInstanceId, String[] keys, Object[] values) {}
+    public void updateWorkflow(String workflowInstanceId, String[] keys, Object[] values) {
+    }
 
     @Override
     public CompletableFuture<Void> asyncUpdateWorkflow(
@@ -91,7 +96,8 @@ public class NoopIndexDAO implements IndexDAO {
     }
 
     @Override
-    public void removeTask(String workflowId, String taskId) {}
+    public void removeTask(String workflowId, String taskId) {
+    }
 
     @Override
     public CompletableFuture<Void> asyncRemoveTask(String workflowId, String taskId) {
@@ -99,7 +105,8 @@ public class NoopIndexDAO implements IndexDAO {
     }
 
     @Override
-    public void updateTask(String workflowId, String taskId, String[] keys, Object[] values) {}
+    public void updateTask(String workflowId, String taskId, String[] keys, Object[] values) {
+    }
 
     @Override
     public CompletableFuture<Void> asyncUpdateTask(
@@ -113,7 +120,8 @@ public class NoopIndexDAO implements IndexDAO {
     }
 
     @Override
-    public void addTaskExecutionLogs(List<TaskExecLog> logs) {}
+    public void addTaskExecutionLogs(List<TaskExecLog> logs) {
+    }
 
     @Override
     public CompletableFuture<Void> asyncAddTaskExecutionLogs(List<TaskExecLog> logs) {
@@ -126,7 +134,8 @@ public class NoopIndexDAO implements IndexDAO {
     }
 
     @Override
-    public void addEventExecution(EventExecution eventExecution) {}
+    public void addEventExecution(EventExecution eventExecution) {
+    }
 
     @Override
     public List<EventExecution> getEventExecutions(String event) {
@@ -139,7 +148,8 @@ public class NoopIndexDAO implements IndexDAO {
     }
 
     @Override
-    public void addMessage(String queue, Message msg) {}
+    public void addMessage(String queue, Message msg) {
+    }
 
     @Override
     public CompletableFuture<Void> asyncAddMessage(String queue, Message message) {

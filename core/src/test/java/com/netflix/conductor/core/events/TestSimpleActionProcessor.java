@@ -55,7 +55,8 @@ public class TestSimpleActionProcessor {
     private SimpleActionProcessor actionProcessor;
     private StartWorkflowOperation startWorkflowOperation;
 
-    @Autowired private ObjectMapper objectMapper;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Before
     public void setup() {

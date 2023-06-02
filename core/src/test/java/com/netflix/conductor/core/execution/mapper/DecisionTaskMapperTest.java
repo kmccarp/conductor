@@ -55,9 +55,11 @@ public class DecisionTaskMapperTest {
     // Subject
     private DecisionTaskMapper decisionTaskMapper;
 
-    @Autowired private ObjectMapper objectMapper;
+    @Autowired
+    private ObjectMapper objectMapper;
 
-    @Rule public ExpectedException expectedException = ExpectedException.none();
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
 
     Map<String, Object> ip1;
     WorkflowTask task1;

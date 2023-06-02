@@ -55,9 +55,9 @@ public class IsolatedTaskQueueProducer {
             @Qualifier(ASYNC_SYSTEM_TASKS_QUALIFIER) Set<WorkflowSystemTask> asyncSystemTasks,
             SystemTaskWorker systemTaskWorker,
             @Value("${conductor.app.isolatedSystemTaskEnabled:false}")
-                    boolean isolatedSystemTaskEnabled,
+            boolean isolatedSystemTaskEnabled,
             @Value("${conductor.app.isolatedSystemTaskQueuePollInterval:10s}")
-                    Duration isolatedSystemTaskQueuePollInterval) {
+            Duration isolatedSystemTaskQueuePollInterval) {
 
         this.metadataService = metadataService;
         this.asyncSystemTasks = asyncSystemTasks;
@@ -87,7 +87,7 @@ public class IsolatedTaskQueueProducer {
                                     taskDef ->
                                             StringUtils.isNotBlank(taskDef.getIsolationGroupId())
                                                     || StringUtils.isNotBlank(
-                                                            taskDef.getExecutionNameSpace()))
+                                                    taskDef.getExecutionNameSpace()))
                             .collect(Collectors.toSet());
         } catch (RuntimeException e) {
             LOGGER.error(

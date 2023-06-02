@@ -202,7 +202,8 @@ public class Task {
     @ProtoField(id = 42)
     private boolean subworkflowChanged;
 
-    public Task() {}
+    public Task() {
+    }
 
     /**
      * @return Type of the task
@@ -741,8 +742,8 @@ public class Task {
             return this.getOutputData() != null && this.getOutputData().get("subWorkflowId") != null
                     ? (String) this.getOutputData().get("subWorkflowId")
                     : this.getInputData() != null
-                            ? (String) this.getInputData().get("subWorkflowId")
-                            : null;
+                    ? (String) this.getInputData().get("subWorkflowId")
+                    : null;
         }
     }
 
@@ -955,11 +956,11 @@ public class Task {
                 && Objects.equals(getInputMessage(), task.getInputMessage())
                 && Objects.equals(getOutputMessage(), task.getOutputMessage())
                 && Objects.equals(
-                        getExternalInputPayloadStoragePath(),
-                        task.getExternalInputPayloadStoragePath())
+                getExternalInputPayloadStoragePath(),
+                task.getExternalInputPayloadStoragePath())
                 && Objects.equals(
-                        getExternalOutputPayloadStoragePath(),
-                        task.getExternalOutputPayloadStoragePath())
+                getExternalOutputPayloadStoragePath(),
+                task.getExternalOutputPayloadStoragePath())
                 && Objects.equals(getIsolationGroupId(), task.getIsolationGroupId())
                 && Objects.equals(getExecutionNameSpace(), task.getExecutionNameSpace());
     }

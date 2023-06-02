@@ -96,9 +96,11 @@ public class MetadataServiceTest {
         }
     }
 
-    @Autowired private MetadataDAO metadataDAO;
+    @Autowired
+    private MetadataDAO metadataDAO;
 
-    @Autowired private MetadataService metadataService;
+    @Autowired
+    private MetadataService metadataService;
 
     @Test(expected = ConstraintViolationException.class)
     public void testRegisterTaskDefNoName() {

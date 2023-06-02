@@ -104,9 +104,9 @@ public class AnnotatedWorker implements Worker {
         Parameter[] parameters = workerMethod.getParameters();
 
         if (parameterTypes.length == 1 && parameterTypes[0].equals(Task.class)) {
-            return new Object[] {task};
+            return new Object[]{task};
         } else if (parameterTypes.length == 1 && parameterTypes[0].equals(Map.class)) {
-            return new Object[] {task.getInputData()};
+            return new Object[]{task.getInputData()};
         }
 
         return getParameters(task, parameterTypes, parameters);

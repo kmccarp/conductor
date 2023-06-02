@@ -110,7 +110,7 @@ public class ProtoGen {
     public void processPackage(File jarFile, String packageName) throws IOException {
         if (!jarFile.isFile()) throw new IOException("missing Jar file " + jarFile);
 
-        URL[] urls = new URL[] {jarFile.toURI().toURL()};
+        URL[] urls = new URL[]{jarFile.toURI().toURL()};
         ClassLoader loader =
                 new URLClassLoader(urls, Thread.currentThread().getContextClassLoader());
         ClassPath cp = ClassPath.from(loader);

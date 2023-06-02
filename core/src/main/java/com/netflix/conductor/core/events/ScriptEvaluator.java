@@ -21,7 +21,8 @@ public class ScriptEvaluator {
 
     private static final ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
 
-    private ScriptEvaluator() {}
+    private ScriptEvaluator() {
+    }
 
     /**
      * Evaluates the script with the help of input provided but converts the result to a boolean

@@ -26,7 +26,8 @@ public class TestWorkflowInput {
         this.countryCode = countryCode;
     }
 
-    public TestWorkflowInput() {}
+    public TestWorkflowInput() {
+    }
 
     public String getName() {
         return name;

@@ -78,7 +78,7 @@ public class WorkflowBulkResource {
     public BulkResponse restart(
             @RequestBody List<String> workflowIds,
             @RequestParam(value = "useLatestDefinitions", defaultValue = "false", required = false)
-                    boolean useLatestDefinitions) {
+            boolean useLatestDefinitions) {
         return workflowBulkService.restart(workflowIds, useLatestDefinitions);
     }
 

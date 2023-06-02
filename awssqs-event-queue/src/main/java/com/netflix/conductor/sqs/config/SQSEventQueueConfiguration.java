@@ -43,7 +43,8 @@ import rx.Scheduler;
 @ConditionalOnProperty(name = "conductor.event-queues.sqs.enabled", havingValue = "true")
 public class SQSEventQueueConfiguration {
 
-    @Autowired private SQSEventQueueProperties sqsProperties;
+    @Autowired
+    private SQSEventQueueProperties sqsProperties;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SQSEventQueueConfiguration.class);
 
@@ -85,7 +86,7 @@ public class SQSEventQueueConfiguration {
         if (conductorProperties.getStack() != null && conductorProperties.getStack().length() > 0) {
             stack = conductorProperties.getStack() + "_";
         }
-        Status[] statuses = new Status[] {Status.COMPLETED, Status.FAILED};
+        Status[] statuses = new Status[]{Status.COMPLETED, Status.FAILED};
         Map<Status, ObservableQueue> queues = new HashMap<>();
         for (Status status : statuses) {
             String queuePrefix =

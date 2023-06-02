@@ -100,7 +100,8 @@ public class TaskResult {
         }
     }
 
-    public TaskResult() {}
+    public TaskResult() {
+    }
 
     /**
      * @return Workflow instance id for which the task result is produced

@@ -47,22 +47,28 @@ import com.sun.jersey.api.client.filter.ClientFilter;
 /** Client for conductor task management including polling for task, updating task status etc. */
 public class TaskClient extends ClientBase {
 
-    private static final GenericType<List<Task>> taskList = new GenericType<List<Task>>() {};
+    private static final GenericType<List<Task>> taskList = new GenericType<List<Task>>() {
+    };
 
     private static final GenericType<List<TaskExecLog>> taskExecLogList =
-            new GenericType<List<TaskExecLog>>() {};
+            new GenericType<List<TaskExecLog>>() {
+            };
 
     private static final GenericType<List<PollData>> pollDataList =
-            new GenericType<List<PollData>>() {};
+            new GenericType<List<PollData>>() {
+            };
 
     private static final GenericType<SearchResult<TaskSummary>> searchResultTaskSummary =
-            new GenericType<SearchResult<TaskSummary>>() {};
+            new GenericType<SearchResult<TaskSummary>>() {
+            };
 
     private static final GenericType<SearchResult<Task>> searchResultTask =
-            new GenericType<SearchResult<Task>>() {};
+            new GenericType<SearchResult<Task>>() {
+            };
 
     private static final GenericType<Map<String, Integer>> queueSizeMap =
-            new GenericType<Map<String, Integer>>() {};
+            new GenericType<Map<String, Integer>>() {
+            };
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TaskClient.class);
 
@@ -129,7 +135,7 @@ public class TaskClient extends ClientBase {
         Validate.notBlank(taskType, "Task type cannot be blank");
         Validate.notBlank(workerId, "Worker id cannot be blank");
 
-        Object[] params = new Object[] {"workerid", workerId, "domain", domain};
+        Object[] params = new Object[]{"workerid", workerId, "domain", domain};
         Task task =
                 ObjectUtils.defaultIfNull(
                         getForEntity("tasks/poll/{taskType}", params, Task.class, taskType),
@@ -155,8 +161,8 @@ public class TaskClient extends ClientBase {
         Validate.isTrue(count > 0, "Count must be greater than 0");
 
         Object[] params =
-                new Object[] {
-                    "workerid", workerId, "count", count, "timeout", timeoutInMillisecond
+                new Object[]{
+                        "workerid", workerId, "count", count, "timeout", timeoutInMillisecond
                 };
         List<Task> tasks = getForEntity("tasks/poll/batch/{taskType}", params, taskList, taskType);
         tasks.forEach(this::populateTaskPayloads);
@@ -181,15 +187,15 @@ public class TaskClient extends ClientBase {
         Validate.isTrue(count > 0, "Count must be greater than 0");
 
         Object[] params =
-                new Object[] {
-                    "workerid",
-                    workerId,
-                    "count",
-                    count,
-                    "timeout",
-                    timeoutInMillisecond,
-                    "domain",
-                    domain
+                new Object[]{
+                        "workerid",
+                        workerId,
+                        "count",
+                        count,
+                        "timeout",
+                        timeoutInMillisecond,
+                        "domain",
+                        domain
                 };
         List<Task> tasks = getForEntity("tasks/poll/batch/{taskType}", params, taskList, taskType);
         tasks.forEach(this::populateTaskPayloads);
@@ -253,8 +259,8 @@ public class TaskClient extends ClientBase {
             if (taskResultSize > payloadSizeThreshold) {
                 if (!conductorClientConfiguration.isExternalPayloadStorageEnabled()
                         || taskResultSize
-                                > conductorClientConfiguration.getTaskOutputMaxPayloadThresholdKB()
-                                        * 1024L) {
+                        > conductorClientConfiguration.getTaskOutputMaxPayloadThresholdKB()
+                        * 1024L) {
                     throw new IllegalArgumentException(
                             String.format(
                                     "The TaskResult payload size: %d is greater than the permissible %d bytes",
@@ -291,7 +297,7 @@ public class TaskClient extends ClientBase {
                 postForEntity(
                         "tasks/{taskId}/ack",
                         null,
-                        new Object[] {"workerid", workerId},
+                        new Object[]{"workerid", workerId},
                         String.class,
                         taskId);
         return Boolean.valueOf(response);
@@ -348,8 +354,9 @@ public class TaskClient extends ClientBase {
         Integer queueSize =
                 getForEntity(
                         "tasks/queue/size",
-                        new Object[] {"taskType", taskType},
-                        new GenericType<Integer>() {});
+                        new Object[]{"taskType", taskType},
+                        new GenericType<Integer>() {
+                        });
         return queueSize != null ? queueSize : 0;
     }
 
@@ -380,7 +387,8 @@ public class TaskClient extends ClientBase {
                 getForEntity(
                         "tasks/queue/size",
                         params.toArray(new Object[0]),
-                        new GenericType<Integer>() {});
+                        new GenericType<Integer>() {
+                        });
         return queueSize != null ? queueSize : 0;
     }
 
@@ -393,7 +401,7 @@ public class TaskClient extends ClientBase {
     public List<PollData> getPollData(String taskType) {
         Validate.notBlank(taskType, "Task type cannot be blank");
 
-        Object[] params = new Object[] {"taskType", taskType};
+        Object[] params = new Object[]{"taskType", taskType};
         return getForEntity("tasks/queue/polldata", params, pollDataList);
     }
 
@@ -433,7 +441,7 @@ public class TaskClient extends ClientBase {
      *     query
      */
     public SearchResult<TaskSummary> search(String query) {
-        return getForEntity("tasks/search", new Object[] {"query", query}, searchResultTaskSummary);
+        return getForEntity("tasks/search", new Object[]{"query", query}, searchResultTaskSummary);
     }
 
     /**
@@ -443,7 +451,7 @@ public class TaskClient extends ClientBase {
      * @return returns the {@link SearchResult} containing the {@link Task} matching the query
      */
     public SearchResult<Task> searchV2(String query) {
-        return getForEntity("tasks/search-v2", new Object[] {"query", query}, searchResultTask);
+        return getForEntity("tasks/search-v2", new Object[]{"query", query}, searchResultTask);
     }
 
     /**
@@ -459,8 +467,8 @@ public class TaskClient extends ClientBase {
     public SearchResult<TaskSummary> search(
             Integer start, Integer size, String sort, String freeText, String query) {
         Object[] params =
-                new Object[] {
-                    "start", start, "size", size, "sort", sort, "freeText", freeText, "query", query
+                new Object[]{
+                        "start", start, "size", size, "sort", sort, "freeText", freeText, "query", query
                 };
         return getForEntity("tasks/search", params, searchResultTaskSummary);
     }
@@ -478,8 +486,8 @@ public class TaskClient extends ClientBase {
     public SearchResult<Task> searchV2(
             Integer start, Integer size, String sort, String freeText, String query) {
         Object[] params =
-                new Object[] {
-                    "start", start, "size", size, "sort", sort, "freeText", freeText, "query", query
+                new Object[]{
+                        "start", start, "size", size, "sort", sort, "freeText", freeText, "query", query
                 };
         return getForEntity("tasks/search-v2", params, searchResultTask);
     }

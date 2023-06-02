@@ -57,7 +57,8 @@ public @interface TaskReferenceNameUniqueConstraint {
             implements ConstraintValidator<TaskReferenceNameUniqueConstraint, WorkflowDef> {
 
         @Override
-        public void initialize(TaskReferenceNameUniqueConstraint constraintAnnotation) {}
+        public void initialize(TaskReferenceNameUniqueConstraint constraintAnnotation) {
+        }
 
         @Override
         public boolean isValid(WorkflowDef workflowDef, ConstraintValidatorContext context) {
@@ -104,7 +105,7 @@ public @interface TaskReferenceNameUniqueConstraint {
                                 errors.forEach(
                                         message ->
                                                 context.buildConstraintViolationWithTemplate(
-                                                                message)
+                                                        message)
                                                         .addConstraintViolation());
                                 if (errors.size() > 0) {
                                     valid.setValue(false);

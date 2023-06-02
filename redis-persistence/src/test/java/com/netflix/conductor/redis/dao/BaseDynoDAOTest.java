@@ -28,9 +28,11 @@ import static org.mockito.Mockito.when;
 
 public class BaseDynoDAOTest {
 
-    @Mock private JedisProxy jedisProxy;
+    @Mock
+    private JedisProxy jedisProxy;
 
-    @Mock private ObjectMapper objectMapper;
+    @Mock
+    private ObjectMapper objectMapper;
 
     private RedisProperties properties;
     private ConductorProperties conductorProperties;

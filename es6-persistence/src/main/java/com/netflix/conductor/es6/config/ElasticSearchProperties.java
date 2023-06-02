@@ -213,8 +213,8 @@ public class ElasticSearchProperties {
                 .map(
                         host ->
                                 (host.startsWith("http://")
-                                                || host.startsWith("https://")
-                                                || host.startsWith("tcp://"))
+                                        || host.startsWith("https://")
+                                        || host.startsWith("tcp://"))
                                         ? toURL(host)
                                         : toURL("tcp://" + host))
                 .collect(Collectors.toList());

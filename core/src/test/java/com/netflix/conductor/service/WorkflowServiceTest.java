@@ -86,13 +86,17 @@ public class WorkflowServiceTest {
         }
     }
 
-    @Autowired private WorkflowExecutor workflowExecutor;
+    @Autowired
+    private WorkflowExecutor workflowExecutor;
 
-    @Autowired private ExecutionService executionService;
+    @Autowired
+    private ExecutionService executionService;
 
-    @Autowired private MetadataService metadataService;
+    @Autowired
+    private MetadataService metadataService;
 
-    @Autowired private WorkflowService workflowService;
+    @Autowired
+    private WorkflowService workflowService;
 
     @Test(expected = ConstraintViolationException.class)
     public void testStartWorkflowNull() {
@@ -126,7 +130,7 @@ public class WorkflowServiceTest {
         List<Workflow> workflowArrayList = Collections.singletonList(workflow);
 
         when(executionService.getWorkflowInstances(
-                        anyString(), anyString(), anyBoolean(), anyBoolean()))
+                anyString(), anyString(), anyBoolean(), anyBoolean()))
                 .thenReturn(workflowArrayList);
         assertEquals(workflowArrayList, workflowService.getWorkflows("test", "c123", true, true));
     }
@@ -144,7 +148,7 @@ public class WorkflowServiceTest {
         workflowMap.put("c123", workflowArrayList);
 
         when(executionService.getWorkflowInstances(
-                        anyString(), anyString(), anyBoolean(), anyBoolean()))
+                anyString(), anyString(), anyBoolean(), anyBoolean()))
                 .thenReturn(workflowArrayList);
         assertEquals(
                 workflowMap, workflowService.getWorkflows("test", true, true, correlationIdList));
@@ -480,7 +484,7 @@ public class WorkflowServiceTest {
         SearchResult<WorkflowSummary> searchResult = new SearchResult<>(100, listOfWorkflowSummary);
 
         when(executionService.searchWorkflowByTasks(
-                        "*", "*", 0, 100, Collections.singletonList("asc")))
+                "*", "*", 0, 100, Collections.singletonList("asc")))
                 .thenReturn(searchResult);
         assertEquals(searchResult, workflowService.searchWorkflowsByTasks(0, 100, "asc", "*", "*"));
         assertEquals(
@@ -498,7 +502,7 @@ public class WorkflowServiceTest {
         SearchResult<Workflow> searchResult = new SearchResult<>(1, listOfWorkflow);
 
         when(executionService.searchWorkflowByTasksV2(
-                        "*", "*", 0, 100, Collections.singletonList("asc")))
+                "*", "*", 0, 100, Collections.singletonList("asc")))
                 .thenReturn(searchResult);
         assertEquals(
                 searchResult, workflowService.searchWorkflowsByTasksV2(0, 100, "asc", "*", "*"));

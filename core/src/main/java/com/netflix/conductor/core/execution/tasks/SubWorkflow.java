@@ -143,7 +143,7 @@ public class SubWorkflow extends WorkflowSystemTask {
                 StringUtils.isEmpty(workflow.getReasonForIncompletion())
                         ? "Parent workflow has been terminated with status " + workflow.getStatus()
                         : "Parent workflow has been terminated with reason: "
-                                + workflow.getReasonForIncompletion();
+                        + workflow.getReasonForIncompletion();
         workflowExecutor.terminateWorkflow(subWorkflow, reason, null);
     }
 

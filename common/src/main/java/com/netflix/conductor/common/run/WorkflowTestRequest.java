@@ -35,7 +35,8 @@ public class WorkflowTestRequest extends StartWorkflowRequest {
         // simulating timeout conditions
         private long queueWaitTime; // Time in millis for the wait time in the queue.
 
-        public TaskMock() {}
+        public TaskMock() {
+        }
 
         public TaskMock(TaskResult.Status status, Map<String, Object> output) {
             this.status = status;

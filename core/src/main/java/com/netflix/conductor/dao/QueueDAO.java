@@ -125,7 +125,8 @@ public interface QueueDAO {
      */
     Map<String, Map<String, Map<String, Long>>> queuesDetailVerbose();
 
-    default void processUnacks(String queueName) {}
+    default void processUnacks(String queueName) {
+    }
 
     /**
      * Resets the offsetTime on a message to 0, without pulling out the message from the queue

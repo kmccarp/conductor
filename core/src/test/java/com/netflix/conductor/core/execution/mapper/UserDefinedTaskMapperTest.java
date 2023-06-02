@@ -40,7 +40,8 @@ public class UserDefinedTaskMapperTest {
 
     private UserDefinedTaskMapper userDefinedTaskMapper;
 
-    @Rule public ExpectedException expectedException = ExpectedException.none();
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
 
     @Before
     public void setUp() {

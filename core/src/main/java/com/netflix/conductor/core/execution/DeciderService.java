@@ -76,7 +76,7 @@ public class DeciderService {
             SystemTaskRegistry systemTaskRegistry,
             @Qualifier("taskMappersByTaskType") Map<String, TaskMapper> taskMappers,
             @Value("${conductor.app.taskPendingTimeThreshold:60m}")
-                    Duration taskPendingTimeThreshold) {
+            Duration taskPendingTimeThreshold) {
         this.idGenerator = idGenerator;
         this.metadataDAO = metadataDAO;
         this.parametersUtils = parametersUtils;
@@ -177,9 +177,9 @@ public class DeciderService {
             if (taskDefinition.isEmpty()) {
                 taskDefinition =
                         Optional.ofNullable(
-                                        workflow.getWorkflowDefinition()
-                                                .getTaskByRefName(
-                                                        pendingTask.getReferenceTaskName()))
+                                workflow.getWorkflowDefinition()
+                                        .getTaskByRefName(
+                                                pendingTask.getReferenceTaskName()))
                                 .map(WorkflowTask::getTaskDefinition);
             }
 
@@ -462,7 +462,7 @@ public class DeciderService {
         // Get the following task after the last completed task
         if (systemTaskRegistry.isSystemTask(task.getTaskType())
                 && (TaskType.TASK_TYPE_DECISION.equals(task.getTaskType())
-                        || TaskType.TASK_TYPE_SWITCH.equals(task.getTaskType()))) {
+                || TaskType.TASK_TYPE_SWITCH.equals(task.getTaskType()))) {
             if (task.getInputData().get("hasChildren") != null) {
                 return Collections.emptyList();
             }
@@ -524,8 +524,8 @@ public class DeciderService {
                 taskDefinition == null
                         ? 0
                         : Optional.ofNullable(workflowTask)
-                                .map(WorkflowTask::getRetryCount)
-                                .orElse(taskDefinition.getRetryCount());
+                        .map(WorkflowTask::getRetryCount)
+                        .orElse(taskDefinition.getRetryCount());
         if (!task.getStatus().isRetriable()
                 || TaskType.isBuiltIn(task.getTaskType())
                 || expectedRetryCount <= retryCount) {
@@ -903,6 +903,7 @@ public class DeciderService {
         boolean isComplete;
         TaskModel terminateTask;
 
-        private DeciderOutcome() {}
+        private DeciderOutcome() {
+        }
     }
 }

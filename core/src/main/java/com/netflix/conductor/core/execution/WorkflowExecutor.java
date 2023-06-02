@@ -211,9 +211,9 @@ public class WorkflowExecutor {
 
         if (!workflowDef.isRestartable()
                 && workflow.getStatus()
-                        .equals(
-                                WorkflowModel.Status
-                                        .COMPLETED)) { // Can only restart non-completed workflows
+                .equals(
+                        WorkflowModel.Status
+                                .COMPLETED)) { // Can only restart non-completed workflows
             // when the configuration is set to false
             throw new NotFoundException("Workflow: %s is non-restartable", workflow);
         }
@@ -300,7 +300,7 @@ public class WorkflowExecutor {
             workflowIdentifier =
                     !workflowIdentifier.equals("")
                             ? String.format(
-                                    "%s -> %s", currentWorkflowIdentifier, workflowIdentifier)
+                            "%s -> %s", currentWorkflowIdentifier, workflowIdentifier)
                             : currentWorkflowIdentifier;
             TaskExecLog log =
                     new TaskExecLog(
@@ -599,7 +599,7 @@ public class WorkflowExecutor {
                                     t ->
                                             FAILED.equals(t.getStatus())
                                                     || FAILED_WITH_TERMINAL_ERROR.equals(
-                                                            t.getStatus()))
+                                                    t.getStatus()))
                             .collect(Collectors.toList());
 
             workflow.getFailedReferenceTaskNames()
@@ -1073,7 +1073,7 @@ public class WorkflowExecutor {
             // find all terminal and unsuccessful JOIN tasks and set them to IN_PROGRESS
             if (workflow.getWorkflowDefinition().containsType(TaskType.TASK_TYPE_JOIN)
                     || workflow.getWorkflowDefinition()
-                            .containsType(TaskType.TASK_TYPE_FORK_JOIN_DYNAMIC)) {
+                    .containsType(TaskType.TASK_TYPE_FORK_JOIN_DYNAMIC)) {
                 // if we are here, then the SUB_WORKFLOW task could be part of a FORK_JOIN or
                 // FORK_JOIN_DYNAMIC
                 // and the JOIN task(s) needs to be evaluated again, set them to IN_PROGRESS
@@ -1104,7 +1104,7 @@ public class WorkflowExecutor {
                                                                         "Workflow Definition is not found")));
         if (workflowDef.containsType(TaskType.TASK_TYPE_SUB_WORKFLOW)
                 || workflow.getWorkflowDefinition()
-                        .containsType(TaskType.TASK_TYPE_FORK_JOIN_DYNAMIC)) {
+                .containsType(TaskType.TASK_TYPE_FORK_JOIN_DYNAMIC)) {
             return workflow.getTasks().stream()
                     .filter(
                             t ->
@@ -1695,8 +1695,8 @@ public class WorkflowExecutor {
                 .orElseGet(
                         () ->
                                 Optional.ofNullable(
-                                                metadataDAO.getTaskDef(
-                                                        task.getWorkflowTask().getName()))
+                                        metadataDAO.getTaskDef(
+                                                task.getWorkflowTask().getName()))
                                         .orElseThrow(
                                                 () -> {
                                                     String reason =

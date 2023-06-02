@@ -88,7 +88,8 @@ public class WorkflowSummary {
     @ProtoField(id = 18)
     private Set<String> failedTaskNames = new HashSet<>();
 
-    public WorkflowSummary() {}
+    public WorkflowSummary() {
+    }
 
     public WorkflowSummary(Workflow workflow) {
 

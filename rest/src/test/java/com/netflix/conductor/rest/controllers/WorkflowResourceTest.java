@@ -43,9 +43,11 @@ import static org.mockito.Mockito.when;
 
 public class WorkflowResourceTest {
 
-    @Mock private WorkflowService mockWorkflowService;
+    @Mock
+    private WorkflowService mockWorkflowService;
 
-    @Mock private WorkflowTestService mockWorkflowTestService;
+    @Mock
+    private WorkflowTestService mockWorkflowTestService;
 
     private WorkflowResource workflowResource;
 
@@ -76,7 +78,7 @@ public class WorkflowResourceTest {
         input.put("1", "abc");
         String workflowID = "w112";
         when(mockWorkflowService.startWorkflow(
-                        anyString(), anyInt(), anyString(), anyInt(), anyMap()))
+                anyString(), anyInt(), anyString(), anyInt(), anyMap()))
                 .thenReturn(workflowID);
         assertEquals("w112", workflowResource.startWorkflow("test1", 1, "c123", 0, input));
     }

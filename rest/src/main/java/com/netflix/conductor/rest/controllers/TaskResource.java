@@ -72,7 +72,7 @@ public class TaskResource {
             @RequestParam(value = "timeout", defaultValue = "100") int timeout) {
         // for backwards compatibility with 2.x client which expects a 204 when no Task is found
         return Optional.ofNullable(
-                        taskService.batchPoll(taskType, workerId, domain, count, timeout))
+                taskService.batchPoll(taskType, workerId, domain, count, timeout))
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.noContent().build());
     }
@@ -119,7 +119,7 @@ public class TaskResource {
             @RequestParam(value = "domain", required = false) String domain,
             @RequestParam(value = "isolationGroupId", required = false) String isolationGroupId,
             @RequestParam(value = "executionNamespace", required = false)
-                    String executionNamespace) {
+            String executionNamespace) {
         return taskService.getTaskQueueSize(taskType, domain, executionNamespace, isolationGroupId);
     }
 

@@ -122,9 +122,9 @@ public class MetadataClient extends ClientBase {
         Preconditions.checkArgument(StringUtils.isNotBlank(taskType), "Task type cannot be blank");
         return protoMapper.fromProto(
                 stub.getTask(
-                                MetadataServicePb.GetTaskRequest.newBuilder()
-                                        .setTaskType(taskType)
-                                        .build())
+                        MetadataServicePb.GetTaskRequest.newBuilder()
+                                .setTaskType(taskType)
+                                .build())
                         .getTask());
     }
 

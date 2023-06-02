@@ -120,15 +120,15 @@ public class ConductorObservableQueue implements ObservableQueue {
             Observable<Long> interval =
                     Observable.interval(pollTimeMS, TimeUnit.MILLISECONDS, scheduler);
             interval.flatMap(
-                            (Long x) -> {
-                                if (!isRunning()) {
-                                    LOGGER.debug(
-                                            "Component stopped, skip listening for messages from Conductor Queue");
-                                    return Observable.from(Collections.emptyList());
-                                }
-                                List<Message> messages = receiveMessages();
-                                return Observable.from(messages);
-                            })
+                    (Long x) -> {
+                        if (!isRunning()) {
+                            LOGGER.debug(
+                                    "Component stopped, skip listening for messages from Conductor Queue");
+                            return Observable.from(Collections.emptyList());
+                        }
+                        List<Message> messages = receiveMessages();
+                        return Observable.from(messages);
+                    })
                     .subscribe(subscriber::onNext, subscriber::onError);
         };
     }

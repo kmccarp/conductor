@@ -73,7 +73,7 @@ public class AdminResource {
     @Operation(summary = "Get registered queues")
     public Map<String, ?> getEventQueues(
             @RequestParam(value = "verbose", defaultValue = "false", required = false)
-                    boolean verbose) {
+            boolean verbose) {
         return adminService.getEventQueues(verbose);
     }
 }

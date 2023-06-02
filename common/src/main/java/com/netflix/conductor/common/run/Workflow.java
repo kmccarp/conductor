@@ -126,7 +126,8 @@ public class Workflow extends Auditable {
     @ProtoField(id = 25)
     private Set<String> failedTaskNames = new HashSet<>();
 
-    public Workflow() {}
+    public Workflow() {
+    }
 
     /**
      * @return the status
@@ -543,14 +544,14 @@ public class Workflow extends Auditable {
                 && Objects.equals(getEvent(), workflow.getEvent())
                 && Objects.equals(getTaskToDomain(), workflow.getTaskToDomain())
                 && Objects.equals(
-                        getFailedReferenceTaskNames(), workflow.getFailedReferenceTaskNames())
+                getFailedReferenceTaskNames(), workflow.getFailedReferenceTaskNames())
                 && Objects.equals(getFailedTaskNames(), workflow.getFailedTaskNames())
                 && Objects.equals(
-                        getExternalInputPayloadStoragePath(),
-                        workflow.getExternalInputPayloadStoragePath())
+                getExternalInputPayloadStoragePath(),
+                workflow.getExternalInputPayloadStoragePath())
                 && Objects.equals(
-                        getExternalOutputPayloadStoragePath(),
-                        workflow.getExternalOutputPayloadStoragePath())
+                getExternalOutputPayloadStoragePath(),
+                workflow.getExternalOutputPayloadStoragePath())
                 && Objects.equals(getPriority(), workflow.getPriority())
                 && Objects.equals(getWorkflowDefinition(), workflow.getWorkflowDefinition())
                 && Objects.equals(getVariables(), workflow.getVariables())

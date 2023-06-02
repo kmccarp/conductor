@@ -49,7 +49,8 @@ public class EventServiceTest {
         }
     }
 
-    @Autowired private EventService eventService;
+    @Autowired
+    private EventService eventService;
 
     @Test(expected = ConstraintViolationException.class)
     public void testAddEventHandler() {

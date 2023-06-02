@@ -52,7 +52,8 @@ public class DefaultEventQueueProcessor {
     private static final Logger LOGGER = LoggerFactory.getLogger(DefaultEventQueueProcessor.class);
     private final Map<Status, ObservableQueue> queues;
     private final WorkflowExecutor workflowExecutor;
-    private static final TypeReference<Map<String, Object>> _mapType = new TypeReference<>() {};
+    private static final TypeReference<Map<String, Object>> _mapType = new TypeReference<>() {
+    };
     private final ObjectMapper objectMapper;
 
     public DefaultEventQueueProcessor(
@@ -104,7 +105,7 @@ public class DefaultEventQueueProcessor {
                                                             task ->
                                                                     !task.getStatus().isTerminal()
                                                                             && task.getTaskId()
-                                                                                    .equals(taskId))
+                                                                            .equals(taskId))
                                                     .findFirst();
                                 } else if (StringUtils.isEmpty(taskRefName)) {
                                     LOGGER.error(
@@ -116,8 +117,8 @@ public class DefaultEventQueueProcessor {
                                                             task ->
                                                                     !task.getStatus().isTerminal()
                                                                             && task.getTaskType()
-                                                                                    .equals(
-                                                                                            TASK_TYPE_WAIT))
+                                                                            .equals(
+                                                                                    TASK_TYPE_WAIT))
                                                     .findFirst();
                                 } else {
                                     optionalTaskModel =
@@ -126,11 +127,11 @@ public class DefaultEventQueueProcessor {
                                                             task ->
                                                                     !task.getStatus().isTerminal()
                                                                             && TaskUtils
-                                                                                    .removeIterationFromTaskRefName(
-                                                                                            task
-                                                                                                    .getReferenceTaskName())
-                                                                                    .equals(
-                                                                                            taskRefName))
+                                                                            .removeIterationFromTaskRefName(
+                                                                                    task
+                                                                                            .getReferenceTaskName())
+                                                                            .equals(
+                                                                                    taskRefName))
                                                     .findFirst();
                                 }
 

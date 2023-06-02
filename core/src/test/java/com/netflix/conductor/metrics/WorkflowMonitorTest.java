@@ -31,9 +31,12 @@ import com.netflix.conductor.service.MetadataService;
 @RunWith(SpringRunner.class)
 public class WorkflowMonitorTest {
 
-    @Mock private MetadataService metadataService;
-    @Mock private QueueDAO queueDAO;
-    @Mock private ExecutionDAOFacade executionDAOFacade;
+    @Mock
+    private MetadataService metadataService;
+    @Mock
+    private QueueDAO queueDAO;
+    @Mock
+    private ExecutionDAOFacade executionDAOFacade;
 
     private WorkflowMonitor workflowMonitor;
 

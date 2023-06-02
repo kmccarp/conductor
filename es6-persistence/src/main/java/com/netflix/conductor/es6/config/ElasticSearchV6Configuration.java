@@ -164,8 +164,8 @@ public class ElasticSearchV6Configuration {
                 .map(
                         host ->
                                 (host.startsWith("http://")
-                                                || host.startsWith("https://")
-                                                || host.startsWith("tcp://"))
+                                        || host.startsWith("https://")
+                                        || host.startsWith("tcp://"))
                                         ? URI.create(host)
                                         : URI.create("tcp://" + host))
                 .collect(Collectors.toList());

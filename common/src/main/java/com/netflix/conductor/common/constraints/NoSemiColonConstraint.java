@@ -43,7 +43,8 @@ public @interface NoSemiColonConstraint {
     class NoSemiColonValidator implements ConstraintValidator<NoSemiColonConstraint, String> {
 
         @Override
-        public void initialize(NoSemiColonConstraint constraintAnnotation) {}
+        public void initialize(NoSemiColonConstraint constraintAnnotation) {
+        }
 
         @Override
         public boolean isValid(String value, ConstraintValidatorContext context) {

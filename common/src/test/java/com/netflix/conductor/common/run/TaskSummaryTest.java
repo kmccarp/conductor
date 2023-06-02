@@ -29,7 +29,8 @@ import static org.junit.Assert.assertNotNull;
 @RunWith(SpringRunner.class)
 public class TaskSummaryTest {
 
-    @Autowired private ObjectMapper objectMapper;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Test
     public void testJsonSerializing() throws Exception {

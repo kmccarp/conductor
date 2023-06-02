@@ -47,7 +47,8 @@ import static org.junit.Assert.assertTrue;
 @TestPropertySource(properties = "conductor.queue.type=")
 public class ConductorObjectMapperTest {
 
-    @Autowired ObjectMapper objectMapper;
+    @Autowired
+    ObjectMapper objectMapper;
 
     @Test
     public void testSimpleMapping() throws IOException {

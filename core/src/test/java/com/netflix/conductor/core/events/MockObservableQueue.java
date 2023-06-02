@@ -67,7 +67,8 @@ public class MockObservableQueue implements ObservableQueue {
     }
 
     @Override
-    public void setUnackTimeout(Message message, long unackTimeout) {}
+    public void setUnackTimeout(Message message, long unackTimeout) {
+    }
 
     @Override
     public long size() {
@@ -80,10 +81,12 @@ public class MockObservableQueue implements ObservableQueue {
     }
 
     @Override
-    public void start() {}
+    public void start() {
+    }
 
     @Override
-    public void stop() {}
+    public void stop() {
+    }
 
     @Override
     public boolean isRunning() {

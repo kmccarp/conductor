@@ -1124,7 +1124,7 @@ public class ElasticSearchRestDAOV6 extends ElasticSearchBaseDAO implements Inde
         sourceBuilder.query(queryBuilder);
 
         String indexName = getIndexName(docType);
-        CountRequest countRequest = new CountRequest(new String[] {indexName}, sourceBuilder);
+        CountRequest countRequest = new CountRequest(new String[]{indexName}, sourceBuilder);
         CountResponse countResponse =
                 elasticSearchClient.count(countRequest, RequestOptions.DEFAULT);
         return countResponse.getCount();

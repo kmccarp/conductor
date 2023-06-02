@@ -51,7 +51,8 @@ public class TestSubWorkflow {
     private SubWorkflow subWorkflow;
     private StartWorkflowOperation startWorkflowOperation;
 
-    @Autowired private ObjectMapper objectMapper;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Before
     public void setup() {

@@ -50,7 +50,8 @@ public class Monitors {
 
     public static final String classQualifier = "WorkflowMonitor";
 
-    private Monitors() {}
+    private Monitors() {
+    }
 
     /**
      * Increment a counter that is used to measure the rate at which some event is occurring.
@@ -180,14 +181,14 @@ public class Monitors {
     public static void recordTaskExecutionTime(
             String taskType, long duration, boolean includesRetries, TaskModel.Status status) {
         getTimer(
-                        classQualifier,
-                        "task_execution",
-                        "taskType",
-                        taskType,
-                        "includeRetries",
-                        "" + includesRetries,
-                        "status",
-                        status.name())
+                classQualifier,
+                "task_execution",
+                "taskType",
+                taskType,
+                "includeRetries",
+                "" + includesRetries,
+                "status",
+                status.name())
                 .record(duration, TimeUnit.MILLISECONDS);
     }
 
@@ -382,12 +383,12 @@ public class Monitors {
     public static void recordWorkflowCompletion(
             String workflowType, long duration, String ownerApp) {
         getTimer(
-                        classQualifier,
-                        "workflow_execution",
-                        "workflowName",
-                        workflowType,
-                        "ownerApp",
-                        StringUtils.defaultIfBlank(ownerApp, "unknown"))
+                classQualifier,
+                "workflow_execution",
+                "workflowName",
+                workflowType,
+                "ownerApp",
+                StringUtils.defaultIfBlank(ownerApp, "unknown"))
                 .record(duration, TimeUnit.MILLISECONDS);
     }
 
@@ -407,12 +408,12 @@ public class Monitors {
     public static void recordEventQueueMessagesProcessed(
             String queueType, String queueName, int count) {
         getCounter(
-                        classQualifier,
-                        "event_queue_messages_processed",
-                        "queueType",
-                        queueType,
-                        "queueName",
-                        queueName)
+                classQualifier,
+                "event_queue_messages_processed",
+                "queueType",
+                queueType,
+                "queueName",
+                queueName)
                 .increment(count);
     }
 
