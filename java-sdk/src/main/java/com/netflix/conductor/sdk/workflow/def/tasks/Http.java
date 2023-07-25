@@ -275,8 +275,12 @@ public class Http extends Task<Http> {
 
         @Override
         public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
             Input input = (Input) o;
             return method == input.method
                     && Objects.equals(vipAddress, input.vipAddress)

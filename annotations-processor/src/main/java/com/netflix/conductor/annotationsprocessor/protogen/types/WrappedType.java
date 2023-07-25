@@ -21,18 +21,20 @@ import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeName;
 
 public class WrappedType extends AbstractType {
-    private AbstractType realType;
-    private MessageType wrappedType;
+    private final AbstractType realType;
+    private final MessageType wrappedType;
 
     public static WrappedType wrap(GenericType realType) {
         Type valueType = realType.getValueType().getJavaType();
-        if (!(valueType instanceof Class))
+        if (!(valueType instanceof Class)) {
             throw new IllegalArgumentException("cannot wrap primitive type: " + valueType);
+        }
 
         String className = ((Class) valueType).getSimpleName() + realType.getWrapperSuffix();
         MessageType wrappedType = TypeMapper.INSTANCE.get(className);
-        if (wrappedType == null)
+        if (wrappedType == null) {
             throw new IllegalArgumentException("missing wrapper class: " + className);
+        }
         return new WrappedType(realType, wrappedType);
     }
 

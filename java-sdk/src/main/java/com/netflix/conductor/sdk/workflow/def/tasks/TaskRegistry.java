@@ -24,7 +24,7 @@ public class TaskRegistry {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TaskRegistry.class);
 
-    private static Map<String, Class<? extends Task>> taskTypeMap = new HashMap<>();
+    private static final Map<String, Class<? extends Task>> taskTypeMap = new HashMap<>();
 
     public static void register(String taskType, Class<? extends Task> taskImplementation) {
         taskTypeMap.put(taskType, taskImplementation);

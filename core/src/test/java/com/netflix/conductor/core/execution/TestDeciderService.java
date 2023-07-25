@@ -1106,7 +1106,7 @@ public class TestDeciderService {
         task.setTaskType(TASK_TYPE_TERMINATE);
         task.setStatus(TaskModel.Status.COMPLETED);
         task.setOutputData(
-                new HashMap<String, Object>() {
+                new HashMap<>() {
                     {
                         put("taskKey", "taskValue");
                     }

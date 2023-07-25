@@ -24,9 +24,6 @@ public class IsTcpProtocol implements Condition {
     @Override
     public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
         String url = context.getEnvironment().getProperty("conductor.elasticsearch.url");
-        if (url.startsWith("http") || url.startsWith("https")) {
-            return false;
-        }
-        return true;
+        return !(url.startsWith("http") || url.startsWith("https"));
     }
 }

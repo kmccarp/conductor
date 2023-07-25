@@ -35,7 +35,7 @@ public class DynamicForkWorker implements Worker {
 
     private final String name;
 
-    private ObjectMapper objectMapper = new ObjectMapperProvider().getObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapperProvider().getObjectMapper();
 
     public DynamicForkWorker(
             String name, Function<Object, DynamicForkInput> workerMethod, int pollingInterval) {

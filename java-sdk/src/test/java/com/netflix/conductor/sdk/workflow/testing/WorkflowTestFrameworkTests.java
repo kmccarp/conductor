@@ -74,7 +74,7 @@ public class WorkflowTestFrameworkTests {
         assertFalse(workflow.getTasks().isEmpty());
         assertTrue(
                 workflow.getTasks().stream()
-                        .anyMatch(task -> task.getTaskDefName().equals("task_6")));
+                        .anyMatch(task -> "task_6".equals(task.getTaskDefName())));
 
         // task_2's implementation fails at the first try, so we should have to instances of task_2
         // execution
@@ -82,11 +82,11 @@ public class WorkflowTestFrameworkTests {
         assertEquals(
                 2,
                 workflow.getTasks().stream()
-                        .filter(task -> task.getTaskDefName().equals("task_2"))
+                        .filter(task -> "task_2".equals(task.getTaskDefName()))
                         .count());
         List<Task> task2Executions =
                 workflow.getTasks().stream()
-                        .filter(task -> task.getTaskDefName().equals("task_2"))
+                        .filter(task -> "task_2".equals(task.getTaskDefName()))
                         .collect(Collectors.toList());
         assertNotNull(task2Executions);
         assertEquals(2, task2Executions.size());
