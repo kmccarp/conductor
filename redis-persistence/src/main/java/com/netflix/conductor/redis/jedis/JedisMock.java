@@ -290,7 +290,8 @@ public class JedisMock extends Jedis {
     @Override
     public String hmset(final String key, final Map<String, String> hash) {
         try {
-            String field = null, value = null;
+            String field = null;
+            String value = null;
             String[] args = new String[(hash.size() - 1) * 2];
             int idx = 0;
             for (String f : hash.keySet()) {

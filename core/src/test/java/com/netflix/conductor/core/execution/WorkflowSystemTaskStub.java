@@ -18,7 +18,7 @@ import com.netflix.conductor.model.WorkflowModel;
 
 public class WorkflowSystemTaskStub extends WorkflowSystemTask {
 
-    private boolean started = false;
+    private boolean started;
 
     public WorkflowSystemTaskStub(String taskType) {
         super(taskType);

@@ -46,18 +46,18 @@ public class ConstraintParamUtilTest {
     public void testExtractParamPathComponents() {
         WorkflowDef workflowDef = constructWorkflowDef();
 
-        WorkflowTask workflowTask_1 = new WorkflowTask();
-        workflowTask_1.setName("task_1");
-        workflowTask_1.setTaskReferenceName("task_1");
-        workflowTask_1.setType(TaskType.TASK_TYPE_SIMPLE);
+        WorkflowTask workflowTask1 = new WorkflowTask();
+        workflowTask1.setName("task_1");
+        workflowTask1.setTaskReferenceName("task_1");
+        workflowTask1.setType(TaskType.TASK_TYPE_SIMPLE);
 
         Map<String, Object> inputParam = new HashMap<>();
         inputParam.put("taskId", "${CPEWF_TASK_ID}");
 
-        workflowTask_1.setInputParameters(inputParam);
+        workflowTask1.setInputParameters(inputParam);
 
         List<WorkflowTask> tasks = new ArrayList<>();
-        tasks.add(workflowTask_1);
+        tasks.add(workflowTask1);
 
         workflowDef.setTasks(tasks);
 
