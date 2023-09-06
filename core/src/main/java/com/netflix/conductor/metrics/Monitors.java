@@ -30,7 +30,7 @@ import com.netflix.spectator.api.Spectator;
 import com.netflix.spectator.api.Timer;
 import com.netflix.spectator.api.histogram.PercentileTimer;
 
-public class Monitors {
+public final class Monitors {
 
     private static final Registry registry = Spectator.globalRegistry();
 
@@ -145,13 +145,12 @@ public class Monitors {
     private static Map<String, String> toMap(String className, String... additionalTags) {
         Map<String, String> tags = new HashMap<>();
         tags.put("class", className);
-        for (int j = 0; j < additionalTags.length - 1; j++) {
+        for (int j = 0; j < additionalTags.length - 1; j++, j++) {
             String tk = additionalTags[j];
             String tv = "" + additionalTags[j + 1];
             if (!tv.isEmpty()) {
                 tags.put(tk, tv);
             }
-            j++;
         }
         return tags;
     }

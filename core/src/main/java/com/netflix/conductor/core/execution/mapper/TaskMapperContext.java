@@ -22,7 +22,7 @@ import com.netflix.conductor.model.TaskModel;
 import com.netflix.conductor.model.WorkflowModel;
 
 /** Business Object class used for interaction between the DeciderService and Different Mappers */
-public class TaskMapperContext {
+public final class TaskMapperContext {
 
     private final WorkflowModel workflowModel;
     private final TaskDef taskDefinition;

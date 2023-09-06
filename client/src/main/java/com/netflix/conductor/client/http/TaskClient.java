@@ -47,22 +47,22 @@ import com.sun.jersey.api.client.filter.ClientFilter;
 /** Client for conductor task management including polling for task, updating task status etc. */
 public class TaskClient extends ClientBase {
 
-    private static final GenericType<List<Task>> taskList = new GenericType<List<Task>>() {};
+    private static final GenericType<List<Task>> taskList = new GenericType<>() {};
 
     private static final GenericType<List<TaskExecLog>> taskExecLogList =
-            new GenericType<List<TaskExecLog>>() {};
+            new GenericType<>() {};
 
     private static final GenericType<List<PollData>> pollDataList =
-            new GenericType<List<PollData>>() {};
+            new GenericType<>() {};
 
     private static final GenericType<SearchResult<TaskSummary>> searchResultTaskSummary =
-            new GenericType<SearchResult<TaskSummary>>() {};
+            new GenericType<>() {};
 
     private static final GenericType<SearchResult<Task>> searchResultTask =
-            new GenericType<SearchResult<Task>>() {};
+            new GenericType<>() {};
 
     private static final GenericType<Map<String, Integer>> queueSizeMap =
-            new GenericType<Map<String, Integer>>() {};
+            new GenericType<>() {};
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TaskClient.class);
 

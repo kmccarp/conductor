@@ -47,13 +47,13 @@ public class WorkflowBuilder<T> {
 
     private T defaultInput;
 
-    private Map<String, Object> output = new HashMap<>();
+    private final Map<String, Object> output = new HashMap<>();
 
     private Map<String, Object> state;
 
     protected List<Task<?>> tasks = new ArrayList<>();
 
-    private WorkflowExecutor workflowExecutor;
+    private final WorkflowExecutor workflowExecutor;
 
     public final InputOutputGetter input =
             new InputOutputGetter("workflow", InputOutputGetter.Field.input);
@@ -152,7 +152,7 @@ public class WorkflowBuilder<T> {
 
         validate();
 
-        ConductorWorkflow<T> workflow = new ConductorWorkflow<T>(workflowExecutor);
+        ConductorWorkflow<T> workflow = new ConductorWorkflow<>(workflowExecutor);
         if (description != null) {
             workflow.setDescription(description);
         }

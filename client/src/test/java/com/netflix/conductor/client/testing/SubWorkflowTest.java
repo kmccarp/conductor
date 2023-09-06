@@ -62,7 +62,7 @@ public class SubWorkflowTest extends AbstractWorkflowTests {
         // That the workflow executes a wait task
         assertTrue(
                 execution.getTasks().stream()
-                        .anyMatch(t -> t.getReferenceTaskName().equals("wait")));
+                        .anyMatch(t -> "wait".equals(t.getReferenceTaskName())));
 
         // That the call_made variable was set to True
         assertEquals(true, execution.getVariables().get("call_made"));

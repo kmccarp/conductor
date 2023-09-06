@@ -22,13 +22,13 @@ import com.squareup.javapoet.ClassName;
 public class ProtoFile {
     public static String PROTO_SUFFIX = "Pb";
 
-    private ClassName baseClass;
-    private AbstractMessage message;
-    private String filePath;
+    private final ClassName baseClass;
+    private final AbstractMessage message;
+    private final String filePath;
 
-    private String protoPackageName;
-    private String javaPackageName;
-    private String goPackageName;
+    private final String protoPackageName;
+    private final String javaPackageName;
+    private final String goPackageName;
 
     public ProtoFile(
             Class<?> object,

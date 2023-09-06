@@ -27,7 +27,7 @@ import com.squareup.javapoet.TypeSpec;
 public abstract class AbstractMessage {
     protected Class<?> clazz;
     protected MessageType type;
-    protected List<Field> fields = new ArrayList<Field>();
+    protected List<Field> fields = new ArrayList<>();
     protected List<AbstractMessage> nested = new ArrayList<>();
 
     public AbstractMessage(Class<?> cls, MessageType parentType) {
@@ -38,8 +38,11 @@ public abstract class AbstractMessage {
         this.type = TypeMapper.INSTANCE.declare(cls, parentType);
 
         for (Class<?> nested : clazz.getDeclaredClasses()) {
-            if (nested.isEnum()) addNestedEnum(nested);
-            else addNestedClass(nested);
+            if (nested.isEnum()) {
+                addNestedEnum(nested);
+            } else {
+                addNestedClass(nested);
+            }
         }
     }
 
