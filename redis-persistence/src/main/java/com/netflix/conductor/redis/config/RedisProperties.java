@@ -51,19 +51,19 @@ public class RedisProperties {
     private String clusterName = "";
 
     /** Dynomite Cluster details. Format is host:port:rack separated by semicolon */
-    private String hosts = null;
+    private String hosts;
 
     /** The prefix used to prepend workflow data in redis */
-    private String workflowNamespacePrefix = null;
+    private String workflowNamespacePrefix;
 
     /** The prefix used to prepend keys for queues in redis */
-    private String queueNamespacePrefix = null;
+    private String queueNamespacePrefix;
 
     /**
      * The domain name to be used in the key prefix for logical separation of workflow data and
      * queues in a shared redis setup
      */
-    private String keyspaceDomain = null;
+    private String keyspaceDomain;
 
     /**
      * The maximum number of connections that can be managed by the connection pool on a given
@@ -78,7 +78,7 @@ public class RedisProperties {
     private Duration maxTimeoutWhenExhausted = Duration.ofMillis(800);
 
     /** The maximum retry attempts to use with this connection pool */
-    private int maxRetryAttempts = 0;
+    private int maxRetryAttempts;
 
     /** The read connection port to be used for connecting to dyno-queues */
     private int queuesNonQuorumPort = 22122;
@@ -104,7 +104,7 @@ public class RedisProperties {
 
     private long timeBetweenEvictionRunsMillis = -1L;
 
-    private boolean testWhileIdle = false;
+    private boolean testWhileIdle;
 
     private int numTestsPerEvictionRun = 3;
 

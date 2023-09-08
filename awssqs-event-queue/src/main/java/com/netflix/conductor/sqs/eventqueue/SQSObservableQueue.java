@@ -56,7 +56,7 @@ import rx.Observable;
 import rx.Observable.OnSubscribe;
 import rx.Scheduler;
 
-public class SQSObservableQueue implements ObservableQueue {
+public final class SQSObservableQueue implements ObservableQueue {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SQSObservableQueue.class);
     private static final String QUEUE_TYPE = "sqs";

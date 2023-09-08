@@ -56,7 +56,7 @@ public class WorkflowMonitor {
 
     private List<TaskDef> taskDefs;
     private List<WorkflowDef> workflowDefs;
-    private int refreshCounter = 0;
+    private int refreshCounter;
 
     public WorkflowMonitor(
             MetadataService metadataService,

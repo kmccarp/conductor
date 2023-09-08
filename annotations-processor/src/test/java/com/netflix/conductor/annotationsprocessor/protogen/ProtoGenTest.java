@@ -61,7 +61,7 @@ public class ProtoGenTest {
         List<File> models = Lists.newArrayList(modelDir.listFiles());
         assertEquals(1, models.size());
         File exampleProtoFile =
-                models.stream().filter(f -> f.getName().equals("example.proto")).findFirst().get();
+                models.stream().filter(f -> "example.proto".equals(f.getName())).findFirst().get();
         assertTrue(exampleProtoFile.length() > 0);
         assertEquals(
                 Resources.asCharSource(Resources.getResource("example.proto.txt"), charset).read(),
