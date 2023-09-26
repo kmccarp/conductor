@@ -37,10 +37,10 @@ class SimpleWorkflowSpec extends AbstractSpecification {
     QueueDAO queueDAO
 
     @Shared
-    def LINEAR_WORKFLOW_T1_T2 = 'integration_test_wf'
+    def linearWorkflowT1T2 = 'integration_test_wf'
 
     @Shared
-    def INTEGRATION_TEST_WF_NON_RESTARTABLE = "integration_test_wf_non_restartable"
+    def integrationTestWfNonRestartable = "integration_test_wf_non_restartable"
 
 
     def setup() {
@@ -52,7 +52,7 @@ class SimpleWorkflowSpec extends AbstractSpecification {
     def "Test simple workflow completion"() {
 
         given: "An existing simple workflow definition"
-        metadataService.getWorkflowDef(LINEAR_WORKFLOW_T1_T2, 1)
+        metadataService.getWorkflowDef(linearWorkflowT1T2, 1)
 
         and: "input required to start the workflow execution"
         String correlationId = 'unit_test_1'
@@ -62,7 +62,7 @@ class SimpleWorkflowSpec extends AbstractSpecification {
         input['param2'] = 'p2 value'
 
         when: "Start a workflow based on the registered simple workflow"
-        def workflowInstanceId = startWorkflow(LINEAR_WORKFLOW_T1_T2, 1,
+        def workflowInstanceId = startWorkflow(linearWorkflowT1T2, 1,
                 correlationId, input,
                 null)
 
@@ -109,7 +109,7 @@ class SimpleWorkflowSpec extends AbstractSpecification {
     def "Test simple workflow with null inputs"() {
 
         when: "An existing simple workflow definition"
-        def workflowDef = metadataService.getWorkflowDef(LINEAR_WORKFLOW_T1_T2, 1)
+        def workflowDef = metadataService.getWorkflowDef(linearWorkflowT1T2, 1)
 
         then:
         workflowDef.getTasks().get(0).getInputParameters().containsKey('someNullKey')
@@ -120,7 +120,7 @@ class SimpleWorkflowSpec extends AbstractSpecification {
         input.put("param1", "p1 value")
         input.put("param2", null)
 
-        def workflowInstanceId = startWorkflow(LINEAR_WORKFLOW_T1_T2, 1,
+        def workflowInstanceId = startWorkflow(linearWorkflowT1T2, 1,
                 correlationId, input,
                 null)
 
@@ -162,7 +162,7 @@ class SimpleWorkflowSpec extends AbstractSpecification {
                 persistedTask1Definition.ownerEmail, 1, persistedTask1Definition.timeoutSeconds,
                 persistedTask1Definition.responseTimeoutSeconds)
         metadataService.updateTaskDef(modifiedTask1Definition)
-        def workflowDef = metadataService.getWorkflowDef(LINEAR_WORKFLOW_T1_T2, 1)
+        def workflowDef = metadataService.getWorkflowDef(linearWorkflowT1T2, 1)
 
         def outputParameters = workflowDef.outputParameters
         outputParameters['validationErrors'] = '${t1.output.ErrorMessage}'
@@ -174,7 +174,7 @@ class SimpleWorkflowSpec extends AbstractSpecification {
         input.put("param1", "p1 value")
         input.put("param2", "p2 value")
 
-        def workflowInstanceId = startWorkflow(LINEAR_WORKFLOW_T1_T2, 1,
+        def workflowInstanceId = startWorkflow(linearWorkflowT1T2, 1,
                 correlationId, input,
                 null)
 
@@ -364,7 +364,7 @@ class SimpleWorkflowSpec extends AbstractSpecification {
         metadataService.updateTaskDef(modifiedTaskDefinition)
 
         when: "Get the workflow definition associated with the simple workflow"
-        WorkflowDef workflowDefinition = metadataService.getWorkflowDef(LINEAR_WORKFLOW_T1_T2, 1)
+        WorkflowDef workflowDefinition = metadataService.getWorkflowDef(linearWorkflowT1T2, 1)
 
         then: "Ensure that there is a workflow definition"
         workflowDefinition
@@ -378,7 +378,7 @@ class SimpleWorkflowSpec extends AbstractSpecification {
         workflowInput['param1'] = inputParam1
         workflowInput['param2'] = 'p2 value'
 
-        def workflowInstanceId = startWorkflow(LINEAR_WORKFLOW_T1_T2, 1,
+        def workflowInstanceId = startWorkflow(linearWorkflowT1T2, 1,
                 correlationId, workflowInput,
                 null)
 
@@ -442,7 +442,7 @@ class SimpleWorkflowSpec extends AbstractSpecification {
         metadataService.updateTaskDef(modifiedTaskDefinition)
 
         when: "Get the workflow definition associated with the simple workflow"
-        WorkflowDef workflowDefinition = metadataService.getWorkflowDef(LINEAR_WORKFLOW_T1_T2, 1)
+        WorkflowDef workflowDefinition = metadataService.getWorkflowDef(linearWorkflowT1T2, 1)
 
         then: "Ensure that there is a workflow definition"
         workflowDefinition
@@ -456,7 +456,7 @@ class SimpleWorkflowSpec extends AbstractSpecification {
         workflowInput['param1'] = inputParam1
         workflowInput['param2'] = 'p2 value'
 
-        def workflowInstanceId = startWorkflow(LINEAR_WORKFLOW_T1_T2, 1,
+        def workflowInstanceId = startWorkflow(linearWorkflowT1T2, 1,
                 correlationId, workflowInput,
                 null)
 
@@ -546,7 +546,7 @@ class SimpleWorkflowSpec extends AbstractSpecification {
         def workflowInput = new HashMap()
         workflowInput['param1'] = 'p1 value'
         workflowInput['param2'] = 'p2 value'
-        def workflowInstanceId = startWorkflow(LINEAR_WORKFLOW_T1_T2, 1,
+        def workflowInstanceId = startWorkflow(linearWorkflowT1T2, 1,
                 correlationId, workflowInput,
                 null)
 
@@ -626,7 +626,7 @@ class SimpleWorkflowSpec extends AbstractSpecification {
         workflowInput['param2'] = 'p2 value'
 
         and: "start a simple workflow with input params"
-        def workflowInstanceId = startWorkflow(LINEAR_WORKFLOW_T1_T2, 1,
+        def workflowInstanceId = startWorkflow(linearWorkflowT1T2, 1,
                 correlationId, workflowInput,
                 null)
 
@@ -638,7 +638,7 @@ class SimpleWorkflowSpec extends AbstractSpecification {
             tasks[0].status == Task.Status.SCHEDULED
             tasks[0].getInputData().get("p3") == tasks[0].getTaskId()
         }
-        with(metadataService.getWorkflowDef(LINEAR_WORKFLOW_T1_T2, 1)) {
+        with(metadataService.getWorkflowDef(linearWorkflowT1T2, 1)) {
             failureWorkflow
             StringUtils.isNotBlank(failureWorkflow)
         }
@@ -719,7 +719,7 @@ class SimpleWorkflowSpec extends AbstractSpecification {
         workflowInput['param2'] = 'p2 value'
 
         when: "start a new workflow with the input"
-        def workflowInstanceId = startWorkflow(LINEAR_WORKFLOW_T1_T2, 1,
+        def workflowInstanceId = startWorkflow(linearWorkflowT1T2, 1,
                 correlationId, workflowInput,
                 null)
 
@@ -797,7 +797,7 @@ class SimpleWorkflowSpec extends AbstractSpecification {
         workflowInput['param2'] = 'p2 value'
 
         when: "start a new workflow with the input"
-        def workflowInstanceId = startWorkflow(LINEAR_WORKFLOW_T1_T2, 1,
+        def workflowInstanceId = startWorkflow(linearWorkflowT1T2, 1,
                 correlationId, workflowInput,
                 null)
 
@@ -884,8 +884,8 @@ class SimpleWorkflowSpec extends AbstractSpecification {
                 integrationTask1Definition.responseTimeoutSeconds)
         metadataService.updateTaskDef(modifiedTaskDefinition)
 
-        def simpleWorkflowDefinition = metadataService.getWorkflowDef(LINEAR_WORKFLOW_T1_T2, 1)
-        simpleWorkflowDefinition.name = INTEGRATION_TEST_WF_NON_RESTARTABLE
+        def simpleWorkflowDefinition = metadataService.getWorkflowDef(linearWorkflowT1T2, 1)
+        simpleWorkflowDefinition.name = integrationTestWfNonRestartable
         simpleWorkflowDefinition.restartable = false
         metadataService.updateWorkflowDef(simpleWorkflowDefinition)
 
@@ -895,7 +895,7 @@ class SimpleWorkflowSpec extends AbstractSpecification {
         workflowInput['param1'] = 'p1 value'
         workflowInput['param2'] = 'p2 value'
 
-        def workflowInstanceId = startWorkflow(INTEGRATION_TEST_WF_NON_RESTARTABLE, 1,
+        def workflowInstanceId = startWorkflow(integrationTestWfNonRestartable, 1,
                 correlationId, workflowInput,
                 null)
 
@@ -951,7 +951,7 @@ class SimpleWorkflowSpec extends AbstractSpecification {
 
         cleanup: "clean up the changes made to the task and workflow definition during start up"
         metadataService.updateTaskDef(integrationTask1Definition)
-        simpleWorkflowDefinition.name = LINEAR_WORKFLOW_T1_T2
+        simpleWorkflowDefinition.name = linearWorkflowT1T2
         simpleWorkflowDefinition.restartable = true
         metadataService.updateWorkflowDef(simpleWorkflowDefinition)
     }
@@ -965,7 +965,7 @@ class SimpleWorkflowSpec extends AbstractSpecification {
         workflowInput['param2'] = 'p2 value'
 
         when: "start a new workflow with the input"
-        def workflowInstanceId = startWorkflow(LINEAR_WORKFLOW_T1_T2, 1,
+        def workflowInstanceId = startWorkflow(linearWorkflowT1T2, 1,
                 correlationId, workflowInput,
                 null)
 

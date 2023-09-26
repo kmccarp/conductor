@@ -24,7 +24,7 @@ import static com.netflix.conductor.test.util.WorkflowTestUtil.verifyPolledAndAc
 class ExclusiveJoinSpec extends AbstractSpecification {
 
     @Shared
-    def EXCLUSIVE_JOIN_WF = "ExclusiveJoinTestWorkflow"
+    def exclusiveJoinWf = "ExclusiveJoinTestWorkflow"
 
     def setup() {
         workflowTestUtil.registerWorkflows('exclusive_join_integration_test.json')
@@ -45,7 +45,7 @@ class ExclusiveJoinSpec extends AbstractSpecification {
         def input = ["decision_1": "null"]
 
         when: "An exclusive join workflow is started with then workflow input"
-        def workflowInstanceId = startWorkflow(EXCLUSIVE_JOIN_WF, 1, 'exclusive_join_workflow',
+        def workflowInstanceId = startWorkflow(exclusiveJoinWf, 1, 'exclusive_join_workflow',
                 input, null)
 
         then: "verify that the workflow is in running state"
@@ -82,7 +82,7 @@ class ExclusiveJoinSpec extends AbstractSpecification {
         def input = ["decision_1": "true", "decision_2": "null"]
 
         when: "An exclusive join workflow is started with then workflow input"
-        def workflowInstanceId = startWorkflow(EXCLUSIVE_JOIN_WF, 1, 'exclusive_join_workflow',
+        def workflowInstanceId = startWorkflow(exclusiveJoinWf, 1, 'exclusive_join_workflow',
                 input, null)
 
         then: "verify that the workflow is in running state"
@@ -140,7 +140,7 @@ class ExclusiveJoinSpec extends AbstractSpecification {
         def input = ["decision_1": "true", "decision_2": "true"]
 
         when: "An exclusive join workflow is started with then workflow input"
-        def workflowInstanceId = startWorkflow(EXCLUSIVE_JOIN_WF, 1, 'exclusive_join_workflow',
+        def workflowInstanceId = startWorkflow(exclusiveJoinWf, 1, 'exclusive_join_workflow',
                 input, null)
 
         then: "verify that the workflow is in running state"
@@ -223,7 +223,7 @@ class ExclusiveJoinSpec extends AbstractSpecification {
         def input = ["decision_1": "false", "decision_3": "null"]
 
         when: "An exclusive join workflow is started with then workflow input"
-        def workflowInstanceId = startWorkflow(EXCLUSIVE_JOIN_WF, 1, 'exclusive_join_workflow',
+        def workflowInstanceId = startWorkflow(exclusiveJoinWf, 1, 'exclusive_join_workflow',
                 input, null)
 
         then: "verify that the workflow is in running state"
@@ -281,7 +281,7 @@ class ExclusiveJoinSpec extends AbstractSpecification {
         def input = ["decision_1": "false", "decision_3": "true"]
 
         when: "An exclusive join workflow is started with then workflow input"
-        def workflowInstanceId = startWorkflow(EXCLUSIVE_JOIN_WF, 1, 'exclusive_join_workflow',
+        def workflowInstanceId = startWorkflow(exclusiveJoinWf, 1, 'exclusive_join_workflow',
                 input, null)
 
         then: "verify that the workflow is in running state"

@@ -81,7 +81,7 @@ public class WorkflowDef extends BaseDef {
     private boolean restartable = true;
 
     @ProtoField(id = 10)
-    private boolean workflowStatusListenerEnabled = false;
+    private boolean workflowStatusListenerEnabled;
 
     @ProtoField(id = 11)
     @OwnerEmailMandatoryConstraint

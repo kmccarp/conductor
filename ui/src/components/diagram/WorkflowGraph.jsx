@@ -720,8 +720,12 @@ function stackRenderer(parent, bbox, node) {
 
   node.intersect = function (point) {
     const retval = intersect.rect(node, point);
-    if (retval.y < node.y) retval.y -= STACK_OFFSET;
-    if (retval.y >= node.y) retval.y -= STACK_OFFSET * 2;
+      if (retval.y < node.y) {
+          retval.y -= STACK_OFFSET
+      };
+      if (retval.y >= node.y) {
+          retval.y -= STACK_OFFSET * 2
+      };
 
     return retval;
   };

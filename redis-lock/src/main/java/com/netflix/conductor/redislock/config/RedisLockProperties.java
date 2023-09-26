@@ -24,7 +24,7 @@ public class RedisLockProperties {
     private String serverAddress = "redis://127.0.0.1:6379";
 
     /** The password for redis authentication */
-    private String serverPassword = null;
+    private String serverPassword;
 
     /** The master server name used by Redis Sentinel servers and master change monitoring task */
     private String serverMasterName = "master";
@@ -51,7 +51,7 @@ public class RedisLockProperties {
      * Enable to otionally continue without a lock to not block executions until the locking service
      * becomes available
      */
-    private boolean ignoreLockingExceptions = false;
+    private boolean ignoreLockingExceptions;
 
     public REDIS_SERVER_TYPE getServerType() {
         return serverType;

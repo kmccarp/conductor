@@ -86,11 +86,8 @@ public class WorkflowResourceTest {
         Workflow workflow = new Workflow();
         workflow.setCorrelationId("123");
         ArrayList<Workflow> listOfWorkflows =
-                new ArrayList<>() {
-                    {
-                        add(workflow);
-                    }
-                };
+                new ArrayList<>();
+        listOfWorkflows.add(workflow);
         when(mockWorkflowService.getWorkflows(anyString(), anyString(), anyBoolean(), anyBoolean()))
                 .thenReturn(listOfWorkflows);
         assertEquals(listOfWorkflows, workflowResource.getWorkflows("test1", "123", true, true));
@@ -102,18 +99,12 @@ public class WorkflowResourceTest {
         workflow.setCorrelationId("c123");
 
         List<Workflow> workflowArrayList =
-                new ArrayList<>() {
-                    {
-                        add(workflow);
-                    }
-                };
+                new ArrayList<>();
+        workflowArrayList.add(workflow);
 
         List<String> correlationIdList =
-                new ArrayList<>() {
-                    {
-                        add("c123");
-                    }
-                };
+                new ArrayList<>();
+        correlationIdList.add("c123");
 
         Map<String, List<Workflow>> workflowMap = new HashMap<>();
         workflowMap.put("c123", workflowArrayList);
@@ -143,11 +134,8 @@ public class WorkflowResourceTest {
     @Test
     public void testGetRunningWorkflow() {
         List<String> listOfWorklfows =
-                new ArrayList<>() {
-                    {
-                        add("w123");
-                    }
-                };
+                new ArrayList<>();
+        listOfWorklfows.add("w123");
         when(mockWorkflowService.getRunningWorkflows(anyString(), anyInt(), anyLong(), anyLong()))
                 .thenReturn(listOfWorklfows);
         assertEquals(listOfWorklfows, workflowResource.getRunningWorkflow("w123", 1, 12L, 13L));

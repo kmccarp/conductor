@@ -37,13 +37,13 @@ class SubWorkflowSpec extends AbstractSpecification {
     SubWorkflow subWorkflowTask
 
     @Shared
-    def WORKFLOW_WITH_SUBWORKFLOW = 'integration_test_wf_with_sub_wf'
+    def workflowWithSubworkflow = 'integration_test_wf_with_sub_wf'
 
     @Shared
-    def SUB_WORKFLOW = "sub_workflow"
+    def subWorkflow = "sub_workflow"
 
     @Shared
-    def SIMPLE_WORKFLOW = "integration_test_wf"
+    def simpleWorkflow = "integration_test_wf"
 
     def setup() {
         workflowTestUtil.registerWorkflows('simple_one_task_sub_workflow_integration_test.json',
@@ -54,7 +54,7 @@ class SubWorkflowSpec extends AbstractSpecification {
     def "Test retrying a subworkflow where parent workflow timed out due to workflowTimeout"() {
 
         setup: "Register a workflow definition with a timeout policy set to timeout workflow"
-        def persistedWorkflowDefinition = metadataService.getWorkflowDef(WORKFLOW_WITH_SUBWORKFLOW, 1)
+        def persistedWorkflowDefinition = metadataService.getWorkflowDef(workflowWithSubworkflow, 1)
         def modifiedWorkflowDefinition = new WorkflowDef()
         modifiedWorkflowDefinition.name = persistedWorkflowDefinition.name
         modifiedWorkflowDefinition.version = persistedWorkflowDefinition.version
@@ -67,8 +67,8 @@ class SubWorkflowSpec extends AbstractSpecification {
         metadataService.updateWorkflowDef([modifiedWorkflowDefinition])
 
         and: "an existing workflow with subworkflow and registered definitions"
-        metadataService.getWorkflowDef(SUB_WORKFLOW, 1)
-        metadataService.getWorkflowDef(WORKFLOW_WITH_SUBWORKFLOW, 1)
+        metadataService.getWorkflowDef(subWorkflow, 1)
+        metadataService.getWorkflowDef(workflowWithSubworkflow, 1)
 
         and: "input required to start the workflow execution"
         String correlationId = 'wf_with_subwf_test_1'
@@ -79,7 +79,7 @@ class SubWorkflowSpec extends AbstractSpecification {
         input['subwf'] = 'sub_workflow'
 
         when: "the workflow is started"
-        def workflowInstanceId = startWorkflow(WORKFLOW_WITH_SUBWORKFLOW, 1,
+        def workflowInstanceId = startWorkflow(workflowWithSubworkflow, 1,
                 correlationId, input, null)
 
         then: "verify that the workflow is in a RUNNING state"
@@ -214,8 +214,8 @@ class SubWorkflowSpec extends AbstractSpecification {
 
     def "Test terminating a subworkflow terminates parent workflow"() {
         given: "Existing workflow and subworkflow definitions"
-        metadataService.getWorkflowDef(SUB_WORKFLOW, 1)
-        metadataService.getWorkflowDef(WORKFLOW_WITH_SUBWORKFLOW, 1)
+        metadataService.getWorkflowDef(subWorkflow, 1)
+        metadataService.getWorkflowDef(workflowWithSubworkflow, 1)
 
         and: "input required to start the workflow execution"
         String correlationId = 'wf_with_subwf_test_1'
@@ -226,7 +226,7 @@ class SubWorkflowSpec extends AbstractSpecification {
         input['subwf'] = 'sub_workflow'
 
         when: "Start a workflow with subworkflow based on the registered definition"
-        def workflowInstanceId = startWorkflow(WORKFLOW_WITH_SUBWORKFLOW, 1,
+        def workflowInstanceId = startWorkflow(workflowWithSubworkflow, 1,
                 correlationId, input,
                 null)
 
@@ -315,8 +315,8 @@ class SubWorkflowSpec extends AbstractSpecification {
         metadataService.updateTaskDef(modifiedTask2Definition)
 
         and: "an existing workflow with subworkflow and registered definitions"
-        metadataService.getWorkflowDef(SIMPLE_WORKFLOW, 1)
-        metadataService.getWorkflowDef(WORKFLOW_WITH_SUBWORKFLOW, 1)
+        metadataService.getWorkflowDef(simpleWorkflow, 1)
+        metadataService.getWorkflowDef(workflowWithSubworkflow, 1)
 
         and: "input required to start the workflow execution"
         String correlationId = 'wf_retry_with_subwf_resume_test'
@@ -327,7 +327,7 @@ class SubWorkflowSpec extends AbstractSpecification {
         input['subwf'] = 'integration_test_wf'
 
         when: "the workflow is started"
-        def workflowInstanceId = startWorkflow(WORKFLOW_WITH_SUBWORKFLOW, 1,
+        def workflowInstanceId = startWorkflow(workflowWithSubworkflow, 1,
                 correlationId, input, null)
 
         then: "verify that the workflow is in a RUNNING state"

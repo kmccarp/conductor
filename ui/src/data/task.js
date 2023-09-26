@@ -107,7 +107,7 @@ export function useQueueSizes(taskName, domains) {
                 size: result,
               };
             },
-            enabled: fetchContext.ready && !!domains,
+            enabled: fetchContext.ready && domains,
           };
         })
       : []

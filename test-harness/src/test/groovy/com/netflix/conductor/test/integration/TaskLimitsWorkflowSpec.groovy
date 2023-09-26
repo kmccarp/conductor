@@ -31,9 +31,9 @@ class TaskLimitsWorkflowSpec extends AbstractSpecification {
     @Autowired
     UserTask userTask
 
-    def RATE_LIMITED_SYSTEM_TASK_WORKFLOW = 'test_rate_limit_system_task_workflow'
-    def RATE_LIMITED_SIMPLE_TASK_WORKFLOW = 'test_rate_limit_simple_task_workflow'
-    def CONCURRENCY_EXECUTION_LIMITED_WORKFLOW = 'test_concurrency_limits_workflow'
+    def rateLimitedSystemTaskWorkflow = 'test_rate_limit_system_task_workflow'
+    def rateLimitedSimpleTaskWorkflow = 'test_rate_limit_simple_task_workflow'
+    def concurrencyExecutionLimitedWorkflow = 'test_concurrency_limits_workflow'
 
     def setup() {
         workflowTestUtil.registerWorkflows(
@@ -45,7 +45,7 @@ class TaskLimitsWorkflowSpec extends AbstractSpecification {
 
     def "Verify that the rate limiting for system tasks is honored"() {
         when: "Start a workflow that has a rate limited system task in it"
-        def workflowInstanceId = startWorkflow(RATE_LIMITED_SYSTEM_TASK_WORKFLOW, 1,
+        def workflowInstanceId = startWorkflow(rateLimitedSystemTaskWorkflow, 1,
                 '', [:], null)
 
         then: "verify that the workflow is in a running state"
@@ -69,7 +69,7 @@ class TaskLimitsWorkflowSpec extends AbstractSpecification {
         }
 
         when: "A new instance of the workflow is started"
-        def workflowTwoInstanceId = startWorkflow(RATE_LIMITED_SYSTEM_TASK_WORKFLOW, 1,
+        def workflowTwoInstanceId = startWorkflow(rateLimitedSystemTaskWorkflow, 1,
                 '', [:], null)
 
         then: "verify that the workflow is in a running state"
@@ -95,7 +95,7 @@ class TaskLimitsWorkflowSpec extends AbstractSpecification {
 
     def "Verify that the rate limiting for simple tasks is honored"() {
         when: "Start a workflow that has a rate limited simple task in it"
-        def workflowInstanceId = startWorkflow(RATE_LIMITED_SIMPLE_TASK_WORKFLOW, 1, '', [:], null)
+        def workflowInstanceId = startWorkflow(rateLimitedSimpleTaskWorkflow, 1, '', [:], null)
 
         then: "verify that the workflow is in a running state"
         with(workflowExecutionService.getExecutionStatus(workflowInstanceId, true)) {
@@ -120,7 +120,7 @@ class TaskLimitsWorkflowSpec extends AbstractSpecification {
         }
 
         when: "A new instance of the workflow is started"
-        def workflowTwoInstanceId = startWorkflow(RATE_LIMITED_SIMPLE_TASK_WORKFLOW, 1,
+        def workflowTwoInstanceId = startWorkflow(rateLimitedSimpleTaskWorkflow, 1,
                 '', [:], null)
 
         then: "verify that the workflow is in a running state"
@@ -161,7 +161,7 @@ class TaskLimitsWorkflowSpec extends AbstractSpecification {
 
     def "Verify that concurrency limited tasks are honored during workflow execution"() {
         when: "Start a workflow that has a concurrency execution limited task in it"
-        def workflowInstanceId = startWorkflow(CONCURRENCY_EXECUTION_LIMITED_WORKFLOW, 1,
+        def workflowInstanceId = startWorkflow(concurrencyExecutionLimitedWorkflow, 1,
                 '', [:], null)
 
 
@@ -181,7 +181,7 @@ class TaskLimitsWorkflowSpec extends AbstractSpecification {
         polledTask1.workflowInstanceId == workflowInstanceId
 
         when: "A additional workflow that has a concurrency execution limited task in it"
-        def workflowTwoInstanceId = startWorkflow(CONCURRENCY_EXECUTION_LIMITED_WORKFLOW, 1,
+        def workflowTwoInstanceId = startWorkflow(concurrencyExecutionLimitedWorkflow, 1,
                 '', [:], null)
 
         then: "verify that the workflow is in a running state"

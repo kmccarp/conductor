@@ -160,8 +160,7 @@ public class MockExternalPayloadStorage implements ExternalPayloadStorage {
         InputStream inputStream = download(path);
         if (inputStream != null) {
             try {
-                Map<String, Object> largePayload = objectMapper.readValue(inputStream, Map.class);
-                return largePayload;
+                return objectMapper.readValue(inputStream, Map.class);
             } catch (IOException e) {
                 LOGGER.error("Error in downloading payload for path {}", path, e);
             }

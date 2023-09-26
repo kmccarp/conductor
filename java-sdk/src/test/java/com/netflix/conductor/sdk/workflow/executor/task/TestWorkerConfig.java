@@ -17,9 +17,9 @@ import java.util.Map;
 
 public class TestWorkerConfig extends WorkerConfiguration {
 
-    private Map<String, Integer> pollingIntervals = new HashMap<>();
+    private final Map<String, Integer> pollingIntervals = new HashMap<>();
 
-    private Map<String, Integer> threadCounts = new HashMap<>();
+    private final Map<String, Integer> threadCounts = new HashMap<>();
 
     @Override
     public int getPollingInterval(String taskName) {
