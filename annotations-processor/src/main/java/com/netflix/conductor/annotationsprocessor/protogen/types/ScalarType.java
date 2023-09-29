@@ -19,7 +19,7 @@ import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeName;
 
 public class ScalarType extends AbstractType {
-    private String protoType;
+    private final String protoType;
 
     public ScalarType(Type javaType, TypeName javaProtoType, String protoType) {
         super(javaType, javaProtoType);
@@ -59,15 +59,19 @@ public class ScalarType extends AbstractType {
     public void mapToProto(String field, MethodSpec.Builder method) {
         final boolean nullable = isNullableType();
         String getter =
-                (getJavaType().equals(boolean.class) || getJavaType().equals(Boolean.class))
+                getJavaType().equals(boolean.class) || getJavaType().equals(Boolean.class)
                         ? javaMethodName("is", field)
                         : javaMethodName("get", field);
 
-        if (nullable) method.beginControlFlow("if (from.$L() != null)", getter);
+        if (nullable) {
+            method.beginControlFlow("if (from.$L() != null)", getter);
+        }
 
         method.addStatement("to.$L( from.$L() )", protoMethodName("set", field), getter);
 
-        if (nullable) method.endControlFlow();
+        if (nullable) {
+            method.endControlFlow();
+        }
     }
 
     @Override

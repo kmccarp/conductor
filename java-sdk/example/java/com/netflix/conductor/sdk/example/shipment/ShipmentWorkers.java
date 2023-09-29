@@ -58,11 +58,13 @@ public class ShipmentWorkers {
                 orderDetail.setCountryCode("UK");
             }
 
-            if (orderDetail.getCountryCode().equals("US"))
+            if ("US".equals(orderDetail.getCountryCode())) {
                 orderDetail.setShippingMethod(Order.ShippingMethod.SAME_DAY);
-            else if (orderDetail.getCountryCode().equals("CA"))
+            } else if ("CA".equals(orderDetail.getCountryCode())) {
                 orderDetail.setShippingMethod(Order.ShippingMethod.NEXT_DAY_AIR);
-            else orderDetail.setShippingMethod(Order.ShippingMethod.GROUND);
+            } else {
+                orderDetail.setShippingMethod(Order.ShippingMethod.GROUND);
+            }
 
             orderDetails.add(orderDetail);
         }
@@ -71,8 +73,7 @@ public class ShipmentWorkers {
 
     @WorkerTask("get_user_details")
     public User getUserDetails(@InputParam("userId") String userId) {
-        User user =
-                new User(
+        return new User(
                         "User Name",
                         userId + "@example.com",
                         "1234 forline street",
@@ -81,8 +82,6 @@ public class ShipmentWorkers {
                         "US",
                         "Paypal",
                         "biling_001");
-
-        return user;
     }
 
     @WorkerTask("calculate_tax_and_total")

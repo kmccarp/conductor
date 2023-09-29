@@ -58,7 +58,7 @@ public class ConductorProperties {
     private boolean eventExecutionIndexingEnabled = true;
 
     /** Used to enable/disable the workflow execution lock. */
-    private boolean workflowExecutionLockEnabled = false;
+    private boolean workflowExecutionLockEnabled;
 
     /** The time (in milliseconds) for which the lock is leased for. */
     private Duration lockLeaseTime = Duration.ofMillis(60000);
@@ -85,7 +85,7 @@ public class ConductorProperties {
     private boolean taskExecLogIndexingEnabled = true;
 
     /** Used to enable/disable asynchronous indexing to elasticsearch. */
-    private boolean asyncIndexingEnabled = false;
+    private boolean asyncIndexingEnabled;
 
     /** The number of threads to be used within the threadpool for system task workers. */
     private int systemTaskWorkerThreadCount = Runtime.getRuntime().availableProcessors() * 2;

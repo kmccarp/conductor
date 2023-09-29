@@ -43,10 +43,10 @@ import com.sun.jersey.api.client.filter.ClientFilter;
 public class WorkflowClient extends ClientBase {
 
     private static final GenericType<SearchResult<WorkflowSummary>> searchResultWorkflowSummary =
-            new GenericType<SearchResult<WorkflowSummary>>() {};
+            new GenericType<>() {};
 
     private static final GenericType<SearchResult<Workflow>> searchResultWorkflow =
-            new GenericType<SearchResult<Workflow>>() {};
+            new GenericType<>() {};
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WorkflowClient.class);
 
@@ -225,7 +225,7 @@ public class WorkflowClient extends ClientBase {
                 getForEntity(
                         "workflow/{name}/correlated/{correlationId}",
                         params,
-                        new GenericType<List<Workflow>>() {},
+                        new GenericType<>() {},
                         name,
                         correlationId);
         workflows.forEach(this::populateWorkflowOutput);
@@ -293,7 +293,7 @@ public class WorkflowClient extends ClientBase {
         return getForEntity(
                 "workflow/running/{name}",
                 new Object[] {"version", version},
-                new GenericType<List<String>>() {},
+                new GenericType<>() {},
                 workflowName);
     }
 
@@ -317,7 +317,7 @@ public class WorkflowClient extends ClientBase {
         return getForEntity(
                 "workflow/running/{name}",
                 params,
-                new GenericType<List<String>>() {},
+                new GenericType<>() {},
                 workflowName);
     }
 

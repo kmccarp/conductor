@@ -24,10 +24,10 @@ import spock.lang.Shared
 class FailureWorkflowSpec extends AbstractSpecification {
 
     @Shared
-    def WORKFLOW_WITH_TERMINATE_TASK_FAILED = 'test_terminate_task_failed_wf'
+    def workflowWithTerminateTaskFailed = 'test_terminate_task_failed_wf'
 
     @Shared
-    def PARENT_WORKFLOW_WITH_FAILURE_TASK = 'test_task_failed_parent_wf'
+    def parentWorkflowWithFailureTask = 'test_task_failed_parent_wf'
 
     @Autowired
     SubWorkflow subWorkflowTask
@@ -48,7 +48,7 @@ class FailureWorkflowSpec extends AbstractSpecification {
 
         when: "Start the workflow which has the failed task"
         def testId = 'testId'
-        def workflowInstanceId = startWorkflow(WORKFLOW_WITH_TERMINATE_TASK_FAILED, 1,
+        def workflowInstanceId = startWorkflow(workflowWithTerminateTaskFailed, 1,
                 testId, workflowInput, null)
 
         then: "Verify that the workflow has failed"
@@ -84,7 +84,7 @@ class FailureWorkflowSpec extends AbstractSpecification {
         workflowInput['a'] = 1
 
         when: "Start the workflow which has the subworkflow task"
-        def workflowInstanceId = startWorkflow(PARENT_WORKFLOW_WITH_FAILURE_TASK, 1,
+        def workflowInstanceId = startWorkflow(parentWorkflowWithFailureTask, 1,
                 '', workflowInput, null)
 
         then: "verify that the workflow has started and the tasks are as expected"

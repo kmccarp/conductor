@@ -147,7 +147,7 @@ public class ParametersUtils {
             // inputTemplate, if it exists.
             replacedTaskInput.replaceAll(
                     (key, value) ->
-                            (value == null) ? taskDefinition.getInputTemplate().get(key) : value);
+                            value == null ? taskDefinition.getInputTemplate().get(key) : value);
         }
         return replacedTaskInput;
     }

@@ -212,9 +212,9 @@ public class ElasticSearchProperties {
         return Arrays.stream(hosts)
                 .map(
                         host ->
-                                (host.startsWith("http://")
+                                host.startsWith("http://")
                                                 || host.startsWith("https://")
-                                                || host.startsWith("tcp://"))
+                                                || host.startsWith("tcp://")
                                         ? toURL(host)
                                         : toURL("tcp://" + host))
                 .collect(Collectors.toList());
