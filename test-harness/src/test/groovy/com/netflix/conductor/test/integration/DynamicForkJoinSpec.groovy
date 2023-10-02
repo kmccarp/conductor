@@ -41,7 +41,7 @@ class DynamicForkJoinSpec extends AbstractSpecification {
     SubWorkflow subWorkflowTask
 
     @Shared
-    def DYNAMIC_FORK_JOIN_WF = "DynamicFanInOutTest"
+    def dynamicForkJoinWf = "DynamicFanInOutTest"
 
     def setup() {
         workflowTestUtil.registerWorkflows('dynamic_fork_join_integration_test.json',
@@ -50,7 +50,7 @@ class DynamicForkJoinSpec extends AbstractSpecification {
 
     def "Test dynamic fork join success flow"() {
         when: " a dynamic fork join workflow is started"
-        def workflowInstanceId = startWorkflow(DYNAMIC_FORK_JOIN_WF, 1,
+        def workflowInstanceId = startWorkflow(dynamicForkJoinWf, 1,
                 'dynamic_fork_join_workflow', [:],
                 null)
 
@@ -157,7 +157,7 @@ class DynamicForkJoinSpec extends AbstractSpecification {
         metadataService.updateTaskDef(modifiedTask2Definition)
 
         when: " a dynamic fork join workflow is started"
-        def workflowInstanceId = startWorkflow(DYNAMIC_FORK_JOIN_WF, 1,
+        def workflowInstanceId = startWorkflow(dynamicForkJoinWf, 1,
                 'dynamic_fork_join_workflow', [:],
                 null)
 
@@ -241,7 +241,7 @@ class DynamicForkJoinSpec extends AbstractSpecification {
         metadataService.updateTaskDef(modifiedTask2Definition)
 
         when: " a dynamic fork join workflow is started"
-        def workflowInstanceId = startWorkflow(DYNAMIC_FORK_JOIN_WF, 1,
+        def workflowInstanceId = startWorkflow(dynamicForkJoinWf, 1,
                 'dynamic_fork_join_workflow', [:],
                 null)
 
@@ -394,7 +394,7 @@ class DynamicForkJoinSpec extends AbstractSpecification {
         metadataService.updateTaskDef(modifiedTask2Definition)
 
         when: "the dynamic fork join workflow is started"
-        def workflowInstanceId = startWorkflow(DYNAMIC_FORK_JOIN_WF, 1,
+        def workflowInstanceId = startWorkflow(dynamicForkJoinWf, 1,
                 'dynamic_fork_join_wf_subwf', [:], null)
 
         then: "verify that the workflow is started and first task is in SCHEDULED state"
@@ -706,7 +706,7 @@ class DynamicForkJoinSpec extends AbstractSpecification {
 
     def "Test dynamic fork join empty output"() {
         when: " a dynamic fork join workflow is started"
-        def workflowInstanceId = startWorkflow(DYNAMIC_FORK_JOIN_WF, 1,
+        def workflowInstanceId = startWorkflow(dynamicForkJoinWf, 1,
                 'dynamic_fork_join_workflow', [:],
                 null)
 
@@ -802,7 +802,7 @@ class DynamicForkJoinSpec extends AbstractSpecification {
 
     def "Test dynamic fork join fail when task input is invalid"() {
         when: "a dynamic fork join workflow is started"
-        def workflowInstanceId = startWorkflow(DYNAMIC_FORK_JOIN_WF, 1,
+        def workflowInstanceId = startWorkflow(dynamicForkJoinWf, 1,
                 'dynamic_fork_join_workflow', [:],
                 null)
 

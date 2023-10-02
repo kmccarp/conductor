@@ -74,7 +74,7 @@ public interface Worker {
         }
         if (serverId == null) {
             serverId =
-                    (EC2MetadataUtils.getInstanceId() == null)
+                    EC2MetadataUtils.getInstanceId() == null
                             ? System.getProperty("user.name")
                             : EC2MetadataUtils.getInstanceId();
         }

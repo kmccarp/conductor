@@ -135,7 +135,9 @@ public class AnnotatedWorkerExecutor {
 
     private boolean includePackage(List<String> packagesToScan, String name) {
         for (String scanPkg : packagesToScan) {
-            if (name.startsWith(scanPkg)) return true;
+            if (name.startsWith(scanPkg)) {
+                return true;
+            }
         }
         return false;
     }

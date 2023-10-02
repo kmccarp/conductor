@@ -138,7 +138,7 @@ public class DecisionTaskMapper implements TaskMapper {
             try {
                 // Evaluate the expression by using the Nashhorn based script evaluator
                 Object returnValue = ScriptEvaluator.eval(expression, taskInput);
-                caseValue = (returnValue == null) ? "null" : returnValue.toString();
+                caseValue = returnValue == null ? "null" : returnValue.toString();
             } catch (ScriptException e) {
                 String errorMsg = String.format("Error while evaluating script: %s", expression);
                 LOGGER.error(errorMsg, e);

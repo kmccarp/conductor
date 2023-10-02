@@ -2,18 +2,26 @@ import { format, formatDuration, intervalToDuration } from "date-fns";
 import _ from "lodash";
 
 export function timestampRenderer(date) {
-  if (_.isNil(date)) return null;
+    if (_.isNil(date)) {
+        return null
+    };
 
   const parsed = new Date(date);
-  if (parsed.getTime() === 0) return null; // 0 epoch (UTC 1970-1-1)
+    if (parsed.getTime() === 0) {
+        return null
+    }; // 0 epoch (UTC 1970-1-1)
 
   return format(parsed, "yyyy-MM-dd HH:mm:ss");
 }
 export function timestampMsRenderer(date) {
-  if (_.isNil(date)) return null;
+    if (_.isNil(date)) {
+        return null
+    };
 
   const parsed = new Date(date);
-  if (parsed.getTime() === 0) return null; // 0 epoch (UTC 1970-1-1)
+    if (parsed.getTime() === 0) {
+        return null
+    }; // 0 epoch (UTC 1970-1-1)
 
   return format(parsed, "yyyy-MM-dd HH:mm:ss.SSS");
 }
@@ -62,15 +70,25 @@ export function isFailedTask(status) {
 }
 
 export function defaultCompare(x, y) {
-  if (x === undefined && y === undefined) return 0;
+    if (x === undefined && y === undefined) {
+        return 0
+    };
 
-  if (x === undefined) return 1;
+    if (x === undefined) {
+        return 1
+    };
 
-  if (y === undefined) return -1;
+    if (y === undefined) {
+        return -1
+    };
 
-  if (x < y) return -1;
+    if (x < y) {
+        return -1
+    };
 
-  if (x > y) return 1;
+    if (x > y) {
+        return 1
+    };
 
   return 0;
 }

@@ -139,15 +139,15 @@ public class TestWorkflowDef {
 
     @Test
     public void testGetNextTask_Conditional() {
-        String COND_TASK_WF = "COND_TASK_WF";
+        String condTaskWf = "COND_TASK_WF";
         List<WorkflowTask> workflowTasks = new ArrayList<>(10);
         for (int i = 0; i < 10; i++) {
             workflowTasks.add(createWorkflowTask("junit_task_" + i));
         }
 
         WorkflowDef workflowDef = new WorkflowDef();
-        workflowDef.setName(COND_TASK_WF);
-        workflowDef.setDescription(COND_TASK_WF);
+        workflowDef.setName(condTaskWf);
+        workflowDef.setDescription(condTaskWf);
 
         WorkflowTask subCaseTask = new WorkflowTask();
         subCaseTask.setType(TaskType.DECISION.name());

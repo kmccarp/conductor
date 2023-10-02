@@ -203,9 +203,9 @@ public class TaskRunnerConfigurerTest {
                             Object[] args = invocation.getArguments();
                             TaskResult result = (TaskResult) args[0];
                             assertEquals(COMPLETED, result.getStatus());
-                            if (result.getWorkerId().equals("worker1")) {
+                            if ("worker1".equals(result.getWorkerId())) {
                                 task1Counter.incrementAndGet();
-                            } else if (result.getWorkerId().equals("worker2")) {
+                            } else if ("worker2".equals(result.getWorkerId())) {
                                 task2Counter.incrementAndGet();
                             }
                             latch.countDown();

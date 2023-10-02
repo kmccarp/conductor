@@ -113,7 +113,7 @@ public class SystemTaskWorker extends LifecycleAwareComponent {
             Monitors.recordTaskPoll(queueName);
             LOGGER.debug("Polling queue:{}, got {} tasks", queueName, polledTaskIds.size());
 
-            if (polledTaskIds.size() > 0) {
+            if (!polledTaskIds.isEmpty()) {
                 // Immediately release unused slots when number of messages acquired is less than
                 // acquired slots
                 if (polledTaskIds.size() < messagesToAcquire) {
