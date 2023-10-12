@@ -27,7 +27,7 @@ import static com.netflix.conductor.test.util.WorkflowTestUtil.verifyPolledAndAc
 
 class EventTaskSpec extends AbstractSpecification {
 
-    def EVENT_BASED_WORKFLOW = 'test_event_workflow'
+    def eventBasedWorkflow = 'test_event_workflow'
 
     @Autowired
     Event eventTask
@@ -41,7 +41,7 @@ class EventTaskSpec extends AbstractSpecification {
 
     def "Verify that a event based simple workflow is executed"() {
         when: "Start a event based workflow"
-        def workflowInstanceId = startWorkflow(EVENT_BASED_WORKFLOW, 1,
+        def workflowInstanceId = startWorkflow(eventBasedWorkflow, 1,
                 '', [:], null)
 
         then: "Retrieve the workflow"
@@ -70,7 +70,7 @@ class EventTaskSpec extends AbstractSpecification {
 
     def "Test a workflow with event task that is asyncComplete "() {
         setup: "Register a workflow definition with event task as asyncComplete"
-        def persistedWorkflowDefinition = metadataService.getWorkflowDef(EVENT_BASED_WORKFLOW, 1)
+        def persistedWorkflowDefinition = metadataService.getWorkflowDef(eventBasedWorkflow, 1)
         def modifiedWorkflowDefinition = new WorkflowDef()
         modifiedWorkflowDefinition.name = persistedWorkflowDefinition.name
         modifiedWorkflowDefinition.version = persistedWorkflowDefinition.version
@@ -82,7 +82,7 @@ class EventTaskSpec extends AbstractSpecification {
         metadataService.updateWorkflowDef([modifiedWorkflowDefinition])
 
         when: "The event task workflow is started"
-        def workflowInstanceId = startWorkflow(EVENT_BASED_WORKFLOW, 1,
+        def workflowInstanceId = startWorkflow(eventBasedWorkflow, 1,
                 '', [:], null)
 
         then: "Retrieve the workflow"

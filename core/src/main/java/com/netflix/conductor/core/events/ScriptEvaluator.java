@@ -17,7 +17,7 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
-public class ScriptEvaluator {
+public final class ScriptEvaluator {
 
     private static ScriptEngine engine;
 
@@ -67,7 +67,7 @@ public class ScriptEvaluator {
      */
     public static Boolean toBoolean(Object input) {
         if (input instanceof Boolean) {
-            return ((Boolean) input);
+            return (Boolean) input;
         } else if (input instanceof Number) {
             return ((Number) input).doubleValue() > 0;
         }

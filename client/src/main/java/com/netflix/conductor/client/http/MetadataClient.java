@@ -30,7 +30,7 @@ import com.sun.jersey.api.client.filter.ClientFilter;
 public class MetadataClient extends ClientBase {
 
     private static final GenericType<List<WorkflowDef>> workflowDefList =
-            new GenericType<List<WorkflowDef>>() {};
+            new GenericType<>() {};
 
     /** Creates a default metadata client */
     public MetadataClient() {

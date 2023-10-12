@@ -31,12 +31,12 @@ public class RedisLock implements Lock {
 
     private final RedisLockProperties properties;
     private final RedissonClient redisson;
-    private static String LOCK_NAMESPACE = "";
+    private static String lockNamespace = "";
 
     public RedisLock(Redisson redisson, RedisLockProperties properties) {
         this.properties = properties;
         this.redisson = redisson;
-        LOCK_NAMESPACE = properties.getNamespace();
+        lockNamespace = properties.getNamespace();
     }
 
     @Override
@@ -92,7 +92,7 @@ public class RedisLock implements Lock {
         if (StringUtils.isEmpty(lockId)) {
             throw new IllegalArgumentException("lockId cannot be NULL or empty: lockId=" + lockId);
         }
-        return LOCK_NAMESPACE + "." + lockId;
+        return lockNamespace + "." + lockId;
     }
 
     private boolean handleAcquireLockFailure(String lockId, Exception e) {

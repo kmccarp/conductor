@@ -21,7 +21,7 @@ import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.MethodSpec;
 
 public class ExternMessageType extends MessageType {
-    private String externProtoType;
+    private final String externProtoType;
 
     public ExternMessageType(
             Type javaType, ClassName javaProtoType, String externProtoType, String protoFilePath) {

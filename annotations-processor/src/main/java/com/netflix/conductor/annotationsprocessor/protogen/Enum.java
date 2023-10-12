@@ -41,7 +41,9 @@ public class Enum extends AbstractMessage {
 
         int protoIndex = 0;
         for (java.lang.reflect.Field field : cls.getDeclaredFields()) {
-            if (field.isEnumConstant()) fields.add(new EnumField(protoIndex++, field));
+            if (field.isEnumConstant()) {
+                fields.add(new EnumField(protoIndex++, field));
+            }
         }
     }
 
@@ -60,8 +62,8 @@ public class Enum extends AbstractMessage {
         method.beginControlFlow("switch (from)");
 
         for (Field field : fields) {
-            String fromName = (mt == MapType.TO_PROTO) ? field.getName() : field.getProtoName();
-            String toName = (mt == MapType.TO_PROTO) ? field.getProtoName() : field.getName();
+            String fromName = mt == MapType.TO_PROTO ? field.getName() : field.getProtoName();
+            String toName = mt == MapType.TO_PROTO ? field.getProtoName() : field.getName();
             method.addStatement("case $L: to = $T.$L; break", fromName, to, toName);
         }
 

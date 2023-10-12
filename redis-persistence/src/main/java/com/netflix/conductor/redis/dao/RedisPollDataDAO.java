@@ -50,7 +50,7 @@ public class RedisPollDataDAO extends BaseDynoDAO implements PollDataDAO {
         PollData pollData = new PollData(taskDefName, domain, workerId, System.currentTimeMillis());
 
         String key = nsKey(POLL_DATA, pollData.getQueueName());
-        String field = (domain == null) ? "DEFAULT" : domain;
+        String field = domain == null ? "DEFAULT" : domain;
 
         String payload = toJson(pollData);
         recordRedisDaoRequests("updatePollData");
@@ -63,7 +63,7 @@ public class RedisPollDataDAO extends BaseDynoDAO implements PollDataDAO {
         Preconditions.checkNotNull(taskDefName, "taskDefName name cannot be null");
 
         String key = nsKey(POLL_DATA, taskDefName);
-        String field = (domain == null) ? "DEFAULT" : domain;
+        String field = domain == null ? "DEFAULT" : domain;
 
         String pollDataJsonString = jedisProxy.hget(key, field);
         recordRedisDaoRequests("getPollData");

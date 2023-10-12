@@ -21,7 +21,7 @@ import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeName;
 
 public class MessageType extends AbstractType {
-    private String protoFilePath;
+    private final String protoFilePath;
 
     public MessageType(Type javaType, ClassName javaProtoType, String protoFilePath) {
         super(javaType, javaProtoType);
@@ -58,14 +58,18 @@ public class MessageType extends AbstractType {
 
     @Override
     public void mapFromProto(String field, MethodSpec.Builder method) {
-        if (!isEnum()) method.beginControlFlow("if (from.$L())", protoMethodName("has", field));
+        if (!isEnum()) {
+            method.beginControlFlow("if (from.$L())", protoMethodName("has", field));
+        }
 
         method.addStatement(
                 "to.$L( fromProto( from.$L() ) )",
                 javaMethodName("set", field),
                 protoMethodName("get", field));
 
-        if (!isEnum()) method.endControlFlow();
+        if (!isEnum()) {
+            method.endControlFlow();
+        }
     }
 
     @Override

@@ -48,7 +48,9 @@ const useStyles = makeStyles({
 
 Yup.addMethod(Yup.string, "isJson", function () {
   return this.test("is-json", "is not valid json", (value) => {
-    if (_.isEmpty(value)) return true;
+      if (_.isEmpty(value)) {
+          return true
+      };
 
     try {
       JSON.parse(value);

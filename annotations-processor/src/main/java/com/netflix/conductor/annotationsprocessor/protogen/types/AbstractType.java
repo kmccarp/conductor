@@ -60,37 +60,51 @@ public abstract class AbstractType {
             int j = -1;
             while ((j = findWordBoundary(s, ++j)) != -1) {
                 out.append(normalizeWord(s.substring(i, j)));
-                if (j < len && s.charAt(j) == '_') j++;
+                if (j < len && s.charAt(j) == '_') {
+                    j++;
+                }
                 i = j;
             }
-            if (i == 0) return normalizeWord(s);
-            if (i < len) out.append(normalizeWord(s.substring(i)));
+            if (i == 0) {
+                return normalizeWord(s);
+            }
+            if (i < len) {
+                out.append(normalizeWord(s.substring(i)));
+            }
             return out.toString();
         }
 
         private static boolean isWordBoundary(char c) {
-            return (c >= 'A' && c <= 'Z');
+            return c >= 'A' && c <= 'Z';
         }
 
         private static int findWordBoundary(CharSequence sequence, int start) {
             int length = sequence.length();
-            if (start >= length) return -1;
+            if (start >= length) {
+                return -1;
+            }
 
             if (isWordBoundary(sequence.charAt(start))) {
                 int i = start;
-                while (i < length && isWordBoundary(sequence.charAt(i))) i++;
+                while (i < length && isWordBoundary(sequence.charAt(i))) {
+                    i++;
+                }
                 return i;
             } else {
                 for (int i = start; i < length; i++) {
                     final char c = sequence.charAt(i);
-                    if (c == '_' || isWordBoundary(c)) return i;
+                    if (c == '_' || isWordBoundary(c)) {
+                        return i;
+                    }
                 }
                 return -1;
             }
         }
 
         private static String normalizeWord(String word) {
-            if (word.length() < 2) return word.toUpperCase();
+            if (word.length() < 2) {
+                return word.toUpperCase();
+            }
             return word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase();
         }
     }

@@ -63,7 +63,7 @@ public class ConductorWorkflow<T> {
 
     private Map<String, Object> variables;
 
-    private List<Task> tasks = new ArrayList<>();
+    private final List<Task> tasks = new ArrayList<>();
 
     private final ObjectMapper objectMapper = new ObjectMapperProvider().getObjectMapper();
 
@@ -333,8 +333,12 @@ public class ConductorWorkflow<T> {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         ConductorWorkflow workflow = (ConductorWorkflow) o;
         return version == workflow.version && Objects.equals(name, workflow.name);
     }

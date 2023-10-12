@@ -34,7 +34,7 @@ class SystemTaskSpec extends AbstractSpecification {
     UserTask userTask
 
     @Shared
-    def ASYNC_COMPLETE_SYSTEM_TASK_WORKFLOW = 'async_complete_integration_test_wf'
+    def asyncCompleteSystemTaskWorkflow = 'async_complete_integration_test_wf'
 
     def setup() {
         workflowTestUtil.registerWorkflows('simple_workflow_with_async_complete_system_task_integration_test.json')
@@ -43,7 +43,7 @@ class SystemTaskSpec extends AbstractSpecification {
     def "Test system task with asyncComplete set to true"() {
 
         given: "An existing workflow definition with async complete system task"
-        metadataService.getWorkflowDef(ASYNC_COMPLETE_SYSTEM_TASK_WORKFLOW, 1)
+        metadataService.getWorkflowDef(asyncCompleteSystemTaskWorkflow, 1)
 
         and: "input required to start the workflow"
         String correlationId = 'async_complete_test' + UUID.randomUUID()
@@ -53,7 +53,7 @@ class SystemTaskSpec extends AbstractSpecification {
         input['param2'] = 'p2 value'
 
         when: "the workflow is started"
-        def workflowInstanceId = startWorkflow(ASYNC_COMPLETE_SYSTEM_TASK_WORKFLOW, 1,
+        def workflowInstanceId = startWorkflow(asyncCompleteSystemTaskWorkflow, 1,
                 correlationId, input, null)
 
         then: "ensure that the workflow has started"
