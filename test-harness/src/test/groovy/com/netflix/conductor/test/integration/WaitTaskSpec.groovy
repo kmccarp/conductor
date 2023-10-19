@@ -26,8 +26,8 @@ import static com.netflix.conductor.test.util.WorkflowTestUtil.verifyPolledAndAc
 class WaitTaskSpec extends AbstractSpecification {
 
     @Shared
-    def WAIT_BASED_WORKFLOW = 'test_wait_workflow'
-    def SET_VARIABLE_WORKFLOW = 'set_variable_workflow_integration_test'
+    def waitBasedWorkflow = 'test_wait_workflow'
+    def setVariableWorkflow = 'set_variable_workflow_integration_test'
 
     def setup() {
         workflowTestUtil.registerWorkflows('wait_workflow_integration_test.json',
@@ -40,7 +40,7 @@ class WaitTaskSpec extends AbstractSpecification {
         workflowInput['var'] = "var_test_value"
 
         when: "Start the workflow which has the set variable task"
-        def workflowInstanceId = startWorkflow(SET_VARIABLE_WORKFLOW, 1,
+        def workflowInstanceId = startWorkflow(setVariableWorkflow, 1,
                 '', workflowInput, null)
 
         then: "verify that the simple task is scheduled"
@@ -93,7 +93,7 @@ class WaitTaskSpec extends AbstractSpecification {
 
     def "Verify that a wait based simple workflow is executed"() {
         when: "Start a wait task based workflow"
-        def workflowInstanceId = startWorkflow(WAIT_BASED_WORKFLOW, 1,
+        def workflowInstanceId = startWorkflow(waitBasedWorkflow, 1,
                 '', [:], null)
 
         then: "Retrieve the workflow"

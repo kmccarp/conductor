@@ -34,7 +34,9 @@ public class Message extends AbstractMessage {
 
         for (java.lang.reflect.Field field : clazz.getDeclaredFields()) {
             ProtoField ann = field.getAnnotation(ProtoField.class);
-            if (ann == null) continue;
+            if (ann == null) {
+                continue;
+            }
 
             fields.add(new MessageField(ann.id(), field));
         }
@@ -51,7 +53,9 @@ public class Message extends AbstractMessage {
 
     @Override
     protected void javaMapToProto(TypeSpec.Builder type) {
-        if (!getAnnotation().toProto() || getAnnotation().wrapper()) return;
+        if (!getAnnotation().toProto() || getAnnotation().wrapper()) {
+            return;
+        }
 
         ClassName javaProtoType = (ClassName) this.type.getJavaProtoType();
         MethodSpec.Builder method = MethodSpec.methodBuilder("toProto");
@@ -75,7 +79,9 @@ public class Message extends AbstractMessage {
 
     @Override
     protected void javaMapFromProto(TypeSpec.Builder type) {
-        if (!getAnnotation().fromProto() || getAnnotation().wrapper()) return;
+        if (!getAnnotation().fromProto() || getAnnotation().wrapper()) {
+            return;
+        }
 
         MethodSpec.Builder method = MethodSpec.methodBuilder("fromProto");
         method.addModifiers(Modifier.PUBLIC);

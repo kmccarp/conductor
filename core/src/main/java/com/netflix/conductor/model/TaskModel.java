@@ -742,8 +742,12 @@ public class TaskModel {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         TaskModel taskModel = (TaskModel) o;
         return getRetryCount() == taskModel.getRetryCount()
                 && getSeq() == taskModel.getSeq()

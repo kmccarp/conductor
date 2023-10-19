@@ -302,7 +302,7 @@ public class WorkflowExecutor {
             // add an execution log
             String currentWorkflowIdentifier = workflow.toShortString();
             workflowIdentifier =
-                    !workflowIdentifier.equals("")
+                    !"".equals(workflowIdentifier)
                             ? String.format(
                                     "%s -> %s", currentWorkflowIdentifier, workflowIdentifier)
                             : currentWorkflowIdentifier;
@@ -359,7 +359,7 @@ public class WorkflowExecutor {
 
         // if workflow TIMED_OUT due to timeoutSeconds configured in the workflow definition,
         // it may not have any unsuccessful tasks that can be retried
-        if (retriableMap.values().size() == 0
+        if (retriableMap.values().isEmpty()
                 && workflow.getStatus() != WorkflowModel.Status.TIMED_OUT) {
             throw new ConflictException(
                     "There are no retryable tasks! Use restart if you want to attempt entire workflow execution again.");
@@ -1417,14 +1417,14 @@ public class WorkflowExecutor {
         }
 
         return Arrays.stream(domains)
-                .filter(domain -> !domain.equalsIgnoreCase("NO_DOMAIN"))
+                .filter(domain -> !"NO_DOMAIN".equalsIgnoreCase(domain))
                 .map(domain -> executionDAOFacade.getTaskPollDataByDomain(taskType, domain.trim()))
                 .filter(Objects::nonNull)
                 .filter(validateLastPolledTime)
                 .findFirst()
                 .map(PollData::getDomain)
                 .orElse(
-                        domains[domains.length - 1].trim().equalsIgnoreCase("NO_DOMAIN")
+                        "NO_DOMAIN".equalsIgnoreCase(domains[domains.length - 1].trim())
                                 ? null
                                 : domains[domains.length - 1].trim());
     }

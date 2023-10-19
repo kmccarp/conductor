@@ -17,7 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import com.netflix.config.DynamicProperty;
 
 /** Used to configure the Conductor workers using properties. */
-public class PropertyFactory {
+public final class PropertyFactory {
 
     private final DynamicProperty global;
     private final DynamicProperty local;

@@ -123,13 +123,13 @@ public class WorkflowSweeper {
                     } else {
                         long deltaInSeconds =
                                 (taskModel.getWaitTimeout() - System.currentTimeMillis()) / 1000;
-                        postponeDurationSeconds = (deltaInSeconds > 0) ? deltaInSeconds : 0;
+                        postponeDurationSeconds = deltaInSeconds > 0 ? deltaInSeconds : 0;
                     }
                 } else if (taskModel.getTaskType().equals(TaskType.TASK_TYPE_HUMAN)) {
                     postponeDurationSeconds = workflowOffsetTimeout;
                 } else {
                     postponeDurationSeconds =
-                            (taskModel.getResponseTimeoutSeconds() != 0)
+                            taskModel.getResponseTimeoutSeconds() != 0
                                     ? taskModel.getResponseTimeoutSeconds() + 1
                                     : workflowOffsetTimeout;
                 }
@@ -143,14 +143,14 @@ public class WorkflowSweeper {
                         postponeDurationSeconds = taskDef.getPollTimeoutSeconds() + 1;
                     } else {
                         postponeDurationSeconds =
-                                (workflowModel.getWorkflowDefinition().getTimeoutSeconds() != 0)
+                                workflowModel.getWorkflowDefinition().getTimeoutSeconds() != 0
                                         ? workflowModel.getWorkflowDefinition().getTimeoutSeconds()
                                                 + 1
                                         : workflowOffsetTimeout;
                     }
                 } else {
                     postponeDurationSeconds =
-                            (workflowModel.getWorkflowDefinition().getTimeoutSeconds() != 0)
+                            workflowModel.getWorkflowDefinition().getTimeoutSeconds() != 0
                                     ? workflowModel.getWorkflowDefinition().getTimeoutSeconds() + 1
                                     : workflowOffsetTimeout;
                 }

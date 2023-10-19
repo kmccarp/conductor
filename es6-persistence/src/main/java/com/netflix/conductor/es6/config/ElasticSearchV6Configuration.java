@@ -163,9 +163,9 @@ public class ElasticSearchV6Configuration {
         return Arrays.stream(hosts)
                 .map(
                         host ->
-                                (host.startsWith("http://")
+                                host.startsWith("http://")
                                                 || host.startsWith("https://")
-                                                || host.startsWith("tcp://"))
+                                                || host.startsWith("tcp://")
                                         ? URI.create(host)
                                         : URI.create("tcp://" + host))
                 .collect(Collectors.toList());

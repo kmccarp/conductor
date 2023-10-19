@@ -42,9 +42,7 @@ public class ConductorWorkerAutoConfiguration
         Map<String, Object> beans = applicationContext.getBeansWithAnnotation(Component.class);
         beans.values()
                 .forEach(
-                        bean -> {
-                            annotatedWorkerExecutor.addBean(bean);
-                        });
+                        annotatedWorkerExecutor::addBean);
         annotatedWorkerExecutor.startPolling();
     }
 }

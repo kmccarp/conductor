@@ -40,10 +40,10 @@ public class ProtoGen {
     private static final String GENERATOR_NAME =
             "com.netflix.conductor.annotationsprocessor.protogen";
 
-    private String protoPackageName;
-    private String javaPackageName;
-    private String goPackageName;
-    private List<ProtoFile> protoFiles = new ArrayList<>();
+    private final String protoPackageName;
+    private final String javaPackageName;
+    private final String goPackageName;
+    private final List<ProtoFile> protoFiles = new ArrayList<>();
 
     public ProtoGen(String protoPackageName, String javaPackageName, String goPackageName) {
         this.protoPackageName = protoPackageName;
@@ -108,7 +108,9 @@ public class ProtoGen {
     }
 
     public void processPackage(File jarFile, String packageName) throws IOException {
-        if (!jarFile.isFile()) throw new IOException("missing Jar file " + jarFile);
+        if (!jarFile.isFile()) {
+            throw new IOException("missing Jar file " + jarFile);
+        }
 
         URL[] urls = new URL[] {jarFile.toURI().toURL()};
         ClassLoader loader =

@@ -33,25 +33,25 @@ import static com.netflix.conductor.test.util.WorkflowTestUtil.verifyPolledAndAc
 class ExternalPayloadStorageSpec extends AbstractSpecification {
 
     @Shared
-    def LINEAR_WORKFLOW_T1_T2 = 'integration_test_wf'
+    def linearWorkflowT1T2 = 'integration_test_wf'
 
     @Shared
-    def CONDITIONAL_SYSTEM_TASK_WORKFLOW = 'ConditionalSystemWorkflow'
+    def conditionalSystemTaskWorkflow = 'ConditionalSystemWorkflow'
 
     @Shared
-    def FORK_JOIN_WF = 'FanInOutTest'
+    def forkJoinWf = 'FanInOutTest'
 
     @Shared
-    def DYNAMIC_FORK_JOIN_WF = "DynamicFanInOutTest"
+    def dynamicForkJoinWf = "DynamicFanInOutTest"
 
     @Shared
-    def WORKFLOW_WITH_INLINE_SUB_WF = 'WorkflowWithInlineSubWorkflow'
+    def workflowWithInlineSubWf = 'WorkflowWithInlineSubWorkflow'
 
     @Shared
-    def WORKFLOW_WITH_DECISION_AND_TERMINATE = 'ConditionalTerminateWorkflow'
+    def workflowWithDecisionAndTerminate = 'ConditionalTerminateWorkflow'
 
     @Shared
-    def WORKFLOW_WITH_SYNCHRONOUS_SYSTEM_TASK = 'workflow_with_synchronous_system_task'
+    def workflowWithSynchronousSystemTask = 'workflow_with_synchronous_system_task'
 
     @Autowired
     UserTask userTask
@@ -79,14 +79,14 @@ class ExternalPayloadStorageSpec extends AbstractSpecification {
     def "Test simple workflow using external payload storage"() {
 
         given: "An existing simple workflow definition"
-        metadataService.getWorkflowDef(LINEAR_WORKFLOW_T1_T2, 1)
+        metadataService.getWorkflowDef(linearWorkflowT1T2, 1)
 
         and: "input required to start large payload workflow"
         def correlationId = 'wf_external_storage'
         String workflowInputPath = uploadInitialWorkflowInput()
 
         when: "the workflow is started"
-        def workflowInstanceId = startWorkflow(LINEAR_WORKFLOW_T1_T2, 1, correlationId, null, workflowInputPath)
+        def workflowInstanceId = startWorkflow(linearWorkflowT1T2, 1, correlationId, null, workflowInputPath)
 
         then: "verify that the workflow is in a RUNNING state"
         with(workflowExecutionService.getExecutionStatus(workflowInstanceId, true)) {
@@ -138,14 +138,14 @@ class ExternalPayloadStorageSpec extends AbstractSpecification {
 
     def "Test workflow with synchronous system task using external payload storage"() {
         given: "An existing workflow definition with sync system task followed by a simple task"
-        metadataService.getWorkflowDef(WORKFLOW_WITH_SYNCHRONOUS_SYSTEM_TASK, 1)
+        metadataService.getWorkflowDef(workflowWithSynchronousSystemTask, 1)
 
         and: "input required to start large payload workflow"
         def correlationId = 'wf_external_storage'
         String workflowInputPath = uploadInitialWorkflowInput()
 
         when: "the workflow is started"
-        def workflowInstanceId = startWorkflow(WORKFLOW_WITH_SYNCHRONOUS_SYSTEM_TASK, 1, correlationId, null, workflowInputPath)
+        def workflowInstanceId = startWorkflow(workflowWithSynchronousSystemTask, 1, correlationId, null, workflowInputPath)
 
         then: "verify that the workflow is in a RUNNING state"
         with(workflowExecutionService.getExecutionStatus(workflowInstanceId, true)) {
@@ -180,14 +180,14 @@ class ExternalPayloadStorageSpec extends AbstractSpecification {
     def "Test conditional workflow with system task using external payload storage"() {
 
         given: "An existing workflow definition"
-        metadataService.getWorkflowDef(CONDITIONAL_SYSTEM_TASK_WORKFLOW, 1)
+        metadataService.getWorkflowDef(conditionalSystemTaskWorkflow, 1)
 
         and: "input required to start large payload workflow"
         String workflowInputPath = uploadInitialWorkflowInput()
         def correlationId = "conditional_system_external_storage"
 
         when: "the workflow is started"
-        def workflowInstanceId = startWorkflow(CONDITIONAL_SYSTEM_TASK_WORKFLOW, 1, correlationId, null, workflowInputPath)
+        def workflowInstanceId = startWorkflow(conditionalSystemTaskWorkflow, 1, correlationId, null, workflowInputPath)
 
         then: "verify that the workflow is in a RUNNING state"
         with(workflowExecutionService.getExecutionStatus(workflowInstanceId, true)) {
@@ -276,14 +276,14 @@ class ExternalPayloadStorageSpec extends AbstractSpecification {
     def "Test fork join workflow using external payload storage"() {
 
         given: "An existing fork join workflow definition"
-        metadataService.getWorkflowDef(FORK_JOIN_WF, 1)
+        metadataService.getWorkflowDef(forkJoinWf, 1)
 
         and: "input required to start large payload workflow"
         def correlationId = 'fork_join_external_storage'
         String workflowInputPath = uploadInitialWorkflowInput()
 
         when: "the workflow is started"
-        def workflowInstanceId = startWorkflow(FORK_JOIN_WF, 1, correlationId, null, workflowInputPath)
+        def workflowInstanceId = startWorkflow(forkJoinWf, 1, correlationId, null, workflowInputPath)
 
         then: "verify that the workflow is in a RUNNING state"
         with(workflowExecutionService.getExecutionStatus(workflowInstanceId, true)) {
@@ -415,14 +415,14 @@ class ExternalPayloadStorageSpec extends AbstractSpecification {
     def "Test workflow with subworkflow using external payload storage"() {
 
         given: "An existing workflow definition"
-        metadataService.getWorkflowDef(WORKFLOW_WITH_INLINE_SUB_WF, 1)
+        metadataService.getWorkflowDef(workflowWithInlineSubWf, 1)
 
         and: "input required to start large payload workflow"
         String workflowInputPath = uploadInitialWorkflowInput()
         def correlationId = "workflow_with_inline_sub_wf_external_storage"
 
         when: "the workflow is started"
-        def workflowInstanceId = startWorkflow(WORKFLOW_WITH_INLINE_SUB_WF, 1, correlationId, null, workflowInputPath)
+        def workflowInstanceId = startWorkflow(workflowWithInlineSubWf, 1, correlationId, null, workflowInputPath)
 
         then: "verify that the workflow is in a RUNNING state"
         with(workflowExecutionService.getExecutionStatus(workflowInstanceId, true)) {
@@ -569,14 +569,14 @@ class ExternalPayloadStorageSpec extends AbstractSpecification {
         metadataService.updateTaskDef(modifiedTask2Definition)
 
         and: "an existing simple workflow definition"
-        metadataService.getWorkflowDef(LINEAR_WORKFLOW_T1_T2, 1)
+        metadataService.getWorkflowDef(linearWorkflowT1T2, 1)
 
         and: "input required to start large payload workflow"
         def correlationId = 'retry_wf_external_storage'
         String workflowInputPath = uploadInitialWorkflowInput()
 
         when: "the workflow is started"
-        def workflowInstanceId = startWorkflow(LINEAR_WORKFLOW_T1_T2, 1, correlationId, null, workflowInputPath)
+        def workflowInstanceId = startWorkflow(linearWorkflowT1T2, 1, correlationId, null, workflowInputPath)
 
         then: "verify that the workflow is in a RUNNING state"
         with(workflowExecutionService.getExecutionStatus(workflowInstanceId, true)) {
@@ -663,14 +663,14 @@ class ExternalPayloadStorageSpec extends AbstractSpecification {
     def "Test workflow with terminate in decision branch using external payload storage"() {
 
         given: "An existing workflow definition"
-        metadataService.getWorkflowDef(WORKFLOW_WITH_DECISION_AND_TERMINATE, 1)
+        metadataService.getWorkflowDef(workflowWithDecisionAndTerminate, 1)
 
         and: "input required to start large payload workflow"
         String workflowInputPath = uploadInitialWorkflowInput()
         def correlationId = "decision_terminate_external_storage"
 
         when: "the workflow is started"
-        def workflowInstanceId = startWorkflow(WORKFLOW_WITH_DECISION_AND_TERMINATE, 1, correlationId, null, workflowInputPath)
+        def workflowInstanceId = startWorkflow(workflowWithDecisionAndTerminate, 1, correlationId, null, workflowInputPath)
 
         then: "verify that the workflow is in RUNNING state"
         with(workflowExecutionService.getExecutionStatus(workflowInstanceId, true)) {
@@ -714,14 +714,14 @@ class ExternalPayloadStorageSpec extends AbstractSpecification {
 
     def "Test dynamic fork join workflow with subworkflow using external payload storage"() {
         given: "An existing dynamic fork join workflow definition"
-        metadataService.getWorkflowDef(DYNAMIC_FORK_JOIN_WF, 1)
+        metadataService.getWorkflowDef(dynamicForkJoinWf, 1)
 
         and: "input required to start large payload workflow"
         def correlationId = "dynamic_fork_join_subworkflow_external_storage"
         String workflowInputPath = uploadInitialWorkflowInput()
 
         when: "the workflow is started"
-        def workflowInstanceId = startWorkflow(DYNAMIC_FORK_JOIN_WF, 1, correlationId, null, workflowInputPath)
+        def workflowInstanceId = startWorkflow(dynamicForkJoinWf, 1, correlationId, null, workflowInputPath)
 
         then: "verify that the workflow is in a RUNNING state"
         with(workflowExecutionService.getExecutionStatus(workflowInstanceId, true)) {
@@ -765,10 +765,10 @@ class ExternalPayloadStorageSpec extends AbstractSpecification {
 
     def "Test update task output multiple times using external payload storage"() {
         given: "An existing simple workflow definition"
-        metadataService.getWorkflowDef(LINEAR_WORKFLOW_T1_T2, 1)
+        metadataService.getWorkflowDef(linearWorkflowT1T2, 1)
 
         when: "the workflow is started"
-        def workflowInstanceId = startWorkflow(LINEAR_WORKFLOW_T1_T2, 1, 'multi_task_update_external_storage', new HashMap<String, Object>(), null)
+        def workflowInstanceId = startWorkflow(linearWorkflowT1T2, 1, 'multi_task_update_external_storage', new HashMap<String, Object>(), null)
 
         then: "verify that the workflow is in a RUNNING state"
         with(workflowExecutionService.getExecutionStatus(workflowInstanceId, true)) {
@@ -863,14 +863,14 @@ class ExternalPayloadStorageSpec extends AbstractSpecification {
     def "Test fork join workflow exceed external storage limit should fail the task and workflow"() {
 
         given: "An existing fork join workflow definition"
-        metadataService.getWorkflowDef(FORK_JOIN_WF, 1)
+        metadataService.getWorkflowDef(forkJoinWf, 1)
 
         and: "input required to start large payload workflow"
         def correlationId = 'fork_join_external_storage'
         String workflowInputPath = uploadInitialWorkflowInput()
 
         when: "the workflow is started"
-        def workflowInstanceId = startWorkflow(FORK_JOIN_WF, 1, correlationId, null, workflowInputPath)
+        def workflowInstanceId = startWorkflow(forkJoinWf, 1, correlationId, null, workflowInputPath)
 
         then: "verify that the workflow is in a RUNNING state"
         with(workflowExecutionService.getExecutionStatus(workflowInstanceId, true)) {

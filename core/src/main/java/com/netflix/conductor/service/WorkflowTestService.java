@@ -92,7 +92,7 @@ public class WorkflowTestService {
                             .filter(task -> !operators.contains(task.getTaskType()))
                             .filter(t -> !t.getStatus().isTerminal())
                             .filter(t2 -> !mockData.containsKey(t2.getReferenceTaskName()))
-                            .map(task -> task.getReferenceTaskName())
+                            .map(Task::getReferenceTaskName)
                             .collect(Collectors.toList());
 
             if (!runningTasksMissingInput.isEmpty()) {

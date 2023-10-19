@@ -122,7 +122,7 @@ public class WorkflowTask {
     private String sink;
 
     @ProtoField(id = 18)
-    private boolean optional = false;
+    private boolean optional;
 
     @ProtoField(id = 19)
     private TaskDef taskDefinition;

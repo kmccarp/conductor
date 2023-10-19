@@ -388,7 +388,7 @@ public class TestWorkflowExecutor {
         workflow.setOwnerApp("junit_test");
         workflow.setCreateTime(10L);
         workflow.setEndTime(100L);
-        workflow.setOutput(Collections.EMPTY_MAP);
+        workflow.setOutput(Collections.emptyMap());
 
         when(executionDAOFacade.getWorkflowModel(anyString(), anyBoolean())).thenReturn(workflow);
 
@@ -451,7 +451,7 @@ public class TestWorkflowExecutor {
         workflow.setOwnerApp("junit_test");
         workflow.setCreateTime(10L);
         workflow.setEndTime(100L);
-        workflow.setOutput(Collections.EMPTY_MAP);
+        workflow.setOutput(Collections.emptyMap());
 
         when(executionDAOFacade.getWorkflowModel(anyString(), anyBoolean())).thenReturn(workflow);
 
@@ -514,7 +514,7 @@ public class TestWorkflowExecutor {
         workflow.setOwnerApp("junit_test");
         workflow.setCreateTime(10L);
         workflow.setEndTime(100L);
-        workflow.setOutput(Collections.EMPTY_MAP);
+        workflow.setOutput(Collections.emptyMap());
 
         List<TaskModel> tasks = new LinkedList<>();
 
@@ -566,7 +566,7 @@ public class TestWorkflowExecutor {
         workflow.setOwnerApp("junit_test");
         workflow.setCreateTime(10L);
         workflow.setEndTime(100L);
-        workflow.setOutput(Collections.EMPTY_MAP);
+        workflow.setOutput(Collections.emptyMap());
 
         when(executionDAOFacade.getWorkflowModel(anyString(), anyBoolean())).thenReturn(workflow);
 
@@ -609,24 +609,24 @@ public class TestWorkflowExecutor {
         workflowDef.setRestartable(true);
         workflowDef.getTasks().add(workflowTask);
 
-        TaskModel task_1 = new TaskModel();
-        task_1.setTaskId(UUID.randomUUID().toString());
-        task_1.setSeq(1);
-        task_1.setStatus(TaskModel.Status.FAILED);
-        task_1.setTaskDefName(workflowTask.getName());
-        task_1.setReferenceTaskName(workflowTask.getTaskReferenceName());
+        TaskModel task1 = new TaskModel();
+        task1.setTaskId(UUID.randomUUID().toString());
+        task1.setSeq(1);
+        task1.setStatus(TaskModel.Status.FAILED);
+        task1.setTaskDefName(workflowTask.getName());
+        task1.setReferenceTaskName(workflowTask.getTaskReferenceName());
 
-        TaskModel task_2 = new TaskModel();
-        task_2.setTaskId(UUID.randomUUID().toString());
-        task_2.setSeq(2);
-        task_2.setStatus(TaskModel.Status.FAILED);
-        task_2.setTaskDefName(workflowTask.getName());
-        task_2.setReferenceTaskName(workflowTask.getTaskReferenceName());
+        TaskModel task2 = new TaskModel();
+        task2.setTaskId(UUID.randomUUID().toString());
+        task2.setSeq(2);
+        task2.setStatus(TaskModel.Status.FAILED);
+        task2.setTaskDefName(workflowTask.getName());
+        task2.setReferenceTaskName(workflowTask.getTaskReferenceName());
 
         WorkflowModel workflow = new WorkflowModel();
         workflow.setWorkflowDefinition(workflowDef);
         workflow.setWorkflowId("test-workflow-id");
-        workflow.getTasks().addAll(Arrays.asList(task_1, task_2));
+        workflow.getTasks().addAll(Arrays.asList(task1, task2));
         workflow.setStatus(WorkflowModel.Status.FAILED);
         workflow.setEndTime(500);
         workflow.setLastRetriedTime(100);
@@ -713,29 +713,29 @@ public class TestWorkflowExecutor {
         workflow.setCreateTime(10L);
         workflow.setEndTime(100L);
         //noinspection unchecked
-        workflow.setOutput(Collections.EMPTY_MAP);
+        workflow.setOutput(Collections.emptyMap());
         workflow.setStatus(WorkflowModel.Status.FAILED);
 
         // add 2 failed task in 2 forks and 1 cancelled in the 3rd fork
-        TaskModel task_1_1 = new TaskModel();
-        task_1_1.setTaskId(UUID.randomUUID().toString());
-        task_1_1.setSeq(1);
-        task_1_1.setRetryCount(0);
-        task_1_1.setTaskType(TaskType.SIMPLE.toString());
-        task_1_1.setStatus(TaskModel.Status.FAILED);
-        task_1_1.setTaskDefName("task1");
-        task_1_1.setReferenceTaskName("task1_ref1");
+        TaskModel task11 = new TaskModel();
+        task11.setTaskId(UUID.randomUUID().toString());
+        task11.setSeq(1);
+        task11.setRetryCount(0);
+        task11.setTaskType(TaskType.SIMPLE.toString());
+        task11.setStatus(TaskModel.Status.FAILED);
+        task11.setTaskDefName("task1");
+        task11.setReferenceTaskName("task1_ref1");
 
-        TaskModel task_1_2 = new TaskModel();
-        task_1_2.setTaskId(UUID.randomUUID().toString());
-        task_1_2.setSeq(2);
-        task_1_2.setRetryCount(1);
-        task_1_2.setTaskType(TaskType.SIMPLE.toString());
-        task_1_2.setStatus(TaskModel.Status.COMPLETED);
-        task_1_2.setTaskDefName("task1");
-        task_1_2.setReferenceTaskName("task1_ref1");
+        TaskModel task12 = new TaskModel();
+        task12.setTaskId(UUID.randomUUID().toString());
+        task12.setSeq(2);
+        task12.setRetryCount(1);
+        task12.setTaskType(TaskType.SIMPLE.toString());
+        task12.setStatus(TaskModel.Status.COMPLETED);
+        task12.setTaskDefName("task1");
+        task12.setReferenceTaskName("task1_ref1");
 
-        workflow.getTasks().addAll(Arrays.asList(task_1_1, task_1_2));
+        workflow.getTasks().addAll(Arrays.asList(task11, task12));
         // end of setup
 
         // when:
@@ -759,7 +759,7 @@ public class TestWorkflowExecutor {
         workflow.setCreateTime(10L);
         workflow.setEndTime(100L);
         //noinspection unchecked
-        workflow.setOutput(Collections.EMPTY_MAP);
+        workflow.setOutput(Collections.emptyMap());
         workflow.setStatus(WorkflowModel.Status.FAILED);
 
         AtomicInteger updateWorkflowCalledCounter = new AtomicInteger(0);
@@ -790,58 +790,58 @@ public class TestWorkflowExecutor {
                 .updateTask(any());
 
         // add 2 failed task in 2 forks and 1 cancelled in the 3rd fork
-        TaskModel task_1_1 = new TaskModel();
-        task_1_1.setTaskId(UUID.randomUUID().toString());
-        task_1_1.setSeq(20);
-        task_1_1.setRetryCount(1);
-        task_1_1.setTaskType(TaskType.SIMPLE.toString());
-        task_1_1.setStatus(TaskModel.Status.CANCELED);
-        task_1_1.setRetried(true);
-        task_1_1.setTaskDefName("task1");
-        task_1_1.setWorkflowTask(new WorkflowTask());
-        task_1_1.setReferenceTaskName("task1_ref1");
+        TaskModel task11 = new TaskModel();
+        task11.setTaskId(UUID.randomUUID().toString());
+        task11.setSeq(20);
+        task11.setRetryCount(1);
+        task11.setTaskType(TaskType.SIMPLE.toString());
+        task11.setStatus(TaskModel.Status.CANCELED);
+        task11.setRetried(true);
+        task11.setTaskDefName("task1");
+        task11.setWorkflowTask(new WorkflowTask());
+        task11.setReferenceTaskName("task1_ref1");
 
-        TaskModel task_1_2 = new TaskModel();
-        task_1_2.setTaskId(UUID.randomUUID().toString());
-        task_1_2.setSeq(21);
-        task_1_2.setRetryCount(1);
-        task_1_2.setTaskType(TaskType.SIMPLE.toString());
-        task_1_2.setStatus(TaskModel.Status.FAILED);
-        task_1_2.setTaskDefName("task1");
-        task_1_2.setWorkflowTask(new WorkflowTask());
-        task_1_2.setReferenceTaskName("task1_ref1");
+        TaskModel task12 = new TaskModel();
+        task12.setTaskId(UUID.randomUUID().toString());
+        task12.setSeq(21);
+        task12.setRetryCount(1);
+        task12.setTaskType(TaskType.SIMPLE.toString());
+        task12.setStatus(TaskModel.Status.FAILED);
+        task12.setTaskDefName("task1");
+        task12.setWorkflowTask(new WorkflowTask());
+        task12.setReferenceTaskName("task1_ref1");
 
-        TaskModel task_2_1 = new TaskModel();
-        task_2_1.setTaskId(UUID.randomUUID().toString());
-        task_2_1.setSeq(22);
-        task_2_1.setRetryCount(1);
-        task_2_1.setStatus(TaskModel.Status.FAILED);
-        task_2_1.setTaskType(TaskType.SIMPLE.toString());
-        task_2_1.setTaskDefName("task2");
-        task_2_1.setWorkflowTask(new WorkflowTask());
-        task_2_1.setReferenceTaskName("task2_ref1");
+        TaskModel task21 = new TaskModel();
+        task21.setTaskId(UUID.randomUUID().toString());
+        task21.setSeq(22);
+        task21.setRetryCount(1);
+        task21.setStatus(TaskModel.Status.FAILED);
+        task21.setTaskType(TaskType.SIMPLE.toString());
+        task21.setTaskDefName("task2");
+        task21.setWorkflowTask(new WorkflowTask());
+        task21.setReferenceTaskName("task2_ref1");
 
-        TaskModel task_3_1 = new TaskModel();
-        task_3_1.setTaskId(UUID.randomUUID().toString());
-        task_3_1.setSeq(23);
-        task_3_1.setRetryCount(1);
-        task_3_1.setStatus(TaskModel.Status.CANCELED);
-        task_3_1.setTaskType(TaskType.SIMPLE.toString());
-        task_3_1.setTaskDefName("task3");
-        task_3_1.setWorkflowTask(new WorkflowTask());
-        task_3_1.setReferenceTaskName("task3_ref1");
+        TaskModel task31 = new TaskModel();
+        task31.setTaskId(UUID.randomUUID().toString());
+        task31.setSeq(23);
+        task31.setRetryCount(1);
+        task31.setStatus(TaskModel.Status.CANCELED);
+        task31.setTaskType(TaskType.SIMPLE.toString());
+        task31.setTaskDefName("task3");
+        task31.setWorkflowTask(new WorkflowTask());
+        task31.setReferenceTaskName("task3_ref1");
 
-        TaskModel task_4_1 = new TaskModel();
-        task_4_1.setTaskId(UUID.randomUUID().toString());
-        task_4_1.setSeq(122);
-        task_4_1.setRetryCount(1);
-        task_4_1.setStatus(TaskModel.Status.FAILED);
-        task_4_1.setTaskType(TaskType.SIMPLE.toString());
-        task_4_1.setTaskDefName("task1");
-        task_4_1.setWorkflowTask(new WorkflowTask());
-        task_4_1.setReferenceTaskName("task4_refABC");
+        TaskModel task41 = new TaskModel();
+        task41.setTaskId(UUID.randomUUID().toString());
+        task41.setSeq(122);
+        task41.setRetryCount(1);
+        task41.setStatus(TaskModel.Status.FAILED);
+        task41.setTaskType(TaskType.SIMPLE.toString());
+        task41.setTaskDefName("task1");
+        task41.setWorkflowTask(new WorkflowTask());
+        task41.setReferenceTaskName("task4_refABC");
 
-        workflow.getTasks().addAll(Arrays.asList(task_1_1, task_1_2, task_2_1, task_3_1, task_4_1));
+        workflow.getTasks().addAll(Arrays.asList(task11, task12, task21, task31, task41));
         // end of setup
 
         // when:
@@ -872,60 +872,60 @@ public class TestWorkflowExecutor {
         workflow.setCreateTime(10L);
         workflow.setEndTime(100L);
         //noinspection unchecked
-        workflow.setOutput(Collections.EMPTY_MAP);
+        workflow.setOutput(Collections.emptyMap());
         workflow.setStatus(WorkflowModel.Status.FAILED);
 
-        TaskModel task_1_1 = new TaskModel();
-        task_1_1.setTaskId(UUID.randomUUID().toString());
-        task_1_1.setSeq(10);
-        task_1_1.setRetryCount(0);
-        task_1_1.setTaskType(TaskType.SIMPLE.toString());
-        task_1_1.setStatus(TaskModel.Status.FAILED);
-        task_1_1.setTaskDefName("task1");
-        task_1_1.setWorkflowTask(new WorkflowTask());
-        task_1_1.setReferenceTaskName("task1_ref1");
+        TaskModel task11 = new TaskModel();
+        task11.setTaskId(UUID.randomUUID().toString());
+        task11.setSeq(10);
+        task11.setRetryCount(0);
+        task11.setTaskType(TaskType.SIMPLE.toString());
+        task11.setStatus(TaskModel.Status.FAILED);
+        task11.setTaskDefName("task1");
+        task11.setWorkflowTask(new WorkflowTask());
+        task11.setReferenceTaskName("task1_ref1");
 
-        TaskModel task_1_2 = new TaskModel();
-        task_1_2.setTaskId(UUID.randomUUID().toString());
-        task_1_2.setSeq(11);
-        task_1_2.setRetryCount(1);
-        task_1_2.setTaskType(TaskType.SIMPLE.toString());
-        task_1_2.setStatus(TaskModel.Status.COMPLETED);
-        task_1_2.setTaskDefName("task1");
-        task_1_2.setWorkflowTask(new WorkflowTask());
-        task_1_2.setReferenceTaskName("task1_ref1");
+        TaskModel task12 = new TaskModel();
+        task12.setTaskId(UUID.randomUUID().toString());
+        task12.setSeq(11);
+        task12.setRetryCount(1);
+        task12.setTaskType(TaskType.SIMPLE.toString());
+        task12.setStatus(TaskModel.Status.COMPLETED);
+        task12.setTaskDefName("task1");
+        task12.setWorkflowTask(new WorkflowTask());
+        task12.setReferenceTaskName("task1_ref1");
 
-        TaskModel task_2_1 = new TaskModel();
-        task_2_1.setTaskId(UUID.randomUUID().toString());
-        task_2_1.setSeq(21);
-        task_2_1.setRetryCount(0);
-        task_2_1.setStatus(TaskModel.Status.CANCELED);
-        task_2_1.setTaskType(TaskType.SIMPLE.toString());
-        task_2_1.setTaskDefName("task2");
-        task_2_1.setWorkflowTask(new WorkflowTask());
-        task_2_1.setReferenceTaskName("task2_ref1");
+        TaskModel task21 = new TaskModel();
+        task21.setTaskId(UUID.randomUUID().toString());
+        task21.setSeq(21);
+        task21.setRetryCount(0);
+        task21.setStatus(TaskModel.Status.CANCELED);
+        task21.setTaskType(TaskType.SIMPLE.toString());
+        task21.setTaskDefName("task2");
+        task21.setWorkflowTask(new WorkflowTask());
+        task21.setReferenceTaskName("task2_ref1");
 
-        TaskModel task_3_1 = new TaskModel();
-        task_3_1.setTaskId(UUID.randomUUID().toString());
-        task_3_1.setSeq(31);
-        task_3_1.setRetryCount(1);
-        task_3_1.setStatus(TaskModel.Status.FAILED_WITH_TERMINAL_ERROR);
-        task_3_1.setTaskType(TaskType.SIMPLE.toString());
-        task_3_1.setTaskDefName("task1");
-        task_3_1.setWorkflowTask(new WorkflowTask());
-        task_3_1.setReferenceTaskName("task3_ref1");
+        TaskModel task31 = new TaskModel();
+        task31.setTaskId(UUID.randomUUID().toString());
+        task31.setSeq(31);
+        task31.setRetryCount(1);
+        task31.setStatus(TaskModel.Status.FAILED_WITH_TERMINAL_ERROR);
+        task31.setTaskType(TaskType.SIMPLE.toString());
+        task31.setTaskDefName("task1");
+        task31.setWorkflowTask(new WorkflowTask());
+        task31.setReferenceTaskName("task3_ref1");
 
-        TaskModel task_4_1 = new TaskModel();
-        task_4_1.setTaskId(UUID.randomUUID().toString());
-        task_4_1.setSeq(41);
-        task_4_1.setRetryCount(0);
-        task_4_1.setStatus(TaskModel.Status.TIMED_OUT);
-        task_4_1.setTaskType(TaskType.SIMPLE.toString());
-        task_4_1.setTaskDefName("task1");
-        task_4_1.setWorkflowTask(new WorkflowTask());
-        task_4_1.setReferenceTaskName("task4_ref1");
+        TaskModel task41 = new TaskModel();
+        task41.setTaskId(UUID.randomUUID().toString());
+        task41.setSeq(41);
+        task41.setRetryCount(0);
+        task41.setStatus(TaskModel.Status.TIMED_OUT);
+        task41.setTaskType(TaskType.SIMPLE.toString());
+        task41.setTaskDefName("task1");
+        task41.setWorkflowTask(new WorkflowTask());
+        task41.setReferenceTaskName("task4_ref1");
 
-        workflow.getTasks().addAll(Arrays.asList(task_1_1, task_1_2, task_2_1, task_3_1, task_4_1));
+        workflow.getTasks().addAll(Arrays.asList(task11, task12, task21, task31, task41));
         // end of setup
 
         // when:
@@ -951,30 +951,30 @@ public class TestWorkflowExecutor {
         workflow.setCreateTime(10L);
         workflow.setEndTime(100L);
         //noinspection unchecked
-        workflow.setOutput(Collections.EMPTY_MAP);
+        workflow.setOutput(Collections.emptyMap());
         workflow.setStatus(WorkflowModel.Status.FAILED);
 
-        TaskModel task_1_1 = new TaskModel();
-        task_1_1.setTaskId(UUID.randomUUID().toString());
-        task_1_1.setSeq(10);
-        task_1_1.setRetryCount(0);
-        task_1_1.setTaskType(TaskType.SIMPLE.toString());
-        task_1_1.setStatus(TaskModel.Status.FAILED);
-        task_1_1.setTaskDefName("task1");
-        task_1_1.setWorkflowTask(new WorkflowTask());
-        task_1_1.setReferenceTaskName("task1_ref1");
+        TaskModel task11 = new TaskModel();
+        task11.setTaskId(UUID.randomUUID().toString());
+        task11.setSeq(10);
+        task11.setRetryCount(0);
+        task11.setTaskType(TaskType.SIMPLE.toString());
+        task11.setStatus(TaskModel.Status.FAILED);
+        task11.setTaskDefName("task1");
+        task11.setWorkflowTask(new WorkflowTask());
+        task11.setReferenceTaskName("task1_ref1");
 
-        TaskModel task_2_1 = new TaskModel();
-        task_2_1.setTaskId(UUID.randomUUID().toString());
-        task_2_1.setSeq(20);
-        task_2_1.setRetryCount(0);
-        task_2_1.setTaskType(TaskType.SIMPLE.toString());
-        task_2_1.setStatus(TaskModel.Status.CANCELED);
-        task_2_1.setTaskDefName("task1");
-        task_2_1.setWorkflowTask(new WorkflowTask());
-        task_2_1.setReferenceTaskName("task2_ref1");
+        TaskModel task21 = new TaskModel();
+        task21.setTaskId(UUID.randomUUID().toString());
+        task21.setSeq(20);
+        task21.setRetryCount(0);
+        task21.setTaskType(TaskType.SIMPLE.toString());
+        task21.setStatus(TaskModel.Status.CANCELED);
+        task21.setTaskDefName("task1");
+        task21.setWorkflowTask(new WorkflowTask());
+        task21.setReferenceTaskName("task2_ref1");
 
-        workflow.getTasks().addAll(Arrays.asList(task_1_1, task_2_1));
+        workflow.getTasks().addAll(Arrays.asList(task11, task21));
         // end of setup
 
         // when:
@@ -989,7 +989,7 @@ public class TestWorkflowExecutor {
         // Reset Last Workflow Task to FAILED.
         TaskModel lastTask =
                 workflow.getTasks().stream()
-                        .filter(t -> t.getReferenceTaskName().equals("task1_ref1"))
+                        .filter(t -> "task1_ref1".equals(t.getReferenceTaskName()))
                         .collect(
                                 groupingBy(
                                         TaskModel::getReferenceTaskName,
@@ -1010,7 +1010,7 @@ public class TestWorkflowExecutor {
         // Reset Last Workflow Task to FAILED.
         TaskModel lastTask2 =
                 workflow.getTasks().stream()
-                        .filter(t -> t.getReferenceTaskName().equals("task1_ref1"))
+                        .filter(t -> "task1_ref1".equals(t.getReferenceTaskName()))
                         .collect(
                                 groupingBy(
                                         TaskModel::getReferenceTaskName,
@@ -1041,7 +1041,7 @@ public class TestWorkflowExecutor {
         workflow.setCreateTime(10L);
         workflow.setEndTime(100L);
         //noinspection unchecked
-        workflow.setOutput(Collections.EMPTY_MAP);
+        workflow.setOutput(Collections.emptyMap());
         workflow.setStatus(WorkflowModel.Status.FAILED);
 
         TaskModel forkTask = new TaskModel();
@@ -1052,25 +1052,25 @@ public class TestWorkflowExecutor {
         forkTask.setStatus(TaskModel.Status.COMPLETED);
         forkTask.setReferenceTaskName("task_fork");
 
-        TaskModel task_1_1 = new TaskModel();
-        task_1_1.setTaskId(UUID.randomUUID().toString());
-        task_1_1.setSeq(20);
-        task_1_1.setRetryCount(1);
-        task_1_1.setTaskType(TaskType.SIMPLE.toString());
-        task_1_1.setStatus(TaskModel.Status.FAILED);
-        task_1_1.setTaskDefName("task1");
-        task_1_1.setWorkflowTask(new WorkflowTask());
-        task_1_1.setReferenceTaskName("task1_ref1");
+        TaskModel task11 = new TaskModel();
+        task11.setTaskId(UUID.randomUUID().toString());
+        task11.setSeq(20);
+        task11.setRetryCount(1);
+        task11.setTaskType(TaskType.SIMPLE.toString());
+        task11.setStatus(TaskModel.Status.FAILED);
+        task11.setTaskDefName("task1");
+        task11.setWorkflowTask(new WorkflowTask());
+        task11.setReferenceTaskName("task1_ref1");
 
-        TaskModel task_2_1 = new TaskModel();
-        task_2_1.setTaskId(UUID.randomUUID().toString());
-        task_2_1.setSeq(22);
-        task_2_1.setRetryCount(1);
-        task_2_1.setStatus(TaskModel.Status.CANCELED);
-        task_2_1.setTaskType(TaskType.SIMPLE.toString());
-        task_2_1.setTaskDefName("task2");
-        task_2_1.setWorkflowTask(new WorkflowTask());
-        task_2_1.setReferenceTaskName("task2_ref1");
+        TaskModel task21 = new TaskModel();
+        task21.setTaskId(UUID.randomUUID().toString());
+        task21.setSeq(22);
+        task21.setRetryCount(1);
+        task21.setStatus(TaskModel.Status.CANCELED);
+        task21.setTaskType(TaskType.SIMPLE.toString());
+        task21.setTaskDefName("task2");
+        task21.setWorkflowTask(new WorkflowTask());
+        task21.setReferenceTaskName("task2_ref1");
 
         TaskModel joinTask = new TaskModel();
         joinTask.setTaskType(TaskType.JOIN.toString());
@@ -1083,9 +1083,9 @@ public class TestWorkflowExecutor {
                 .put(
                         "joinOn",
                         Arrays.asList(
-                                task_1_1.getReferenceTaskName(), task_2_1.getReferenceTaskName()));
+                                task11.getReferenceTaskName(), task21.getReferenceTaskName()));
 
-        workflow.getTasks().addAll(Arrays.asList(forkTask, task_1_1, task_2_1, joinTask));
+        workflow.getTasks().addAll(Arrays.asList(forkTask, task11, task21, joinTask));
         // end of setup
 
         // when:
@@ -1198,31 +1198,31 @@ public class TestWorkflowExecutor {
         workflow.setCreateTime(10L);
         workflow.setEndTime(100L);
         //noinspection unchecked
-        workflow.setOutput(Collections.EMPTY_MAP);
+        workflow.setOutput(Collections.emptyMap());
         workflow.setStatus(WorkflowModel.Status.TIMED_OUT);
 
-        TaskModel task_1_1 = new TaskModel();
-        task_1_1.setTaskId(UUID.randomUUID().toString());
-        task_1_1.setSeq(20);
-        task_1_1.setRetryCount(1);
-        task_1_1.setTaskType(TaskType.SIMPLE.toString());
-        task_1_1.setStatus(TaskModel.Status.COMPLETED);
-        task_1_1.setRetried(true);
-        task_1_1.setTaskDefName("task1");
-        task_1_1.setWorkflowTask(new WorkflowTask());
-        task_1_1.setReferenceTaskName("task1_ref1");
+        TaskModel task11 = new TaskModel();
+        task11.setTaskId(UUID.randomUUID().toString());
+        task11.setSeq(20);
+        task11.setRetryCount(1);
+        task11.setTaskType(TaskType.SIMPLE.toString());
+        task11.setStatus(TaskModel.Status.COMPLETED);
+        task11.setRetried(true);
+        task11.setTaskDefName("task1");
+        task11.setWorkflowTask(new WorkflowTask());
+        task11.setReferenceTaskName("task1_ref1");
 
-        TaskModel task_2_1 = new TaskModel();
-        task_2_1.setTaskId(UUID.randomUUID().toString());
-        task_2_1.setSeq(22);
-        task_2_1.setRetryCount(1);
-        task_2_1.setStatus(TaskModel.Status.COMPLETED);
-        task_2_1.setTaskType(TaskType.SIMPLE.toString());
-        task_2_1.setTaskDefName("task2");
-        task_2_1.setWorkflowTask(new WorkflowTask());
-        task_2_1.setReferenceTaskName("task2_ref1");
+        TaskModel task21 = new TaskModel();
+        task21.setTaskId(UUID.randomUUID().toString());
+        task21.setSeq(22);
+        task21.setRetryCount(1);
+        task21.setStatus(TaskModel.Status.COMPLETED);
+        task21.setTaskType(TaskType.SIMPLE.toString());
+        task21.setTaskDefName("task2");
+        task21.setWorkflowTask(new WorkflowTask());
+        task21.setReferenceTaskName("task2_ref1");
 
-        workflow.getTasks().addAll(Arrays.asList(task_1_1, task_2_1));
+        workflow.getTasks().addAll(Arrays.asList(task11, task21));
 
         AtomicInteger updateWorkflowCalledCounter = new AtomicInteger(0);
         doAnswer(
@@ -1283,7 +1283,7 @@ public class TestWorkflowExecutor {
         workflow.setCreateTime(10L);
         workflow.setEndTime(100L);
         //noinspection unchecked
-        workflow.setOutput(Collections.EMPTY_MAP);
+        workflow.setOutput(Collections.emptyMap());
         workflow.setStatus(WorkflowModel.Status.FAILED);
         workflow.setReasonForIncompletion("task1 failed");
         workflow.setFailedReferenceTaskNames(
@@ -1299,28 +1299,28 @@ public class TestWorkflowExecutor {
                     }
                 });
 
-        TaskModel task_1_1 = new TaskModel();
-        task_1_1.setTaskId(UUID.randomUUID().toString());
-        task_1_1.setSeq(20);
-        task_1_1.setRetryCount(1);
-        task_1_1.setTaskType(TaskType.SIMPLE.toString());
-        task_1_1.setStatus(TaskModel.Status.FAILED);
-        task_1_1.setRetried(true);
-        task_1_1.setTaskDefName("task1");
-        task_1_1.setWorkflowTask(new WorkflowTask());
-        task_1_1.setReferenceTaskName("task1_ref1");
+        TaskModel task11 = new TaskModel();
+        task11.setTaskId(UUID.randomUUID().toString());
+        task11.setSeq(20);
+        task11.setRetryCount(1);
+        task11.setTaskType(TaskType.SIMPLE.toString());
+        task11.setStatus(TaskModel.Status.FAILED);
+        task11.setRetried(true);
+        task11.setTaskDefName("task1");
+        task11.setWorkflowTask(new WorkflowTask());
+        task11.setReferenceTaskName("task1_ref1");
 
-        TaskModel task_2_1 = new TaskModel();
-        task_2_1.setTaskId(UUID.randomUUID().toString());
-        task_2_1.setSeq(22);
-        task_2_1.setRetryCount(1);
-        task_2_1.setStatus(TaskModel.Status.CANCELED);
-        task_2_1.setTaskType(TaskType.SIMPLE.toString());
-        task_2_1.setTaskDefName("task2");
-        task_2_1.setWorkflowTask(new WorkflowTask());
-        task_2_1.setReferenceTaskName("task2_ref1");
+        TaskModel task21 = new TaskModel();
+        task21.setTaskId(UUID.randomUUID().toString());
+        task21.setSeq(22);
+        task21.setRetryCount(1);
+        task21.setStatus(TaskModel.Status.CANCELED);
+        task21.setTaskType(TaskType.SIMPLE.toString());
+        task21.setTaskDefName("task2");
+        task21.setWorkflowTask(new WorkflowTask());
+        task21.setReferenceTaskName("task2_ref1");
 
-        workflow.getTasks().addAll(Arrays.asList(task_1_1, task_2_1));
+        workflow.getTasks().addAll(Arrays.asList(task11, task21));
         // end of setup
 
         // when:
@@ -1439,7 +1439,7 @@ public class TestWorkflowExecutor {
         workflow.setCreateTime(10L);
         workflow.setEndTime(100L);
         //noinspection unchecked
-        workflow.setOutput(Collections.EMPTY_MAP);
+        workflow.setOutput(Collections.emptyMap());
         workflow.setStatus(WorkflowModel.Status.FAILED);
         workflow.setReasonForIncompletion("task1 failed");
         workflow.setFailedReferenceTaskNames(
@@ -1454,28 +1454,28 @@ public class TestWorkflowExecutor {
                         add("task1");
                     }
                 });
-        TaskModel task_1_1 = new TaskModel();
-        task_1_1.setTaskId(UUID.randomUUID().toString());
-        task_1_1.setSeq(20);
-        task_1_1.setRetryCount(1);
-        task_1_1.setTaskType(TaskType.SIMPLE.toString());
-        task_1_1.setStatus(TaskModel.Status.FAILED);
-        task_1_1.setRetried(true);
-        task_1_1.setTaskDefName("task1");
-        task_1_1.setWorkflowTask(new WorkflowTask());
-        task_1_1.setReferenceTaskName("task1_ref1");
+        TaskModel task11 = new TaskModel();
+        task11.setTaskId(UUID.randomUUID().toString());
+        task11.setSeq(20);
+        task11.setRetryCount(1);
+        task11.setTaskType(TaskType.SIMPLE.toString());
+        task11.setStatus(TaskModel.Status.FAILED);
+        task11.setRetried(true);
+        task11.setTaskDefName("task1");
+        task11.setWorkflowTask(new WorkflowTask());
+        task11.setReferenceTaskName("task1_ref1");
 
-        TaskModel task_2_1 = new TaskModel();
-        task_2_1.setTaskId(UUID.randomUUID().toString());
-        task_2_1.setSeq(22);
-        task_2_1.setRetryCount(1);
-        task_2_1.setStatus(TaskModel.Status.CANCELED);
-        task_2_1.setTaskType(TaskType.SIMPLE.toString());
-        task_2_1.setTaskDefName("task2");
-        task_2_1.setWorkflowTask(new WorkflowTask());
-        task_2_1.setReferenceTaskName("task2_ref1");
+        TaskModel task21 = new TaskModel();
+        task21.setTaskId(UUID.randomUUID().toString());
+        task21.setSeq(22);
+        task21.setRetryCount(1);
+        task21.setStatus(TaskModel.Status.CANCELED);
+        task21.setTaskType(TaskType.SIMPLE.toString());
+        task21.setTaskDefName("task2");
+        task21.setWorkflowTask(new WorkflowTask());
+        task21.setReferenceTaskName("task2_ref1");
 
-        workflow.getTasks().addAll(Arrays.asList(task_1_1, task_2_1));
+        workflow.getTasks().addAll(Arrays.asList(task11, task21));
         // end of setup
 
         // when:
@@ -1484,7 +1484,7 @@ public class TestWorkflowExecutor {
                 .thenReturn(Optional.of(new WorkflowDef()));
         RerunWorkflowRequest rerunWorkflowRequest = new RerunWorkflowRequest();
         rerunWorkflowRequest.setReRunFromWorkflowId(workflow.getWorkflowId());
-        rerunWorkflowRequest.setReRunFromTaskId(task_1_1.getTaskId());
+        rerunWorkflowRequest.setReRunFromTaskId(task11.getTaskId());
         workflowExecutor.rerun(rerunWorkflowRequest);
 
         // when:
@@ -1939,15 +1939,12 @@ public class TestWorkflowExecutor {
         WorkflowTask loopWfTask = mock(WorkflowTask.class);
         when(loopTask.getWorkflowTask()).thenReturn(loopWfTask);
         List<WorkflowTask> loopOver =
-                new ArrayList<>() {
-                    {
-                        WorkflowTask workflowTask = new WorkflowTask();
-                        workflowTask.setType(TaskType.TASK_TYPE_SIMPLE);
-                        workflowTask.setName("TEST");
-                        workflowTask.setTaskDefinition(new TaskDef());
-                        add(workflowTask);
-                    }
-                };
+                new ArrayList<>();
+        WorkflowTask workflowTask = new WorkflowTask();
+        workflowTask.setType(TaskType.TASK_TYPE_SIMPLE);
+        workflowTask.setName("TEST");
+        workflowTask.setTaskDefinition(new TaskDef());
+        loopOver.add(workflowTask);
         when(loopWfTask.getLoopOver()).thenReturn(loopOver);
 
         workflowExecutor.scheduleNextIteration(loopTask, workflow);
@@ -2071,7 +2068,7 @@ public class TestWorkflowExecutor {
         workflow.setStatus(WorkflowModel.Status.RUNNING);
         workflow.setOwnerApp("junit_test");
         workflow.setEndTime(100L);
-        workflow.setOutput(Collections.EMPTY_MAP);
+        workflow.setOutput(Collections.emptyMap());
         workflow.setWorkflowDefinition(workflowDef);
 
         TaskModel successTask = new TaskModel();
@@ -2552,7 +2549,7 @@ public class TestWorkflowExecutor {
         workflow.setCreateTime(10L);
         workflow.setEndTime(100L);
         //noinspection unchecked
-        workflow.setOutput(Collections.EMPTY_MAP);
+        workflow.setOutput(Collections.emptyMap());
         workflow.setStatus(WorkflowModel.Status.FAILED);
 
         return workflow;

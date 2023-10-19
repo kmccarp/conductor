@@ -85,18 +85,18 @@ public class WorkflowDefConstraintTest {
         workflowDef.setOwnerEmail("sample@test.com");
         workflowDef.setVersion(2);
 
-        WorkflowTask workflowTask_1 = new WorkflowTask();
-        workflowTask_1.setName("task_1");
-        workflowTask_1.setTaskReferenceName("task_1");
-        workflowTask_1.setType(TaskType.TASK_TYPE_SIMPLE);
+        WorkflowTask workflowTask1 = new WorkflowTask();
+        workflowTask1.setName("task_1");
+        workflowTask1.setTaskReferenceName("task_1");
+        workflowTask1.setType(TaskType.TASK_TYPE_SIMPLE);
 
         Map<String, Object> inputParam = new HashMap<>();
         inputParam.put("fileLocation", "${workflow.input.fileLocation}");
 
-        workflowTask_1.setInputParameters(inputParam);
+        workflowTask1.setInputParameters(inputParam);
 
         List<WorkflowTask> tasks = new ArrayList<>();
-        tasks.add(workflowTask_1);
+        tasks.add(workflowTask1);
 
         workflowDef.setTasks(tasks);
 
@@ -114,18 +114,18 @@ public class WorkflowDefConstraintTest {
         workflowDef.setOwnerEmail("sample@test.com");
         workflowDef.setVersion(2);
 
-        WorkflowTask workflowTask_1 = new WorkflowTask();
-        workflowTask_1.setName("task_1");
-        workflowTask_1.setTaskReferenceName("task_1");
-        workflowTask_1.setType(TaskType.TASK_TYPE_SIMPLE);
+        WorkflowTask workflowTask1 = new WorkflowTask();
+        workflowTask1.setName("task_1");
+        workflowTask1.setTaskReferenceName("task_1");
+        workflowTask1.setType(TaskType.TASK_TYPE_SIMPLE);
 
         Map<String, Object> inputParam = new HashMap<>();
         inputParam.put("fileLocation", "${work.input.fileLocation}");
 
-        workflowTask_1.setInputParameters(inputParam);
+        workflowTask1.setInputParameters(inputParam);
 
         List<WorkflowTask> tasks = new ArrayList<>();
-        tasks.add(workflowTask_1);
+        tasks.add(workflowTask1);
 
         workflowDef.setTasks(tasks);
 
@@ -148,26 +148,26 @@ public class WorkflowDefConstraintTest {
         workflowDef.setOwnerEmail("sample@test.com");
         workflowDef.setVersion(2);
 
-        WorkflowTask workflowTask_1 = new WorkflowTask();
-        workflowTask_1.setName("task_1");
-        workflowTask_1.setTaskReferenceName("task_1");
-        workflowTask_1.setType(TaskType.TASK_TYPE_SIMPLE);
+        WorkflowTask workflowTask1 = new WorkflowTask();
+        workflowTask1.setName("task_1");
+        workflowTask1.setTaskReferenceName("task_1");
+        workflowTask1.setType(TaskType.TASK_TYPE_SIMPLE);
 
         Map<String, Object> inputParam = new HashMap<>();
         inputParam.put("fileLocation", "${task_2.input.fileLocation}");
 
-        workflowTask_1.setInputParameters(inputParam);
+        workflowTask1.setInputParameters(inputParam);
 
-        WorkflowTask workflowTask_2 = new WorkflowTask();
-        workflowTask_2.setName("task_2");
-        workflowTask_2.setTaskReferenceName("task_1");
-        workflowTask_2.setType(TaskType.TASK_TYPE_SIMPLE);
+        WorkflowTask workflowTask2 = new WorkflowTask();
+        workflowTask2.setName("task_2");
+        workflowTask2.setTaskReferenceName("task_1");
+        workflowTask2.setType(TaskType.TASK_TYPE_SIMPLE);
 
-        workflowTask_2.setInputParameters(inputParam);
+        workflowTask2.setInputParameters(inputParam);
 
         List<WorkflowTask> tasks = new ArrayList<>();
-        tasks.add(workflowTask_1);
-        tasks.add(workflowTask_2);
+        tasks.add(workflowTask1);
+        tasks.add(workflowTask2);
 
         workflowDef.setTasks(tasks);
 

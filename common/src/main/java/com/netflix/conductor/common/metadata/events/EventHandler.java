@@ -187,10 +187,10 @@ public class EventHandler {
         }
 
         /**
-         * @param start_workflow the start_workflow to set
+         * @param startWorkflow the start_workflow to set
          */
-        public void setStart_workflow(StartWorkflow start_workflow) {
-            this.start_workflow = start_workflow;
+        public void setStart_workflow(StartWorkflow startWorkflow) {
+            this.start_workflow = startWorkflow;
         }
 
         /**
@@ -201,10 +201,10 @@ public class EventHandler {
         }
 
         /**
-         * @param complete_task the complete_task to set
+         * @param completeTask the complete_task to set
          */
-        public void setComplete_task(TaskDetails complete_task) {
-            this.complete_task = complete_task;
+        public void setComplete_task(TaskDetails completeTask) {
+            this.complete_task = completeTask;
         }
 
         /**
@@ -215,10 +215,10 @@ public class EventHandler {
         }
 
         /**
-         * @param fail_task the fail_task to set
+         * @param failTask the fail_task to set
          */
-        public void setFail_task(TaskDetails fail_task) {
-            this.fail_task = fail_task;
+        public void setFail_task(TaskDetails failTask) {
+            this.fail_task = failTask;
         }
 
         /**

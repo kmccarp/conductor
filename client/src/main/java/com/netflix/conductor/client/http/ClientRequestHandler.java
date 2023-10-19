@@ -73,8 +73,8 @@ public class ClientRequestHandler {
                 .get(ClientResponse.class);
     }
 
-    public WebResource.Builder getWebResourceBuilder(URI URI, Object entity) {
-        return client.resource(URI)
+    public WebResource.Builder getWebResourceBuilder(URI uri, Object entity) {
+        return client.resource(uri)
                 .type(MediaType.APPLICATION_JSON)
                 .entity(entity)
                 .accept(MediaType.TEXT_PLAIN, MediaType.APPLICATION_JSON);

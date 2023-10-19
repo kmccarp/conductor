@@ -56,14 +56,14 @@ public class HttpTaskTest {
 
     private static final String ERROR_RESPONSE = "Something went wrong!";
     private static final String TEXT_RESPONSE = "Text Response";
-    private static final double NUM_RESPONSE = 42.42d;
+    private static final double NUM_RESPONSE = 42.42D;
 
     private HttpTask httpTask;
     private WorkflowExecutor workflowExecutor;
     private final WorkflowModel workflow = new WorkflowModel();
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
-    private static String JSON_RESPONSE;
+    private static String jsonResponse;
 
     @ClassRule
     public static MockServerContainer mockServer =
@@ -76,7 +76,7 @@ public class HttpTaskTest {
         map.put("key", "value1");
         map.put("num", 42);
         map.put("SomeKey", null);
-        JSON_RESPONSE = objectMapper.writeValueAsString(map);
+        jsonResponse = objectMapper.writeValueAsString(map);
 
         final TypeReference<Map<String, Object>> mapOfObj = new TypeReference<>() {};
         MockServerClient client =
@@ -109,7 +109,7 @@ public class HttpTaskTest {
                 .respond(
                         HttpResponse.response()
                                 .withContentType(MediaType.APPLICATION_JSON)
-                                .withBody(JSON_RESPONSE));
+                                .withBody(jsonResponse));
     }
 
     @Before
@@ -267,7 +267,7 @@ public class HttpTaskTest {
         assertEquals(TaskModel.Status.COMPLETED, task.getStatus());
         assertTrue(response instanceof Map);
         Map<String, Object> map = (Map<String, Object>) response;
-        assertEquals(JSON_RESPONSE, objectMapper.writeValueAsString(map));
+        assertEquals(jsonResponse, objectMapper.writeValueAsString(map));
     }
 
     @Test

@@ -21,7 +21,7 @@ import spock.lang.Shared
 class SetVariableTaskSpec extends AbstractSpecification {
 
     @Shared
-    def SET_VARIABLE_WF = 'test_set_variable_wf'
+    def setVariableWf = 'test_set_variable_wf'
 
     def setup() {
         workflowTestUtil.registerWorkflows(
@@ -35,7 +35,7 @@ class SetVariableTaskSpec extends AbstractSpecification {
         workflowInput['var'] = "var_test_value"
 
         when: "Start the workflow which has the set variable task"
-        def workflowInstanceId = startWorkflow(SET_VARIABLE_WF, 1,
+        def workflowInstanceId = startWorkflow(setVariableWf, 1,
                 '', workflowInput, null)
 
         then: "verify that the task is completed and variables were set"
@@ -57,13 +57,13 @@ class SetVariableTaskSpec extends AbstractSpecification {
                 Collections.nCopies(1 + ((int) (maxThreshold * 1024 / 8)), "01234567"))
 
         when: "Start the workflow which has the set variable task"
-        def workflowInstanceId = startWorkflow(SET_VARIABLE_WF, 1,
+        def workflowInstanceId = startWorkflow(setVariableWf, 1,
                 '', workflowInput, null)
-        def EXTRA_HASHMAP_SIZE = 17
+        def extraHashmapSize = 17
         def expectedErrorMessage =
                 String.format(
                         "The variables payload size: %d of workflow: %s is greater than the permissible limit: %d bytes",
-                        EXTRA_HASHMAP_SIZE + maxThreshold * 1024 + 1, workflowInstanceId, maxThreshold)
+                        extraHashmapSize + maxThreshold * 1024 + 1, workflowInstanceId, maxThreshold)
 
         then: "verify that the task is completed and variables were set"
         with(workflowExecutionService.getExecutionStatus(workflowInstanceId, true)) {

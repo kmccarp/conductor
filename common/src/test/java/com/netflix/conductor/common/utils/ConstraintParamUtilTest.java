@@ -46,18 +46,18 @@ public class ConstraintParamUtilTest {
     public void testExtractParamPathComponents() {
         WorkflowDef workflowDef = constructWorkflowDef();
 
-        WorkflowTask workflowTask_1 = new WorkflowTask();
-        workflowTask_1.setName("task_1");
-        workflowTask_1.setTaskReferenceName("task_1");
-        workflowTask_1.setType(TaskType.TASK_TYPE_SIMPLE);
+        WorkflowTask workflowTask1 = new WorkflowTask();
+        workflowTask1.setName("task_1");
+        workflowTask1.setTaskReferenceName("task_1");
+        workflowTask1.setType(TaskType.TASK_TYPE_SIMPLE);
 
         Map<String, Object> inputParam = new HashMap<>();
         inputParam.put("taskId", "${CPEWF_TASK_ID}");
 
-        workflowTask_1.setInputParameters(inputParam);
+        workflowTask1.setInputParameters(inputParam);
 
         List<WorkflowTask> tasks = new ArrayList<>();
-        tasks.add(workflowTask_1);
+        tasks.add(workflowTask1);
 
         workflowDef.setTasks(tasks);
 
@@ -70,18 +70,18 @@ public class ConstraintParamUtilTest {
     public void testExtractParamPathComponentsWithMissingEnvVariable() {
         WorkflowDef workflowDef = constructWorkflowDef();
 
-        WorkflowTask workflowTask_1 = new WorkflowTask();
-        workflowTask_1.setName("task_1");
-        workflowTask_1.setTaskReferenceName("task_1");
-        workflowTask_1.setType(TaskType.TASK_TYPE_SIMPLE);
+        WorkflowTask workflowTask1 = new WorkflowTask();
+        workflowTask1.setName("task_1");
+        workflowTask1.setTaskReferenceName("task_1");
+        workflowTask1.setType(TaskType.TASK_TYPE_SIMPLE);
 
         Map<String, Object> inputParam = new HashMap<>();
         inputParam.put("taskId", "${CPEWF_TASK_ID} ${NETFLIX_STACK}");
 
-        workflowTask_1.setInputParameters(inputParam);
+        workflowTask1.setInputParameters(inputParam);
 
         List<WorkflowTask> tasks = new ArrayList<>();
-        tasks.add(workflowTask_1);
+        tasks.add(workflowTask1);
 
         workflowDef.setTasks(tasks);
 
@@ -94,18 +94,18 @@ public class ConstraintParamUtilTest {
     public void testExtractParamPathComponentsWithValidEnvVariable() {
         WorkflowDef workflowDef = constructWorkflowDef();
 
-        WorkflowTask workflowTask_1 = new WorkflowTask();
-        workflowTask_1.setName("task_1");
-        workflowTask_1.setTaskReferenceName("task_1");
-        workflowTask_1.setType(TaskType.TASK_TYPE_SIMPLE);
+        WorkflowTask workflowTask1 = new WorkflowTask();
+        workflowTask1.setName("task_1");
+        workflowTask1.setTaskReferenceName("task_1");
+        workflowTask1.setType(TaskType.TASK_TYPE_SIMPLE);
 
         Map<String, Object> inputParam = new HashMap<>();
         inputParam.put("taskId", "${CPEWF_TASK_ID}  ${workflow.input.status}");
 
-        workflowTask_1.setInputParameters(inputParam);
+        workflowTask1.setInputParameters(inputParam);
 
         List<WorkflowTask> tasks = new ArrayList<>();
-        tasks.add(workflowTask_1);
+        tasks.add(workflowTask1);
 
         workflowDef.setTasks(tasks);
 
@@ -118,10 +118,10 @@ public class ConstraintParamUtilTest {
     public void testExtractParamPathComponentsWithValidMap() {
         WorkflowDef workflowDef = constructWorkflowDef();
 
-        WorkflowTask workflowTask_1 = new WorkflowTask();
-        workflowTask_1.setName("task_1");
-        workflowTask_1.setTaskReferenceName("task_1");
-        workflowTask_1.setType(TaskType.TASK_TYPE_SIMPLE);
+        WorkflowTask workflowTask1 = new WorkflowTask();
+        workflowTask1.setName("task_1");
+        workflowTask1.setTaskReferenceName("task_1");
+        workflowTask1.setType(TaskType.TASK_TYPE_SIMPLE);
 
         Map<String, Object> inputParam = new HashMap<>();
         inputParam.put("taskId", "${CPEWF_TASK_ID}  ${workflow.input.status}");
@@ -133,10 +133,10 @@ public class ConstraintParamUtilTest {
         envInputParam.put("TEST_ENV", "${TEST_ENV}");
 
         inputParam.put("env", envInputParam);
-        workflowTask_1.setInputParameters(inputParam);
+        workflowTask1.setInputParameters(inputParam);
 
         List<WorkflowTask> tasks = new ArrayList<>();
-        tasks.add(workflowTask_1);
+        tasks.add(workflowTask1);
 
         workflowDef.setTasks(tasks);
 
@@ -149,10 +149,10 @@ public class ConstraintParamUtilTest {
     public void testExtractParamPathComponentsWithInvalidEnv() {
         WorkflowDef workflowDef = constructWorkflowDef();
 
-        WorkflowTask workflowTask_1 = new WorkflowTask();
-        workflowTask_1.setName("task_1");
-        workflowTask_1.setTaskReferenceName("task_1");
-        workflowTask_1.setType(TaskType.TASK_TYPE_SIMPLE);
+        WorkflowTask workflowTask1 = new WorkflowTask();
+        workflowTask1.setName("task_1");
+        workflowTask1.setTaskReferenceName("task_1");
+        workflowTask1.setType(TaskType.TASK_TYPE_SIMPLE);
 
         Map<String, Object> inputParam = new HashMap<>();
         inputParam.put("taskId", "${CPEWF_TASK_ID}  ${workflow.input.status}");
@@ -162,10 +162,10 @@ public class ConstraintParamUtilTest {
         envInputParam.put("TEST_ENV1", "${TEST_ENV1}");
 
         inputParam.put("env", envInputParam);
-        workflowTask_1.setInputParameters(inputParam);
+        workflowTask1.setInputParameters(inputParam);
 
         List<WorkflowTask> tasks = new ArrayList<>();
-        tasks.add(workflowTask_1);
+        tasks.add(workflowTask1);
 
         workflowDef.setTasks(tasks);
 
@@ -178,17 +178,17 @@ public class ConstraintParamUtilTest {
     public void testExtractParamPathComponentsWithInputParamEmpty() {
         WorkflowDef workflowDef = constructWorkflowDef();
 
-        WorkflowTask workflowTask_1 = new WorkflowTask();
-        workflowTask_1.setName("task_1");
-        workflowTask_1.setTaskReferenceName("task_1");
-        workflowTask_1.setType(TaskType.TASK_TYPE_SIMPLE);
+        WorkflowTask workflowTask1 = new WorkflowTask();
+        workflowTask1.setName("task_1");
+        workflowTask1.setTaskReferenceName("task_1");
+        workflowTask1.setType(TaskType.TASK_TYPE_SIMPLE);
 
         Map<String, Object> inputParam = new HashMap<>();
         inputParam.put("taskId", "");
-        workflowTask_1.setInputParameters(inputParam);
+        workflowTask1.setInputParameters(inputParam);
 
         List<WorkflowTask> tasks = new ArrayList<>();
-        tasks.add(workflowTask_1);
+        tasks.add(workflowTask1);
 
         workflowDef.setTasks(tasks);
 
@@ -201,17 +201,17 @@ public class ConstraintParamUtilTest {
     public void testExtractParamPathComponentsWithListInputParamWithEmptyString() {
         WorkflowDef workflowDef = constructWorkflowDef();
 
-        WorkflowTask workflowTask_1 = new WorkflowTask();
-        workflowTask_1.setName("task_1");
-        workflowTask_1.setTaskReferenceName("task_1");
-        workflowTask_1.setType(TaskType.TASK_TYPE_SIMPLE);
+        WorkflowTask workflowTask1 = new WorkflowTask();
+        workflowTask1.setName("task_1");
+        workflowTask1.setTaskReferenceName("task_1");
+        workflowTask1.setType(TaskType.TASK_TYPE_SIMPLE);
 
         Map<String, Object> inputParam = new HashMap<>();
         inputParam.put("taskId", new String[] {""});
-        workflowTask_1.setInputParameters(inputParam);
+        workflowTask1.setInputParameters(inputParam);
 
         List<WorkflowTask> tasks = new ArrayList<>();
-        tasks.add(workflowTask_1);
+        tasks.add(workflowTask1);
 
         workflowDef.setTasks(tasks);
 
@@ -224,17 +224,17 @@ public class ConstraintParamUtilTest {
     public void testExtractParamPathComponentsWithInputFieldWithSpace() {
         WorkflowDef workflowDef = constructWorkflowDef();
 
-        WorkflowTask workflowTask_1 = new WorkflowTask();
-        workflowTask_1.setName("task_1");
-        workflowTask_1.setTaskReferenceName("task_1");
-        workflowTask_1.setType(TaskType.TASK_TYPE_SIMPLE);
+        WorkflowTask workflowTask1 = new WorkflowTask();
+        workflowTask1.setName("task_1");
+        workflowTask1.setTaskReferenceName("task_1");
+        workflowTask1.setType(TaskType.TASK_TYPE_SIMPLE);
 
         Map<String, Object> inputParam = new HashMap<>();
         inputParam.put("taskId", "${CPEWF_TASK_ID}  ${workflow.input.status sta}");
-        workflowTask_1.setInputParameters(inputParam);
+        workflowTask1.setInputParameters(inputParam);
 
         List<WorkflowTask> tasks = new ArrayList<>();
-        tasks.add(workflowTask_1);
+        tasks.add(workflowTask1);
 
         workflowDef.setTasks(tasks);
 
@@ -247,19 +247,19 @@ public class ConstraintParamUtilTest {
     public void testExtractParamPathComponentsWithPredefineEnums() {
         WorkflowDef workflowDef = constructWorkflowDef();
 
-        WorkflowTask workflowTask_1 = new WorkflowTask();
-        workflowTask_1.setName("task_1");
-        workflowTask_1.setTaskReferenceName("task_1");
-        workflowTask_1.setType(TaskType.TASK_TYPE_SIMPLE);
+        WorkflowTask workflowTask1 = new WorkflowTask();
+        workflowTask1.setName("task_1");
+        workflowTask1.setTaskReferenceName("task_1");
+        workflowTask1.setType(TaskType.TASK_TYPE_SIMPLE);
 
         Map<String, Object> inputParam = new HashMap<>();
         inputParam.put("NETFLIX_ENV", "${CPEWF_TASK_ID}");
         inputParam.put(
                 "entryPoint", "/tools/pdfwatermarker_mux.py ${NETFLIX_ENV} ${CPEWF_TASK_ID} alpha");
-        workflowTask_1.setInputParameters(inputParam);
+        workflowTask1.setInputParameters(inputParam);
 
         List<WorkflowTask> tasks = new ArrayList<>();
-        tasks.add(workflowTask_1);
+        tasks.add(workflowTask1);
 
         workflowDef.setTasks(tasks);
 
@@ -272,17 +272,17 @@ public class ConstraintParamUtilTest {
     public void testExtractParamPathComponentsWithEscapedChar() {
         WorkflowDef workflowDef = constructWorkflowDef();
 
-        WorkflowTask workflowTask_1 = new WorkflowTask();
-        workflowTask_1.setName("task_1");
-        workflowTask_1.setTaskReferenceName("task_1");
-        workflowTask_1.setType(TaskType.TASK_TYPE_SIMPLE);
+        WorkflowTask workflowTask1 = new WorkflowTask();
+        workflowTask1.setName("task_1");
+        workflowTask1.setTaskReferenceName("task_1");
+        workflowTask1.setType(TaskType.TASK_TYPE_SIMPLE);
 
         Map<String, Object> inputParam = new HashMap<>();
         inputParam.put("taskId", "$${expression with spaces}");
-        workflowTask_1.setInputParameters(inputParam);
+        workflowTask1.setInputParameters(inputParam);
 
         List<WorkflowTask> tasks = new ArrayList<>();
-        tasks.add(workflowTask_1);
+        tasks.add(workflowTask1);
 
         workflowDef.setTasks(tasks);
 

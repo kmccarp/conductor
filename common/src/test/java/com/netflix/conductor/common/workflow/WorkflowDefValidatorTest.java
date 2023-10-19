@@ -68,10 +68,10 @@ public class WorkflowDefValidatorTest {
         workflowDef.setName("test_env");
         workflowDef.setOwnerEmail("owner@test.com");
 
-        WorkflowTask workflowTask_1 = new WorkflowTask();
-        workflowTask_1.setName("task_1");
-        workflowTask_1.setTaskReferenceName("task_1");
-        workflowTask_1.setType(TaskType.TASK_TYPE_SIMPLE);
+        WorkflowTask workflowTask1 = new WorkflowTask();
+        workflowTask1.setName("task_1");
+        workflowTask1.setTaskReferenceName("task_1");
+        workflowTask1.setType(TaskType.TASK_TYPE_SIMPLE);
 
         Map<String, Object> inputParam = new HashMap<>();
         inputParam.put("taskId", "${CPEWF_TASK_ID}");
@@ -79,21 +79,21 @@ public class WorkflowDefValidatorTest {
                 "entryPoint",
                 "${NETFLIX_ENVIRONMENT} ${NETFLIX_STACK} ${CPEWF_TASK_ID} ${workflow.input.status}");
 
-        workflowTask_1.setInputParameters(inputParam);
+        workflowTask1.setInputParameters(inputParam);
 
-        WorkflowTask workflowTask_2 = new WorkflowTask();
-        workflowTask_2.setName("task_2");
-        workflowTask_2.setTaskReferenceName("task_2");
-        workflowTask_2.setType(TaskType.TASK_TYPE_SIMPLE);
+        WorkflowTask workflowTask2 = new WorkflowTask();
+        workflowTask2.setName("task_2");
+        workflowTask2.setTaskReferenceName("task_2");
+        workflowTask2.setType(TaskType.TASK_TYPE_SIMPLE);
 
         Map<String, Object> inputParam2 = new HashMap<>();
         inputParam2.put("env", inputParam);
 
-        workflowTask_2.setInputParameters(inputParam2);
+        workflowTask2.setInputParameters(inputParam2);
 
         List<WorkflowTask> tasks = new ArrayList<>();
-        tasks.add(workflowTask_1);
-        tasks.add(workflowTask_2);
+        tasks.add(workflowTask1);
+        tasks.add(workflowTask2);
 
         workflowDef.setTasks(tasks);
 
@@ -110,18 +110,18 @@ public class WorkflowDefValidatorTest {
         workflowDef.setName("test_env");
         workflowDef.setOwnerEmail("owner@test.com");
 
-        WorkflowTask workflowTask_1 = new WorkflowTask();
-        workflowTask_1.setName("task_1");
-        workflowTask_1.setTaskReferenceName("task_1");
-        workflowTask_1.setType(TaskType.TASK_TYPE_SIMPLE);
+        WorkflowTask workflowTask1 = new WorkflowTask();
+        workflowTask1.setName("task_1");
+        workflowTask1.setTaskReferenceName("task_1");
+        workflowTask1.setType(TaskType.TASK_TYPE_SIMPLE);
 
         Map<String, Object> inputParam = new HashMap<>();
         inputParam.put("taskId", "${CPEWF_TASK_ID}");
 
-        workflowTask_1.setInputParameters(inputParam);
+        workflowTask1.setInputParameters(inputParam);
 
         List<WorkflowTask> tasks = new ArrayList<>();
-        tasks.add(workflowTask_1);
+        tasks.add(workflowTask1);
 
         workflowDef.setTasks(tasks);
 
@@ -138,18 +138,18 @@ public class WorkflowDefValidatorTest {
         workflowDef.setName("test_env");
         workflowDef.setOwnerEmail("owner@test.com");
 
-        WorkflowTask workflowTask_1 = new WorkflowTask();
-        workflowTask_1.setName("task_1");
-        workflowTask_1.setTaskReferenceName("task_1");
-        workflowTask_1.setType(TaskType.TASK_TYPE_SIMPLE);
+        WorkflowTask workflowTask1 = new WorkflowTask();
+        workflowTask1.setName("task_1");
+        workflowTask1.setTaskReferenceName("task_1");
+        workflowTask1.setType(TaskType.TASK_TYPE_SIMPLE);
 
         Map<String, Object> inputParam = new HashMap<>();
         inputParam.put("taskId", "${CPEWF_TASK_ID} ${NETFLIX_STACK}");
 
-        workflowTask_1.setInputParameters(inputParam);
+        workflowTask1.setInputParameters(inputParam);
 
         List<WorkflowTask> tasks = new ArrayList<>();
-        tasks.add(workflowTask_1);
+        tasks.add(workflowTask1);
 
         workflowDef.setTasks(tasks);
 
@@ -166,10 +166,10 @@ public class WorkflowDefValidatorTest {
         workflowDef.setName("test_env");
         workflowDef.setOwnerEmail("owner@test.com");
 
-        WorkflowTask workflowTask_1 = new WorkflowTask();
-        workflowTask_1.setName("task_1");
-        workflowTask_1.setTaskReferenceName("task_1");
-        workflowTask_1.setType(TaskType.TASK_TYPE_SIMPLE);
+        WorkflowTask workflowTask1 = new WorkflowTask();
+        workflowTask1.setName("task_1");
+        workflowTask1.setTaskReferenceName("task_1");
+        workflowTask1.setType(TaskType.TASK_TYPE_SIMPLE);
 
         Map<String, Object> inputParam = new HashMap<>();
         inputParam.put("taskId", "${CPEWF_TASK_ID} ${NETFLIX_STACK}");
@@ -181,10 +181,10 @@ public class WorkflowDefValidatorTest {
 
         inputParam.put("env", envInputParam);
 
-        workflowTask_1.setInputParameters(inputParam);
+        workflowTask1.setInputParameters(inputParam);
 
         List<WorkflowTask> tasks = new ArrayList<>();
-        tasks.add(workflowTask_1);
+        tasks.add(workflowTask1);
 
         workflowDef.setTasks(tasks);
 

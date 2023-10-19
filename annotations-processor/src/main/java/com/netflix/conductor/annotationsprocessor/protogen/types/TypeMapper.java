@@ -31,7 +31,7 @@ public class TypeMapper {
 
     public static TypeMapper INSTANCE = new TypeMapper();
 
-    private Map<Type, AbstractType> types = new HashMap<>();
+    private final Map<Type, AbstractType> types = new HashMap<>();
 
     public void addScalarType(Type t, String protoType) {
         types.put(t, new ScalarType(t, TypeName.get(t), protoType));
@@ -88,8 +88,9 @@ public class TypeMapper {
         for (Map.Entry<Type, AbstractType> pair : types.entrySet()) {
             AbstractType t = pair.getValue();
             if (t instanceof MessageType) {
-                if (((Class) t.getJavaType()).getSimpleName().equals(className))
-                    return (MessageType) t;
+                if (((Class)t.getJavaType()).getSimpleName().equals(className)) {
+                    return (MessageType)t;
+                }
             }
         }
         return null;

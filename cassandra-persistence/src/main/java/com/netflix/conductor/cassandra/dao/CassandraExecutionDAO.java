@@ -370,7 +370,7 @@ public class CassandraExecutionDAO extends CassandraBaseDAO
     @Override
     public List<TaskModel> getTasks(List<String> taskIds) {
         Preconditions.checkNotNull(taskIds);
-        Preconditions.checkArgument(taskIds.size() > 0, "Task ids list cannot be empty");
+        Preconditions.checkArgument(!taskIds.isEmpty(), "Task ids list cannot be empty");
         String workflowId = lookupWorkflowIdFromTaskId(taskIds.get(0));
         if (workflowId == null) {
             return null;
@@ -506,7 +506,7 @@ public class CassandraExecutionDAO extends CassandraBaseDAO
                 List<TaskModel> tasks = new ArrayList<>();
 
                 List<Row> rows = resultSet.all();
-                if (rows.size() == 0) {
+                if (rows.isEmpty()) {
                     LOGGER.info("Workflow {} not found in datastore", workflowId);
                     return null;
                 }
